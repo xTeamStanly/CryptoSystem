@@ -44,7 +44,9 @@
     <Compile Include="CryptoLibrary.cs" />
     <Compile Include="Enigma\Enigma.cs" />
     <Compile Include="Enigma\PlugBoard.cs" />
+    <Compile Include="Enigma\Reflector.cs" />
     <Compile Include="Enigma\Rotor.cs" />
+    <Compile Include="Enigma\RotorManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RC4.cs" />
     <Compile Include="Utility.cs" />

@@ -73,9 +73,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Connected Services\CryptoProviderServiceReference\CryptoConsumer.CryptoProviderServiceReference.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\CryptoProviderServiceReference\CryptoProvider.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -103,6 +100,10 @@
     <ProjectReference Include="..\CryptoLibrary\CryptoLibrary.csproj">
       <Project>{4e0f93a8-37e3-47c2-b4f1-33092b6bef3d}</Project>
       <Name>CryptoLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CryptoProvider\CryptoProvider.csproj">
+      <Project>{90042FBF-5A00-4B35-98A7-64C2C5878B17}</Project>
+      <Name>CryptoProvider</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

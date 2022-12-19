@@ -4,23 +4,27 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using CryptoLibrary;
+using CryptoLibrary.Enigma;
 namespace CryptoProvider {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
+
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
     public class CryptoProvider : ICryptoProvider {
-        public string GetData(int value) {
 
-            return string.Format("You entered: {0}", value);
-        }
+        public string EnigmaCrypt(EnigmaState state, string input) {
+            try {
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite) {
-            if (composite == null) {
-                throw new ArgumentNullException("composite");
+                Enigma enigma = new Enigma(
+                    state.I_Key, state.I_Rotor_Configuration, state.I_Rotor_Turnover_Letter,
+                    state.II_Key, state.II_Rotor_Configuration, state.II_Rotor_Turnover_Letter,
+                    state.III_Key, state.III_Rotor_Configuration, state.III_Rotor_Turnover_Letter,
+                    state.Reflector_Configuration, state.Plug_Board_Configuration
+                );
+
+                return enigma.Get(input);
+
+            } catch (Exception ex) {
+                return ex.Message;
             }
-            if (composite.BoolValue) {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
         }
     }
 }

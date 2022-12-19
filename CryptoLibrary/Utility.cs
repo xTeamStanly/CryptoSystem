@@ -89,6 +89,65 @@ namespace CryptoLibrary {
 
             return dictionary;
         }
+        public static int valid_rotor_key(int input) {
+            if (input < 1) { throw new ArgumentException("invalid starting position"); }
+            return (input - 1) % 26;
+        }
+        public static string inverse_rotor_configuration(string valid_rotor_configuration) {
+
+            string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+            char[] inverse_configuration = new char[26];
+            for (int i = 0 ; i < 26 ; i++) {
+
+                char rotor_letter = valid_rotor_configuration[i];
+                int inverse_letter_position = alphabet.IndexOf(rotor_letter);
+
+                inverse_configuration[inverse_letter_position] = alphabet[i];
+                
+            }
+
+            return new string(inverse_configuration);
+        }
+        public static string remove_all_whitespace_from_string(string input) {
+            if (input == null) { return null; }
+            input = Regex.Replace(input, " ", "");
+            return input;
+        }
+
+        public static string shift_string(string input, int value, bool right) {
+            if (input == null) { return null; }
+
+            if (value == 0) { return input; }
+            value = Math.Abs(value);
+
+            int input_lenght = input.Length;
+            if (input_lenght < 2) { return input; }
+
+            string output = input;
+
+            for (int i = 0 ; i < value ; i++) {
+                output = shift_string_internal(output, input_lenght, right);
+            }
+
+            return output;
+        }
+        private static string shift_string_internal(string input, int input_lenght, bool right) {
+            int last_char_index = input_lenght - 1;
+            
+            string first_part = "";
+            string second_part = "";
+
+            if (right == true) {
+                first_part = input[last_char_index].ToString();
+                second_part = input.Substring(0, last_char_index);
+            } else {
+                first_part = input.Substring(1, last_char_index);
+                second_part = input[0].ToString();
+            }
+
+            return first_part + second_part;
+        }
     
     }
 }

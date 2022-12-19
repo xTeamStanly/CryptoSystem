@@ -1,10 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/CryptoProvider" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CryptoProvider" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="CompositeType">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/CryptoProvider" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CryptoProvider" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="EnigmaState">
     <xs:sequence>
-      <xs:element minOccurs="0" name="BoolValue" type="xs:boolean" />
-      <xs:element minOccurs="0" name="StringValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="III_Key" type="xs:int" />
+      <xs:element minOccurs="0" name="III_Rotor_Configuration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="III_Rotor_Turnover_Letter" type="ser:char" />
+      <xs:element minOccurs="0" name="II_Key" type="xs:int" />
+      <xs:element minOccurs="0" name="II_Rotor_Configuration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="II_Rotor_Turnover_Letter" type="ser:char" />
+      <xs:element minOccurs="0" name="I_Key" type="xs:int" />
+      <xs:element minOccurs="0" name="I_Rotor_Configuration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="I_Rotor_Turnover_Letter" type="ser:char" />
+      <xs:element minOccurs="0" name="Plug_Board_Configuration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Reflector_Configuration" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
+  <xs:element name="EnigmaState" nillable="true" type="tns:EnigmaState" />
 </xs:schema>

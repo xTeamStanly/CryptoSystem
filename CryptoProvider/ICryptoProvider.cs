@@ -6,35 +6,90 @@ using System.ServiceModel;
 using System.Text;
 
 namespace CryptoProvider {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
     public interface ICryptoProvider {
-        [OperationContract]
-        string GetData(int value);
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
-
-        // TODO: Add your service operations here
+        string EnigmaCrypt(EnigmaState state, string input);
     }
 
-    // Use a data contract as illustrated in the sample below to add composite types to service operations.
-    // You can add XSD files into the project. After building the project, you can directly use the data types defined there, with the namespace "CryptoProvider.ContractType".
     [DataContract]
-    public class CompositeType {
-        bool boolValue = true;
-        string stringValue = "Hello ";
-
+    public class EnigmaState {
+        int I_key;
         [DataMember]
-        public bool BoolValue {
-            get { return boolValue; }
-            set { boolValue = value; }
+        public int I_Key {
+            get { return I_key; }
+            set { I_key = value; }
         }
 
+        int II_key;
         [DataMember]
-        public string StringValue {
-            get { return stringValue; }
-            set { stringValue = value; }
+        public int II_Key {
+            get { return II_key; }
+            set { II_key = value; }
+        }
+
+        int III_key;
+        [DataMember]
+        public int III_Key {
+            get { return III_key; }
+            set { III_key = value; }
+        }
+
+        char I_rotor_turnover_letter;
+        [DataMember]
+        public char I_Rotor_Turnover_Letter {
+            get { return I_rotor_turnover_letter; }
+            set { I_rotor_turnover_letter = value; }
+        }
+
+        char II_rotor_turnover_letter;
+        [DataMember]
+        public char II_Rotor_Turnover_Letter {
+            get { return II_rotor_turnover_letter; }
+            set { II_rotor_turnover_letter = value; }
+        }
+
+        char III_rotor_turnover_letter;
+        [DataMember]
+        public char III_Rotor_Turnover_Letter {
+            get { return III_rotor_turnover_letter; }
+            set { III_rotor_turnover_letter = value; }
+        }
+
+        string I_rotor_configuration;
+        [DataMember]
+        public string I_Rotor_Configuration {
+            get { return I_rotor_configuration; }
+            set { I_rotor_configuration = value; }
+        }
+
+        string II_rotor_configuration;
+        [DataMember]
+        public string II_Rotor_Configuration {
+            get { return II_rotor_configuration; }
+            set { II_rotor_configuration = value; }
+        }
+
+        string III_rotor_configuration;
+        [DataMember]
+        public string III_Rotor_Configuration {
+            get { return III_rotor_configuration; }
+            set { III_rotor_configuration = value; }
+        }
+
+        string reflector_configuration;
+        [DataMember]
+        public string Reflector_Configuration {
+            get { return reflector_configuration; }
+            set { reflector_configuration = value; }
+        }
+
+        string plug_board_configuration;
+        [DataMember]
+        public string Plug_Board_Configuration {
+            get { return plug_board_configuration; }
+            set { plug_board_configuration = value; }
         }
     }
 }
