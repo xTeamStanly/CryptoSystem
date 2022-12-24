@@ -15,11 +15,47 @@ namespace CryptoConsumer.CryptoProviderServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CryptoProviderServiceReference.ICryptoProvider")]
     public interface ICryptoProvider {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/RC4Crypt", ReplyAction="http://tempuri.org/ICryptoProvider/RC4CryptResponse")]
+        string RC4Crypt(string key, string input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/RC4Crypt", ReplyAction="http://tempuri.org/ICryptoProvider/RC4CryptResponse")]
+        System.Threading.Tasks.Task<string> RC4CryptAsync(string key, string input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/RC4Decrypt", ReplyAction="http://tempuri.org/ICryptoProvider/RC4DecryptResponse")]
+        string RC4Decrypt(string key, string input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/RC4Decrypt", ReplyAction="http://tempuri.org/ICryptoProvider/RC4DecryptResponse")]
+        System.Threading.Tasks.Task<string> RC4DecryptAsync(string key, string input);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/EnigmaCrypt", ReplyAction="http://tempuri.org/ICryptoProvider/EnigmaCryptResponse")]
         string EnigmaCrypt(CryptoProvider.EnigmaState state, string input);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/EnigmaCrypt", ReplyAction="http://tempuri.org/ICryptoProvider/EnigmaCryptResponse")]
         System.Threading.Tasks.Task<string> EnigmaCryptAsync(CryptoProvider.EnigmaState state, string input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEACrypt", ReplyAction="http://tempuri.org/ICryptoProvider/TEACryptResponse")]
+        string TEACrypt(string key, string input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEACrypt", ReplyAction="http://tempuri.org/ICryptoProvider/TEACryptResponse")]
+        System.Threading.Tasks.Task<string> TEACryptAsync(string key, string input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEADecrypt", ReplyAction="http://tempuri.org/ICryptoProvider/TEADecryptResponse")]
+        string TEADecrypt(string key, string input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEADecrypt", ReplyAction="http://tempuri.org/ICryptoProvider/TEADecryptResponse")]
+        System.Threading.Tasks.Task<string> TEADecryptAsync(string key, string input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_TEACrypt", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_TEACryptResponse")]
+        string CBC_TEACrypt(string key, string input, string init_vector);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_TEACrypt", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_TEACryptResponse")]
+        System.Threading.Tasks.Task<string> CBC_TEACryptAsync(string key, string input, string init_vector);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_TEADecrypt", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_TEADecryptResponse")]
+        string CBC_TEADecrypt(string key, string input, string init_vector);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_TEADecrypt", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_TEADecryptResponse")]
+        System.Threading.Tasks.Task<string> CBC_TEADecryptAsync(string key, string input, string init_vector);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -49,12 +85,60 @@ namespace CryptoConsumer.CryptoProviderServiceReference {
                 base(binding, remoteAddress) {
         }
         
+        public string RC4Crypt(string key, string input) {
+            return base.Channel.RC4Crypt(key, input);
+        }
+        
+        public System.Threading.Tasks.Task<string> RC4CryptAsync(string key, string input) {
+            return base.Channel.RC4CryptAsync(key, input);
+        }
+        
+        public string RC4Decrypt(string key, string input) {
+            return base.Channel.RC4Decrypt(key, input);
+        }
+        
+        public System.Threading.Tasks.Task<string> RC4DecryptAsync(string key, string input) {
+            return base.Channel.RC4DecryptAsync(key, input);
+        }
+        
         public string EnigmaCrypt(CryptoProvider.EnigmaState state, string input) {
             return base.Channel.EnigmaCrypt(state, input);
         }
         
         public System.Threading.Tasks.Task<string> EnigmaCryptAsync(CryptoProvider.EnigmaState state, string input) {
             return base.Channel.EnigmaCryptAsync(state, input);
+        }
+        
+        public string TEACrypt(string key, string input) {
+            return base.Channel.TEACrypt(key, input);
+        }
+        
+        public System.Threading.Tasks.Task<string> TEACryptAsync(string key, string input) {
+            return base.Channel.TEACryptAsync(key, input);
+        }
+        
+        public string TEADecrypt(string key, string input) {
+            return base.Channel.TEADecrypt(key, input);
+        }
+        
+        public System.Threading.Tasks.Task<string> TEADecryptAsync(string key, string input) {
+            return base.Channel.TEADecryptAsync(key, input);
+        }
+        
+        public string CBC_TEACrypt(string key, string input, string init_vector) {
+            return base.Channel.CBC_TEACrypt(key, input, init_vector);
+        }
+        
+        public System.Threading.Tasks.Task<string> CBC_TEACryptAsync(string key, string input, string init_vector) {
+            return base.Channel.CBC_TEACryptAsync(key, input, init_vector);
+        }
+        
+        public string CBC_TEADecrypt(string key, string input, string init_vector) {
+            return base.Channel.CBC_TEADecrypt(key, input, init_vector);
+        }
+        
+        public System.Threading.Tasks.Task<string> CBC_TEADecryptAsync(string key, string input, string init_vector) {
+            return base.Channel.CBC_TEADecryptAsync(key, input, init_vector);
         }
     }
 }

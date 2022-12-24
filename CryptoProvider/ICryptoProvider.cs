@@ -10,7 +10,22 @@ namespace CryptoProvider {
     public interface ICryptoProvider {
 
         [OperationContract]
+        string RC4Crypt(string key, string input);
+        [OperationContract]
+        string RC4Decrypt(string key, string input);
+
+        [OperationContract]
         string EnigmaCrypt(EnigmaState state, string input);
+
+        [OperationContract]
+        string TEACrypt(string key, string input/*, bool should_pad_input*/);
+        [OperationContract]
+        string TEADecrypt(string key, string input/*, bool should_pad_input*/);
+
+        [OperationContract]
+        string CBC_TEACrypt(string key, string input, string init_vector/*, bool should_pad_input*/);
+        [OperationContract]
+        string CBC_TEADecrypt(string key, string input, string init_vector/*, bool should_pad_input*/);
     }
 
     [DataContract]

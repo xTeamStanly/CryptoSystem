@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Text;
 
-namespace CryptoLibrary.RC4 {
+namespace CryptoLibrary {
     public class RC4 {
 
         // key bytes
@@ -82,8 +82,13 @@ namespace CryptoLibrary.RC4 {
             s = new byte[256];
         }
 
-        public byte[] encrypt_bytes_to_bytes(byte[] input) { return Encrypt(input); }
-        public string encrypt_bytes_to_unicode(byte[] input) { return Utility.get_unicode_from_bytes(Encrypt(input)); }
+        public byte[] encrypt_bytes_to_bytes(byte[] input) {
+            return Encrypt(input);
+        }        
+        public string encrypt_bytes_to_unicode(byte[] input) {
+            byte[] encrypted_bytes = Encrypt(input);
+            return Utility.get_unicode_from_bytes(encrypted_bytes);
+        }
         public string encrypt_unicode_to_unicode(string input) {
             byte[] input_bytes = Utility.get_bytes_from_unicode(input);
             return encrypt_bytes_to_unicode(input_bytes);
@@ -97,7 +102,5 @@ namespace CryptoLibrary.RC4 {
         public string decrypt_bytes_to_unicode(byte[] input) { return encrypt_bytes_to_unicode(input); }
         public string decrypt_unicode_to_unicode(string input) { return encrypt_unicode_to_unicode(input); }
         public byte[] decrypt_unicode_to_bytes(string input) { return encrypt_unicode_to_bytes(input); }
-
-
     }
 }

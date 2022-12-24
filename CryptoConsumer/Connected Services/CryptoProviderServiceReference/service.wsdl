@@ -7,22 +7,136 @@
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/CryptoProvider" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="ICryptoProvider_RC4Crypt_InputMessage">
+    <wsdl:part name="parameters" element="tns:RC4Crypt" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_RC4Crypt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RC4CryptResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_RC4Decrypt_InputMessage">
+    <wsdl:part name="parameters" element="tns:RC4Decrypt" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_RC4Decrypt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RC4DecryptResponse" />
+  </wsdl:message>
   <wsdl:message name="ICryptoProvider_EnigmaCrypt_InputMessage">
     <wsdl:part name="parameters" element="tns:EnigmaCrypt" />
   </wsdl:message>
   <wsdl:message name="ICryptoProvider_EnigmaCrypt_OutputMessage">
     <wsdl:part name="parameters" element="tns:EnigmaCryptResponse" />
   </wsdl:message>
+  <wsdl:message name="ICryptoProvider_TEACrypt_InputMessage">
+    <wsdl:part name="parameters" element="tns:TEACrypt" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_TEACrypt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TEACryptResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_TEADecrypt_InputMessage">
+    <wsdl:part name="parameters" element="tns:TEADecrypt" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_TEADecrypt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TEADecryptResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_TEACrypt_InputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_TEACrypt" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_TEACrypt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_TEACryptResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_TEADecrypt_InputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_TEADecrypt" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_TEADecrypt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_TEADecryptResponse" />
+  </wsdl:message>
   <wsdl:portType name="ICryptoProvider">
+    <wsdl:operation name="RC4Crypt">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/RC4Crypt" message="tns:ICryptoProvider_RC4Crypt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/RC4CryptResponse" message="tns:ICryptoProvider_RC4Crypt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RC4Decrypt">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/RC4Decrypt" message="tns:ICryptoProvider_RC4Decrypt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/RC4DecryptResponse" message="tns:ICryptoProvider_RC4Decrypt_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="EnigmaCrypt">
       <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/EnigmaCrypt" message="tns:ICryptoProvider_EnigmaCrypt_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/EnigmaCryptResponse" message="tns:ICryptoProvider_EnigmaCrypt_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="TEACrypt">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/TEACrypt" message="tns:ICryptoProvider_TEACrypt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/TEACryptResponse" message="tns:ICryptoProvider_TEACrypt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TEADecrypt">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/TEADecrypt" message="tns:ICryptoProvider_TEADecrypt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/TEADecryptResponse" message="tns:ICryptoProvider_TEADecrypt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CBC_TEACrypt">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_TEACrypt" message="tns:ICryptoProvider_CBC_TEACrypt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_TEACryptResponse" message="tns:ICryptoProvider_CBC_TEACrypt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CBC_TEADecrypt">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_TEADecrypt" message="tns:ICryptoProvider_CBC_TEADecrypt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_TEADecryptResponse" message="tns:ICryptoProvider_CBC_TEADecrypt_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICryptoProvider" type="tns:ICryptoProvider">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RC4Crypt">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/RC4Crypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RC4Decrypt">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/RC4Decrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="EnigmaCrypt">
       <soap:operation soapAction="http://tempuri.org/ICryptoProvider/EnigmaCrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TEACrypt">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/TEACrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TEADecrypt">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/TEADecrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CBC_TEACrypt">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/CBC_TEACrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CBC_TEADecrypt">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/CBC_TEADecrypt" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
