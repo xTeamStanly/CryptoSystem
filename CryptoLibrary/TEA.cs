@@ -104,12 +104,12 @@ namespace CryptoLibrary {
         }
     
         public byte[] encrypt_bytes_to_bytes(byte[] input) {
-            uint[] data = Utility.byte_array_to_unsigned_array(input, 2);
+            uint[] data = Utility.byte_array_to_unsigned_array_with_end_padding(input, 2);
             Encrypt(ref data);
             return Utility.unsigned_array_to_byte_array(data);
         }
         public string encrypt_bytes_to_unicode(byte[] input) {
-            uint[] data = Utility.byte_array_to_unsigned_array(input, 2);
+            uint[] data = Utility.byte_array_to_unsigned_array_with_end_padding(input, 2);
             Encrypt(ref data);
             return Utility.unsigned_array_to_unicode(data);
         }
@@ -125,7 +125,7 @@ namespace CryptoLibrary {
         public byte[] decrypt_bytes_to_bytes(byte[] input) {
             uint[] data = Utility.byte_array_to_unsigned_array(input, 2);
             Decrypt(data);
-            return Utility.unsigned_array_to_byte_array(data);
+            return Utility.unsigned_array_to_byte_array_remove_padding(data);
         }
         public string decrypt_bytes_to_unicode(byte[] input) {
             uint[] data = Utility.byte_array_to_unsigned_array(input, 2);
