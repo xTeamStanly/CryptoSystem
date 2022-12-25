@@ -16,19 +16,13 @@ namespace CryptoLibrary {
             get { return key; }
         }
 
-        //private bool should_pad_input = false;
-        //public bool ShouldPadInput {
-        //    get { return should_pad_input; }
-        //}
-
-        public TEA(string input_key/*, bool should_pad_input*/) {
+        public TEA(string input_key) {
             if (input_key == null) { throw new ArgumentNullException("invalid key"); }
 
             // 128b = char (8b) * 16
             if (input_key.Length != 16) { throw new ArgumentException("invalid key"); }
 
             key = Utility.unicode_to_tea_key(input_key);
-            // this.should_pad_input = should_pad_input;
         }
 
         public void encrypt_one_cycle(uint[] v) {
@@ -78,16 +72,6 @@ namespace CryptoLibrary {
             
             int data_lenght = data.Length;
             if (data_lenght == 0) { throw new Exception("invalid input"); }
-            
-            
-            //if (data_lenght % 2 == 1) {
-            //    if (should_pad_input == true) {
-            //        uint[] new_data = new uint[1] { 0 };
-            //        data = new_data.Concat(data).ToArray();
-            //    } else {
-            //        throw new Exception("uncomplete block, padding is disabled");
-            //    }
-            //}
 
             for (int i = 0 ; i < data.Length ; i += 2) {
                 uint[] arr = new uint[2];
@@ -106,8 +90,6 @@ namespace CryptoLibrary {
 
             int data_lenght = data.Length;
             if (data_lenght == 0) { throw new Exception("invalid input"); }
-
-            // if (data_lenght % 8 == 1) { throw new Exception("uncomplete block"); }
 
             for (int i = 0 ; i < data.Length ; i += 2) {
                 uint[] arr = new uint[2];
@@ -204,6 +186,53 @@ namespace CryptoLibrary {
 
             Utility.write_bytes_to_file(outputpath, output_image);
         }
+        public byte[] encrypt_bitmap_from_bytes(byte[] input_image) {
+            if (input_image == null) { throw new Exception("invalid input"); }
+            if (input_image.Length == 0) { throw new Exception("invalid input"); }
 
+            int input_image_length = input_image.Length;
+
+            int end_of_header_position = input_image[10] + 256 * (input_image[11] + 256 * (input_image[12] + 256 * input_image[13]));
+
+            // samo informacije o pikselima
+            byte[] input_image_pixels = new byte[input_image_length - end_of_header_position];
+            // preskocili smo header i kopiramo samo informacije o pikselima
+            Array.Copy(input_image, end_of_header_position, input_image_pixels, 0, input_image_pixels.Length);
+
+            input_image_pixels = encrypt_bytes_to_bytes(input_image_pixels);
+
+            // moze da se desi da je slika previse mala pa mora da se padduje, primer 1x1 slika
+            // u takvom slucaju slika nece biti iste velicine kao originalna, nego za 4 bajta veca
+            // ti bajtovi su 0x00 (padding)
+            byte[] output_image = new byte[end_of_header_position + input_image_pixels.Length];
+            Array.Copy(input_image, 0, output_image, 0, end_of_header_position); // kopiramo header
+            Array.Copy(input_image_pixels, 0, output_image, end_of_header_position, input_image_pixels.Length); // kopiramo data bez hedera
+
+            return output_image;
+        }
+        public byte[] decrypt_bitmap_from_bytes(byte[] input_image) {
+            if (input_image == null) { throw new Exception("invalid input"); }
+            if (input_image.Length == 0) { throw new Exception("invalid input"); }
+
+            int input_image_length = input_image.Length;
+
+            int end_of_header_position = input_image[10] + 256 * (input_image[11] + 256 * (input_image[12] + 256 * input_image[13]));
+
+            // samo informacije o pikselima
+            byte[] input_image_pixels = new byte[input_image_length - end_of_header_position];
+            // preskocili smo header i kopiramo samo informacije o pikselima
+            Array.Copy(input_image, end_of_header_position, input_image_pixels, 0, input_image_pixels.Length);
+
+            input_image_pixels = decrypt_bytes_to_bytes(input_image_pixels);
+
+            // moze da se desi da je slika previse mala pa mora da se padduje, primer 1x1 slika
+            // u takvom slucaju slika nece biti iste velicine kao originalna, nego za 4 bajta veca
+            // ti bajtovi su 0x00 (padding)
+            byte[] output_image = new byte[end_of_header_position + input_image_pixels.Length];
+            Array.Copy(input_image, 0, output_image, 0, end_of_header_position); // kopiramo header
+            Array.Copy(input_image_pixels, 0, output_image, end_of_header_position, input_image_pixels.Length); // kopiramo data bez hedera
+
+            return output_image;
+        }
     }
 }

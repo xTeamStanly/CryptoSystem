@@ -17,42 +17,13 @@ namespace CryptoConsumer {
         [STAThread]
         static void Main() {
 
-            TEA teaimg = new TEA("vZQS2MEkE-Z%R$PK");
-            teaimg.encrypt_bitmap_file_from_path(@"C:\Users\Stanko\Desktop\bitmap\original.bmp", @"C:\Users\Stanko\Desktop\bitmap\encrypted.bmp");
-            teaimg.decrypt_bitmap_file_from_path(@"C:\Users\Stanko\Desktop\bitmap\encrypted.bmp", @"C:\Users\Stanko\Desktop\bitmap\decrypted.bmp");
+            TEA tea = new TEA("vZQS2MEkE-Z%R$PK");
+            string res = tea.encrypt_unicode_to_unicode("BRUH");
+            // string ress = Encoding.ASCII.GetString(res);
 
-
-            
-
-
-
-
-
-
-            //TEA tea = new TEA("vZQS2MEkE-Z%R$PK");
-
-            //byte[] inputerino = Utility.get_bytes_from_unicode("dorojutro");
-            //byte[] xddd = tea.encrypt_bytes_to_bytes(inputerino);
-
-            //string idkmen = tea.decrypt_bytes_to_unicode(xddd);
-
-            //string inputfile = @"C:\Users\Stanko\Desktop\enc\lipsum_input";
-            //string outputfile = @"C:\Users\Stanko\Desktop\enc\lipsum_output";
-            //string tempfile = @"C:\Users\Stanko\Desktop\enc\lipsum_temp";
-
-            //byte[] open_bytes = Utility.open_file_to_bytes(inputfile);
-            //byte[] modified_bytes = tea.encrypt_bytes_to_bytes(open_bytes);
-
-            //Utility.write_bytes_to_file(outputfile, modified_bytes);
-
-
-
-            //open_bytes = Utility.open_file_to_bytes(outputfile);
-            //modified_bytes = tea.decrypt_bytes_to_bytes(open_bytes);
-
-            //Utility.write_bytes_to_file(tempfile, modified_bytes);
-
-            //bool little = BitConverter.IsLittleEndian;
+            // TEA tea = new TEA("vZQS2MEkE-Z%R$PK");
+            // tea.encrypt_bitmap_file_from_path(@"C:\Users\Stanko\Desktop\bitmap\original.bmp", @"C:\Users\Stanko\Desktop\bitmap\encrypted.bmp");
+            // tea.decrypt_bitmap_file_from_path(@"C:\Users\Stanko\Desktop\bitmap\encrypted.bmp", @"C:\Users\Stanko\Desktop\bitmap\decrypted.bmp");
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

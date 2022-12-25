@@ -19,6 +19,18 @@
   <wsdl:message name="ICryptoProvider_RC4Decrypt_OutputMessage">
     <wsdl:part name="parameters" element="tns:RC4DecryptResponse" />
   </wsdl:message>
+  <wsdl:message name="ICryptoProvider_RC4BitmapCrypt_InputMessage">
+    <wsdl:part name="parameters" element="tns:RC4BitmapCrypt" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_RC4BitmapCrypt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RC4BitmapCryptResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_RC4BitmapDecrypt_InputMessage">
+    <wsdl:part name="parameters" element="tns:RC4BitmapDecrypt" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_RC4BitmapDecrypt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RC4BitmapDecryptResponse" />
+  </wsdl:message>
   <wsdl:message name="ICryptoProvider_EnigmaCrypt_InputMessage">
     <wsdl:part name="parameters" element="tns:EnigmaCrypt" />
   </wsdl:message>
@@ -58,6 +70,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/RC4Decrypt" message="tns:ICryptoProvider_RC4Decrypt_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/RC4DecryptResponse" message="tns:ICryptoProvider_RC4Decrypt_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RC4BitmapCrypt">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/RC4BitmapCrypt" message="tns:ICryptoProvider_RC4BitmapCrypt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/RC4BitmapCryptResponse" message="tns:ICryptoProvider_RC4BitmapCrypt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RC4BitmapDecrypt">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/RC4BitmapDecrypt" message="tns:ICryptoProvider_RC4BitmapDecrypt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/RC4BitmapDecryptResponse" message="tns:ICryptoProvider_RC4BitmapDecrypt_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="EnigmaCrypt">
       <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/EnigmaCrypt" message="tns:ICryptoProvider_EnigmaCrypt_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/EnigmaCryptResponse" message="tns:ICryptoProvider_EnigmaCrypt_OutputMessage" />
@@ -92,6 +112,24 @@
     </wsdl:operation>
     <wsdl:operation name="RC4Decrypt">
       <soap:operation soapAction="http://tempuri.org/ICryptoProvider/RC4Decrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RC4BitmapCrypt">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/RC4BitmapCrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RC4BitmapDecrypt">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/RC4BitmapDecrypt" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

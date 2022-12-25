@@ -27,6 +27,18 @@ namespace CryptoConsumer.CryptoProviderServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/RC4Decrypt", ReplyAction="http://tempuri.org/ICryptoProvider/RC4DecryptResponse")]
         System.Threading.Tasks.Task<string> RC4DecryptAsync(string key, string input);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/RC4BitmapCrypt", ReplyAction="http://tempuri.org/ICryptoProvider/RC4BitmapCryptResponse")]
+        byte[] RC4BitmapCrypt(string key, byte[] input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/RC4BitmapCrypt", ReplyAction="http://tempuri.org/ICryptoProvider/RC4BitmapCryptResponse")]
+        System.Threading.Tasks.Task<byte[]> RC4BitmapCryptAsync(string key, byte[] input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/RC4BitmapDecrypt", ReplyAction="http://tempuri.org/ICryptoProvider/RC4BitmapDecryptResponse")]
+        byte[] RC4BitmapDecrypt(string key, byte[] input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/RC4BitmapDecrypt", ReplyAction="http://tempuri.org/ICryptoProvider/RC4BitmapDecryptResponse")]
+        System.Threading.Tasks.Task<byte[]> RC4BitmapDecryptAsync(string key, byte[] input);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/EnigmaCrypt", ReplyAction="http://tempuri.org/ICryptoProvider/EnigmaCryptResponse")]
         string EnigmaCrypt(CryptoProvider.EnigmaState state, string input);
         
@@ -99,6 +111,22 @@ namespace CryptoConsumer.CryptoProviderServiceReference {
         
         public System.Threading.Tasks.Task<string> RC4DecryptAsync(string key, string input) {
             return base.Channel.RC4DecryptAsync(key, input);
+        }
+        
+        public byte[] RC4BitmapCrypt(string key, byte[] input) {
+            return base.Channel.RC4BitmapCrypt(key, input);
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> RC4BitmapCryptAsync(string key, byte[] input) {
+            return base.Channel.RC4BitmapCryptAsync(key, input);
+        }
+        
+        public byte[] RC4BitmapDecrypt(string key, byte[] input) {
+            return base.Channel.RC4BitmapDecrypt(key, input);
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> RC4BitmapDecryptAsync(string key, byte[] input) {
+            return base.Channel.RC4BitmapDecryptAsync(key, input);
         }
         
         public string EnigmaCrypt(CryptoProvider.EnigmaState state, string input) {

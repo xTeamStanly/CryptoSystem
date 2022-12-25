@@ -28,6 +28,24 @@ namespace CryptoProvider {
                 return ex.Message;
             }
         }
+        public byte[] RC4BitmapCrypt(string key, byte[] input) {
+            try {
+                RC4 rc4 = new RC4(key);
+                return rc4.encrypt_bitmap_from_bytes(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public byte[] RC4BitmapDecrypt(string key, byte[] input) {
+            try {
+                RC4 rc4 = new RC4(key);
+                return rc4.decrypt_bitmap_from_bytes(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
 
         // ENIGMA
         public string EnigmaCrypt(EnigmaState state, string input) {
@@ -48,25 +66,46 @@ namespace CryptoProvider {
         }
 
         // TEA
-        public string TEACrypt(string key, string input/*, bool should_pad_input*/) {
+        public string TEACrypt(string key, string input) {
             try {
                 if (key.Length != 16) { throw new Exception("invalid key"); }
 
-                TEA tea = new TEA(key/*, should_pad_input*/);
+                TEA tea = new TEA(key);
                 return tea.encrypt_unicode_to_unicode(input);
             } catch (Exception ex) {
                 return ex.Message;
             }
         }
-        public string TEADecrypt(string key, string input/*, bool should_pad_input*/) {
+        public string TEADecrypt(string key, string input) {
             try {
-                // if (input.Length % 8 != 0) { throw new Exception("uncomplete block"); }
                 if (key.Length != 16) { throw new Exception("invalid key"); }
 
-                TEA tea = new TEA(key/*, should_pad_input*/);
+                TEA tea = new TEA(key);
                 return tea.decrypt_unicode_to_unicode(input);
             } catch (Exception ex) {
                 return ex.Message;
+            }
+        }
+        public byte[] TEABitmapCrypt(string key, byte[] input) {
+            try {
+                if (key.Length != 16) { throw new Exception("invalid key"); }
+
+                TEA tea = new TEA(key);
+                return tea.encrypt_bitmap_from_bytes(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public byte[] TEABitmapDecrypt(string key, byte[] input) {
+            try {
+                if (key.Length != 16) { throw new Exception("invalid key"); }
+
+                TEA tea = new TEA(key);
+                return tea.decrypt_bitmap_from_bytes(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
             }
         }
 
