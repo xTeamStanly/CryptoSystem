@@ -31,6 +31,18 @@
   <wsdl:message name="ICryptoProvider_RC4BitmapDecrypt_OutputMessage">
     <wsdl:part name="parameters" element="tns:RC4BitmapDecryptResponse" />
   </wsdl:message>
+  <wsdl:message name="ICryptoProvider_RC4FileCrypt_InputMessage">
+    <wsdl:part name="parameters" element="tns:RC4FileCrypt" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_RC4FileCrypt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RC4FileCryptResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_RC4FileDecrypt_InputMessage">
+    <wsdl:part name="parameters" element="tns:RC4FileDecrypt" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_RC4FileDecrypt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RC4FileDecryptResponse" />
+  </wsdl:message>
   <wsdl:message name="ICryptoProvider_EnigmaCrypt_InputMessage">
     <wsdl:part name="parameters" element="tns:EnigmaCrypt" />
   </wsdl:message>
@@ -48,6 +60,30 @@
   </wsdl:message>
   <wsdl:message name="ICryptoProvider_TEADecrypt_OutputMessage">
     <wsdl:part name="parameters" element="tns:TEADecryptResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_TEABitmapCrypt_InputMessage">
+    <wsdl:part name="parameters" element="tns:TEABitmapCrypt" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_TEABitmapCrypt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TEABitmapCryptResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_TEABitmapDecrypt_InputMessage">
+    <wsdl:part name="parameters" element="tns:TEABitmapDecrypt" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_TEABitmapDecrypt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TEABitmapDecryptResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_TEAFileCrypt_InputMessage">
+    <wsdl:part name="parameters" element="tns:TEAFileCrypt" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_TEAFileCrypt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TEAFileCryptResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_TEAFileDecrypt_InputMessage">
+    <wsdl:part name="parameters" element="tns:TEAFileDecrypt" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_TEAFileDecrypt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TEAFileDecryptResponse" />
   </wsdl:message>
   <wsdl:message name="ICryptoProvider_CBC_TEACrypt_InputMessage">
     <wsdl:part name="parameters" element="tns:CBC_TEACrypt" />
@@ -78,6 +114,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/RC4BitmapDecrypt" message="tns:ICryptoProvider_RC4BitmapDecrypt_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/RC4BitmapDecryptResponse" message="tns:ICryptoProvider_RC4BitmapDecrypt_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RC4FileCrypt">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/RC4FileCrypt" message="tns:ICryptoProvider_RC4FileCrypt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/RC4FileCryptResponse" message="tns:ICryptoProvider_RC4FileCrypt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RC4FileDecrypt">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/RC4FileDecrypt" message="tns:ICryptoProvider_RC4FileDecrypt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/RC4FileDecryptResponse" message="tns:ICryptoProvider_RC4FileDecrypt_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="EnigmaCrypt">
       <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/EnigmaCrypt" message="tns:ICryptoProvider_EnigmaCrypt_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/EnigmaCryptResponse" message="tns:ICryptoProvider_EnigmaCrypt_OutputMessage" />
@@ -89,6 +133,22 @@
     <wsdl:operation name="TEADecrypt">
       <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/TEADecrypt" message="tns:ICryptoProvider_TEADecrypt_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/TEADecryptResponse" message="tns:ICryptoProvider_TEADecrypt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TEABitmapCrypt">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/TEABitmapCrypt" message="tns:ICryptoProvider_TEABitmapCrypt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/TEABitmapCryptResponse" message="tns:ICryptoProvider_TEABitmapCrypt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TEABitmapDecrypt">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/TEABitmapDecrypt" message="tns:ICryptoProvider_TEABitmapDecrypt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/TEABitmapDecryptResponse" message="tns:ICryptoProvider_TEABitmapDecrypt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TEAFileCrypt">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/TEAFileCrypt" message="tns:ICryptoProvider_TEAFileCrypt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/TEAFileCryptResponse" message="tns:ICryptoProvider_TEAFileCrypt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TEAFileDecrypt">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/TEAFileDecrypt" message="tns:ICryptoProvider_TEAFileDecrypt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/TEAFileDecryptResponse" message="tns:ICryptoProvider_TEAFileDecrypt_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CBC_TEACrypt">
       <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_TEACrypt" message="tns:ICryptoProvider_CBC_TEACrypt_InputMessage" />
@@ -137,6 +197,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RC4FileCrypt">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/RC4FileCrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RC4FileDecrypt">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/RC4FileDecrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="EnigmaCrypt">
       <soap:operation soapAction="http://tempuri.org/ICryptoProvider/EnigmaCrypt" style="document" />
       <wsdl:input>
@@ -157,6 +235,42 @@
     </wsdl:operation>
     <wsdl:operation name="TEADecrypt">
       <soap:operation soapAction="http://tempuri.org/ICryptoProvider/TEADecrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TEABitmapCrypt">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/TEABitmapCrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TEABitmapDecrypt">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/TEABitmapDecrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TEAFileCrypt">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/TEAFileCrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TEAFileDecrypt">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/TEAFileDecrypt" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

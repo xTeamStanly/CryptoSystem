@@ -39,6 +39,18 @@ namespace CryptoConsumer.CryptoProviderServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/RC4BitmapDecrypt", ReplyAction="http://tempuri.org/ICryptoProvider/RC4BitmapDecryptResponse")]
         System.Threading.Tasks.Task<byte[]> RC4BitmapDecryptAsync(string key, byte[] input);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/RC4FileCrypt", ReplyAction="http://tempuri.org/ICryptoProvider/RC4FileCryptResponse")]
+        byte[] RC4FileCrypt(string key, byte[] input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/RC4FileCrypt", ReplyAction="http://tempuri.org/ICryptoProvider/RC4FileCryptResponse")]
+        System.Threading.Tasks.Task<byte[]> RC4FileCryptAsync(string key, byte[] input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/RC4FileDecrypt", ReplyAction="http://tempuri.org/ICryptoProvider/RC4FileDecryptResponse")]
+        byte[] RC4FileDecrypt(string key, byte[] input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/RC4FileDecrypt", ReplyAction="http://tempuri.org/ICryptoProvider/RC4FileDecryptResponse")]
+        System.Threading.Tasks.Task<byte[]> RC4FileDecryptAsync(string key, byte[] input);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/EnigmaCrypt", ReplyAction="http://tempuri.org/ICryptoProvider/EnigmaCryptResponse")]
         string EnigmaCrypt(CryptoProvider.EnigmaState state, string input);
         
@@ -56,6 +68,30 @@ namespace CryptoConsumer.CryptoProviderServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEADecrypt", ReplyAction="http://tempuri.org/ICryptoProvider/TEADecryptResponse")]
         System.Threading.Tasks.Task<string> TEADecryptAsync(string key, string input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEABitmapCrypt", ReplyAction="http://tempuri.org/ICryptoProvider/TEABitmapCryptResponse")]
+        byte[] TEABitmapCrypt(string key, byte[] input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEABitmapCrypt", ReplyAction="http://tempuri.org/ICryptoProvider/TEABitmapCryptResponse")]
+        System.Threading.Tasks.Task<byte[]> TEABitmapCryptAsync(string key, byte[] input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEABitmapDecrypt", ReplyAction="http://tempuri.org/ICryptoProvider/TEABitmapDecryptResponse")]
+        byte[] TEABitmapDecrypt(string key, byte[] input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEABitmapDecrypt", ReplyAction="http://tempuri.org/ICryptoProvider/TEABitmapDecryptResponse")]
+        System.Threading.Tasks.Task<byte[]> TEABitmapDecryptAsync(string key, byte[] input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEAFileCrypt", ReplyAction="http://tempuri.org/ICryptoProvider/TEAFileCryptResponse")]
+        byte[] TEAFileCrypt(string key, byte[] input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEAFileCrypt", ReplyAction="http://tempuri.org/ICryptoProvider/TEAFileCryptResponse")]
+        System.Threading.Tasks.Task<byte[]> TEAFileCryptAsync(string key, byte[] input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEAFileDecrypt", ReplyAction="http://tempuri.org/ICryptoProvider/TEAFileDecryptResponse")]
+        byte[] TEAFileDecrypt(string key, byte[] input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEAFileDecrypt", ReplyAction="http://tempuri.org/ICryptoProvider/TEAFileDecryptResponse")]
+        System.Threading.Tasks.Task<byte[]> TEAFileDecryptAsync(string key, byte[] input);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_TEACrypt", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_TEACryptResponse")]
         string CBC_TEACrypt(string key, string input, string init_vector);
@@ -129,6 +165,22 @@ namespace CryptoConsumer.CryptoProviderServiceReference {
             return base.Channel.RC4BitmapDecryptAsync(key, input);
         }
         
+        public byte[] RC4FileCrypt(string key, byte[] input) {
+            return base.Channel.RC4FileCrypt(key, input);
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> RC4FileCryptAsync(string key, byte[] input) {
+            return base.Channel.RC4FileCryptAsync(key, input);
+        }
+        
+        public byte[] RC4FileDecrypt(string key, byte[] input) {
+            return base.Channel.RC4FileDecrypt(key, input);
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> RC4FileDecryptAsync(string key, byte[] input) {
+            return base.Channel.RC4FileDecryptAsync(key, input);
+        }
+        
         public string EnigmaCrypt(CryptoProvider.EnigmaState state, string input) {
             return base.Channel.EnigmaCrypt(state, input);
         }
@@ -151,6 +203,38 @@ namespace CryptoConsumer.CryptoProviderServiceReference {
         
         public System.Threading.Tasks.Task<string> TEADecryptAsync(string key, string input) {
             return base.Channel.TEADecryptAsync(key, input);
+        }
+        
+        public byte[] TEABitmapCrypt(string key, byte[] input) {
+            return base.Channel.TEABitmapCrypt(key, input);
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> TEABitmapCryptAsync(string key, byte[] input) {
+            return base.Channel.TEABitmapCryptAsync(key, input);
+        }
+        
+        public byte[] TEABitmapDecrypt(string key, byte[] input) {
+            return base.Channel.TEABitmapDecrypt(key, input);
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> TEABitmapDecryptAsync(string key, byte[] input) {
+            return base.Channel.TEABitmapDecryptAsync(key, input);
+        }
+        
+        public byte[] TEAFileCrypt(string key, byte[] input) {
+            return base.Channel.TEAFileCrypt(key, input);
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> TEAFileCryptAsync(string key, byte[] input) {
+            return base.Channel.TEAFileCryptAsync(key, input);
+        }
+        
+        public byte[] TEAFileDecrypt(string key, byte[] input) {
+            return base.Channel.TEAFileDecrypt(key, input);
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> TEAFileDecryptAsync(string key, byte[] input) {
+            return base.Channel.TEAFileDecryptAsync(key, input);
         }
         
         public string CBC_TEACrypt(string key, string input, string init_vector) {

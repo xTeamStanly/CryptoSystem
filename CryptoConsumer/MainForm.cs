@@ -22,6 +22,14 @@ namespace CryptoConsumer {
             cryptoProvider = new CryptoProviderServiceReference.CryptoProviderClient();
         }
 
+        private void handler_DragEnter(object sender, DragEventArgs e) {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop) == true) {
+                e.Effect = DragDropEffects.Copy;
+            } else {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
         // ENIGMA
         private EnigmaState default_enigma_state = new EnigmaState {
             I_Key = 1, I_Rotor_Configuration = "EKMFLGDQVZNTOWYHXUSPAIBRCJ", I_Rotor_Turnover_Letter = 'Q',
@@ -140,7 +148,6 @@ namespace CryptoConsumer {
         // RC4 BITMAP
         private string rc4_bitmap_input_filepath = "";
         private string rc4_bitmap_output_filepath = "";
-
         private void rc4_bitmap_input_button_Click(object sender, EventArgs e) {
             DialogResult dialog_result = rc4_bitmap_openfile_dialog.ShowDialog();
             if (dialog_result == DialogResult.OK) {
@@ -155,6 +162,7 @@ namespace CryptoConsumer {
                 rc4_bitmap_output_path_textbox.Text = rc4_bitmap_output_filepath;
             }
         }
+        
         private async void rc4_bitmap_encrypt_button_Click(object sender, EventArgs e) {
             try {
 
@@ -187,6 +195,7 @@ namespace CryptoConsumer {
 
 
                 Utility.write_bytes_to_file(rc4_bitmap_output_filepath, output_image_bytes);
+                MessageBox.Show("Encrypted bitmap successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -224,11 +233,13 @@ namespace CryptoConsumer {
 
 
                 Utility.write_bytes_to_file(rc4_bitmap_output_filepath, output_image_bytes);
+                MessageBox.Show("Decrypted bitmap successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         private void rc4_bitmap_random_key_button_Click(object sender, EventArgs e) {
             rc4_bitmap_key_textbox.Text = Utility.rc4_random_key();
         }
@@ -236,6 +247,15 @@ namespace CryptoConsumer {
             string temp = rc4_bitmap_input_path_textbox.Text;
             rc4_bitmap_input_path_textbox.Text = rc4_bitmap_output_path_textbox.Text;
             rc4_bitmap_output_path_textbox.Text = temp;
+        }
+       
+        private void rc4_bitmap_input_panel_DragDrop(object sender, DragEventArgs e) {
+            rc4_bitmap_input_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+            rc4_bitmap_input_path_textbox.Text = rc4_bitmap_input_filepath;
+        }
+        private void rc4_bitmap_output_panel_DragDrop(object sender, DragEventArgs e) {
+            rc4_bitmap_output_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+            rc4_bitmap_output_path_textbox.Text = rc4_bitmap_output_filepath;
         }
 
         // RC4 TEXT
@@ -286,6 +306,342 @@ namespace CryptoConsumer {
         private void rc4_text_random_button_Click(object sender, EventArgs e) {
             rc4_text_key_textbox.Text = Utility.rc4_random_key();
         }
+
+        // RC4 FILE
+        private string rc4_file_input_filepath = "";
+        private string rc4_file_output_filepath = "";
+        private void rc4_file_input_button_Click(object sender, EventArgs e) {
+            DialogResult dialog_result = rc4_file_openfile_dialog.ShowDialog();
+            if (dialog_result == DialogResult.OK) {
+                rc4_file_input_filepath = rc4_file_openfile_dialog.FileName;
+                rc4_file_input_path_textbox.Text = rc4_file_input_filepath;
+            }
+        }
+        private void rc4_file_output_button_Click(object sender, EventArgs e) {
+            DialogResult dialog_result = rc4_file_savefile_dialog.ShowDialog();
+            if (dialog_result == DialogResult.OK) {
+                rc4_file_output_filepath = rc4_file_savefile_dialog.FileName;
+                rc4_file_output_path_textbox.Text = rc4_file_output_filepath;
+            }
+        }
+        
+        private void rc4_file_key_random_Click(object sender, EventArgs e) {
+            rc4_file_key_textbox.Text = Utility.rc4_random_key();
+        }
+        private void rc4_file_swap_button_Click(object sender, EventArgs e) {
+            string temp = rc4_file_input_path_textbox.Text;
+            rc4_file_input_path_textbox.Text = rc4_file_output_path_textbox.Text;
+            rc4_file_output_path_textbox.Text = temp;
+        }
+        
+        private async void rc4_file_encrypt_button_Click(object sender, EventArgs e) {
+            try {
+
+                rc4_file_input_filepath = rc4_file_input_path_textbox.Text;
+                rc4_file_output_filepath = rc4_file_output_path_textbox.Text;
+
+                byte[] input_file_bytes = Utility.open_file_to_bytes(rc4_file_input_filepath);
+
+                byte[] output_file_bytes = null;
+
+                if (rc4_file_offline.Checked == true) {
+                    RC4 rc4 = new RC4(rc4_file_key_textbox.Text);
+                    output_file_bytes = rc4.encrypt_bytes_to_bytes(input_file_bytes);
+                } else {
+                    output_file_bytes = await cryptoProvider.RC4FileCryptAsync(rc4_file_key_textbox.Text, input_file_bytes);
+                }
+
+                Utility.write_bytes_to_file(rc4_file_output_filepath, output_file_bytes);
+                MessageBox.Show("Encrypted file successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private async void rc4_file_decrypt_button_Click(object sender, EventArgs e) {
+            try {
+
+                rc4_file_input_filepath = rc4_file_input_path_textbox.Text;
+                rc4_file_output_filepath = rc4_file_output_path_textbox.Text;
+
+                byte[] input_file_bytes = Utility.open_file_to_bytes(rc4_file_input_filepath);
+
+                byte[] output_file_bytes = null;
+
+                if (rc4_file_offline.Checked == true) {
+                    RC4 rc4 = new RC4(rc4_file_key_textbox.Text);
+                    output_file_bytes = rc4.decrypt_bytes_to_bytes(input_file_bytes);
+                } else {
+                    output_file_bytes = await cryptoProvider.RC4FileDecryptAsync(rc4_file_key_textbox.Text, input_file_bytes);
+                }
+
+                Utility.write_bytes_to_file(rc4_file_output_filepath, output_file_bytes);
+                MessageBox.Show("Decrypted file successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        
+        private void rc4_file_input_panel_DragDrop(object sender, DragEventArgs e) {
+            rc4_file_input_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+            rc4_file_input_path_textbox.Text = rc4_file_input_filepath;
+        }
+        private void rc4_file_output_panel_DragDrop(object sender, DragEventArgs e) {
+            rc4_file_output_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+            rc4_file_output_path_textbox.Text = rc4_file_output_filepath;
+        }
+
+        // TEA FILE
+        private string tea_file_input_filepath = "";
+        private string tea_file_output_filepath = "";
+        private void tea_file_input_button_Click(object sender, EventArgs e) {
+            DialogResult dialog_result = tea_file_openfile_dialog.ShowDialog();
+            if (dialog_result == DialogResult.OK) {
+                tea_file_input_filepath = tea_file_openfile_dialog.FileName;
+                tea_file_input_path_textbox.Text = tea_file_input_filepath;
+            }
+        }
+        private void tea_file_output_button_Click(object sender, EventArgs e) {
+            DialogResult dialog_result = tea_file_savefile_dialog.ShowDialog();
+            if (dialog_result == DialogResult.OK) {
+                tea_file_output_filepath = tea_file_savefile_dialog.FileName;
+                tea_file_output_path_textbox.Text = tea_file_output_filepath;
+            }
+        }
+
+        private void tea_file_key_random_Click(object sender, EventArgs e) {
+            tea_file_key_textbox.Text = Utility.tea_random_key();
+        }
+        private void tea_file_swap_button_Click(object sender, EventArgs e) {
+            string temp = tea_file_input_path_textbox.Text;
+            tea_file_input_path_textbox.Text = tea_file_output_path_textbox.Text;
+            tea_file_output_path_textbox.Text = temp;
+        }
+        
+        private async void tea_file_encrypt_button_Click(object sender, EventArgs e) {
+            try {
+
+                tea_file_input_filepath = tea_file_input_path_textbox.Text;
+                tea_file_output_filepath = tea_file_output_path_textbox.Text;
+
+                byte[] input_file_bytes = Utility.open_file_to_bytes(tea_file_input_filepath);
+
+                byte[] output_file_bytes = null;
+
+                if (tea_file_offline.Checked == true) {
+                    TEA tea = new TEA(tea_file_key_textbox.Text);
+                    output_file_bytes = tea.encrypt_bytes_to_bytes(input_file_bytes);
+                } else {
+                    output_file_bytes = await cryptoProvider.TEAFileCryptAsync(tea_file_key_textbox.Text, input_file_bytes);
+                }
+
+                Utility.write_bytes_to_file(tea_file_output_filepath, output_file_bytes);
+                MessageBox.Show("Encrypted file successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private async void tea_file_decrypt_button_Click(object sender, EventArgs e) {
+            try {
+
+                tea_file_input_filepath = tea_file_input_path_textbox.Text;
+                tea_file_output_filepath = tea_file_output_path_textbox.Text;
+
+                byte[] input_file_bytes = Utility.open_file_to_bytes(tea_file_input_filepath);
+
+                byte[] output_file_bytes = null;
+
+                if (tea_file_offline.Checked == true) {
+                    TEA tea = new TEA(tea_file_key_textbox.Text);
+                    output_file_bytes = tea.decrypt_bytes_to_bytes(input_file_bytes);
+                } else {
+                    output_file_bytes = await cryptoProvider.TEAFileDecryptAsync(tea_file_key_textbox.Text, input_file_bytes);
+                }
+
+                Utility.write_bytes_to_file(tea_file_output_filepath, output_file_bytes);
+                MessageBox.Show("Decrypted file successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tea_file_output_panel_DragDrop(object sender, DragEventArgs e) {
+            tea_file_output_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+            tea_file_output_path_textbox.Text = tea_file_output_filepath;
+        }
+        private void tea_file_input_panel_DragDrop(object sender, DragEventArgs e) {
+            tea_file_input_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+            tea_file_input_path_textbox.Text = tea_file_input_filepath;
+        }
+
+        // TEA BITMAP
+        private string tea_bitmap_input_filepath = "";
+        private string tea_bitmap_output_filepath = "";
+
+        private void tea_bitmap_input_button_Click(object sender, EventArgs e) {
+            DialogResult dialog_result = tea_bitmap_openfile_dialog.ShowDialog();
+            if (dialog_result == DialogResult.OK) {
+                tea_bitmap_input_filepath = tea_bitmap_openfile_dialog.FileName;
+                tea_bitmap_input_path_textbox.Text = tea_bitmap_input_filepath;
+            }
+        }
+        private void tea_bitmap_output_button_Click(object sender, EventArgs e) {
+            DialogResult dialog_result = tea_bitmap_savefile_dialog.ShowDialog();
+            if (dialog_result == DialogResult.OK) {
+                tea_bitmap_output_filepath = tea_bitmap_savefile_dialog.FileName;
+                tea_bitmap_output_path_textbox.Text = tea_bitmap_output_filepath;
+            }
+        }
+
+        private void tea_bitmap_random_Click(object sender, EventArgs e) {
+            tea_bitmap_key_textbox.Text = Utility.tea_random_key();
+        }
+        private void tea_bitmap_swap_button_Click(object sender, EventArgs e) {
+            string temp = tea_bitmap_input_path_textbox.Text;
+            tea_bitmap_input_path_textbox.Text = tea_bitmap_output_path_textbox.Text;
+            tea_bitmap_output_path_textbox.Text = temp;
+        }
+
+        private async void tea_bitmap_encrypt_button_Click(object sender, EventArgs e) {
+            try {
+
+                tea_bitmap_input_filepath = tea_bitmap_input_path_textbox.Text;
+                tea_bitmap_output_filepath = tea_bitmap_output_path_textbox.Text;
+
+                byte[] input_image_bytes = Utility.open_file_to_bytes(tea_bitmap_input_filepath);
+
+                byte[] output_image_bytes = null;
+
+                if (tea_bitmap_offline.Checked == true) {
+                    TEA tea = new TEA(tea_bitmap_key_textbox.Text);
+                    output_image_bytes = tea.encrypt_bitmap_from_bytes(input_image_bytes);
+                } else {
+                    output_image_bytes = await cryptoProvider.TEABitmapCryptAsync(tea_bitmap_key_textbox.Text, input_image_bytes);
+                }
+
+
+                Bitmap input_image;
+                using (MemoryStream ms = new MemoryStream(input_image_bytes)) {
+                    input_image = new Bitmap(ms);
+                }
+                tea_bitmap_input_image_box.Image = input_image;
+
+                Bitmap output_image;
+                using (MemoryStream ms = new MemoryStream(output_image_bytes)) {
+                    output_image = new Bitmap(ms);
+                }
+                tea_bitmap_output_image_box.Image = output_image;
+
+
+                Utility.write_bytes_to_file(tea_bitmap_output_filepath, output_image_bytes);
+                MessageBox.Show("Encrypted bitmap successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private async void tea_bitmap_decrypt_button_Click(object sender, EventArgs e) {
+            try {
+
+                tea_bitmap_input_filepath = tea_bitmap_input_path_textbox.Text;
+                tea_bitmap_output_filepath = tea_bitmap_output_path_textbox.Text;
+
+                byte[] input_image_bytes = Utility.open_file_to_bytes(tea_bitmap_input_filepath);
+
+                byte[] output_image_bytes = null;
+
+                if (tea_bitmap_offline.Checked == true) {
+                    TEA tea = new TEA(tea_bitmap_key_textbox.Text);
+                    output_image_bytes = tea.decrypt_bitmap_from_bytes(input_image_bytes);
+                } else {
+                    output_image_bytes = await cryptoProvider.TEABitmapDecryptAsync(tea_bitmap_key_textbox.Text, input_image_bytes);
+                }
+
+
+                Bitmap input_image;
+                using (MemoryStream ms = new MemoryStream(input_image_bytes)) {
+                    input_image = new Bitmap(ms);
+                }
+                tea_bitmap_input_image_box.Image = input_image;
+
+                Bitmap output_image;
+                using (MemoryStream ms = new MemoryStream(output_image_bytes)) {
+                    output_image = new Bitmap(ms);
+                }
+                tea_bitmap_output_image_box.Image = output_image;
+
+
+                Utility.write_bytes_to_file(tea_bitmap_output_filepath, output_image_bytes);
+                MessageBox.Show("Decrypted bitmap successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tea_bitmap_input_panel_DragDrop(object sender, DragEventArgs e) {
+            tea_bitmap_input_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+            tea_bitmap_input_path_textbox.Text = tea_bitmap_input_filepath;
+        }
+        private void tea_bitmap_output_panel_DragDrop(object sender, DragEventArgs e) {
+            tea_bitmap_output_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+            tea_bitmap_output_path_textbox.Text = tea_bitmap_output_filepath;
+        }
+        
+        // TEA TEXT
+        private bool tea_text_info_message_shown = false;
+        private void tea_tabs_SelectedIndexChanged(object sender, EventArgs e) {
+            if (tea_tabs.SelectedIndex == 2 && tea_text_info_message_shown == false) {
+                tea_text_info_message_shown = true;
+                MessageBox.Show("Ovaj režim ne funkcioniše najbolje sa tekstom, a na to utiče postojanje \\0 (0x00) karaktera. Moguće je da se neki karakter šifruje/dešifruje u 0x00 i pri prikazivanju rastumači kao kraj string-a, što dovodi do preranog odsecanja ostalih karaktera sledbenika u nizu.", "TEA (Text) - Napomena", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private void tea_text_key_button_Click(object sender, EventArgs e) {
+            tea_text_key_textbox.Text = Utility.tea_random_key();
+        }
+        private void tea_text_swap_button_Click(object sender, EventArgs e) {
+            string temp = tea_text_input_textbox.Text;
+            tea_text_input_textbox.Text = tea_text_output_textbox.Text;
+            tea_text_output_textbox.Text = temp;
+        }
+        private async void tea_text_encrypt_button_Click(object sender, EventArgs e) {
+            try {
+                string tea_result;
+
+                if (tea_text_offline.Checked == true) {
+                    TEA tea = new TEA(tea_text_key_textbox.Text);
+                    tea_result = tea.encrypt_unicode_to_unicode(tea_text_input_textbox.Text);
+                } else {
+                    tea_result = await cryptoProvider.TEACryptAsync(tea_text_key_textbox.Text, tea_text_input_textbox.Text);
+                }
+
+                tea_text_output_textbox.Text = tea_result;
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private async void tea_text_decrypt_button_Click(object sender, EventArgs e) {
+            try {
+                string tea_result;
+
+                if (tea_text_offline.Checked == true) {
+                    TEA tea = new TEA(tea_text_key_textbox.Text);
+                    tea_result = tea.decrypt_unicode_to_unicode(tea_text_input_textbox.Text);
+                } else {
+                    tea_result = await cryptoProvider.TEADecryptAsync(tea_text_key_textbox.Text, tea_text_input_textbox.Text);
+                }
+
+                tea_text_output_textbox.Text = tea_result;
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
 
 
 

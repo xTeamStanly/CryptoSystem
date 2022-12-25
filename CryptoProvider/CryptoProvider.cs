@@ -46,6 +46,24 @@ namespace CryptoProvider {
                 return null;
             }
         }
+        public byte[] RC4FileCrypt(string key, byte[] input) {
+            try {
+                RC4 rc4 = new RC4(key);
+                return rc4.encrypt_bytes_to_bytes(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public byte[] RC4FileDecrypt(string key, byte[] input) {
+            try {
+                RC4 rc4 = new RC4(key);
+                return rc4.decrypt_bytes_to_bytes(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
 
         // ENIGMA
         public string EnigmaCrypt(EnigmaState state, string input) {
@@ -108,28 +126,109 @@ namespace CryptoProvider {
                 return null;
             }
         }
-
-        // CBC_TEA
-        public string CBC_TEACrypt(string key, string input, string init_vector/*, bool should_pad_input*/) {
+        public byte[] TEAFileCrypt(string key, byte[] input) {
             try {
                 if (key.Length != 16) { throw new Exception("invalid key"); }
 
-                CBC_TEA cbc_tea = new CBC_TEA(key, init_vector/*, should_pad_input*/);
+                TEA tea = new TEA(key);
+                return tea.encrypt_bytes_to_bytes(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public byte[] TEAFileDecrypt(string key, byte[] input) {
+            try {
+                if (key.Length != 16) { throw new Exception("invalid key"); }
+
+                TEA tea = new TEA(key);
+                return tea.decrypt_bytes_to_bytes(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+
+        // CBC_TEA
+        public string CBC_TEACrypt(string key, string input, string init_vector) {
+            try {
+                if (key.Length != 16) { throw new Exception("invalid key"); }
+
+                CBC_TEA cbc_tea = new CBC_TEA(key, init_vector);
                 return cbc_tea.encrypt_unicode_to_unicode(input);
             } catch (Exception ex) {
                 return ex.Message;
             }
         }
-        public string CBC_TEADecrypt(string key, string input, string init_vector/*, bool should_pad_input*/) {
+        public string CBC_TEADecrypt(string key, string input, string init_vector) {
             try {
                 // if (input.Length % 8 != 0) { throw new Exception("uncomplete block"); }
                 if (key.Length != 16) { throw new Exception("invalid key"); }
 
-                CBC_TEA cbc_tea = new CBC_TEA(key, init_vector/*, should_pad_input*/);
+                CBC_TEA cbc_tea = new CBC_TEA(key, init_vector);
                 return cbc_tea.decrypt_unicode_to_unicode(input);
             } catch (Exception ex) {
                 return ex.Message;
             }
         }
+        public byte[] CBC_TEABitmapCrypt(string key, byte[] input, string init_vector) {
+            try {
+                if (key.Length != 16) { throw new Exception("invalid key"); }
+
+                CBC_TEA cbc_tea = new CBC_TEA(key, init_vector);
+                return cbc_tea.encrypt_bitmap_from_bytes(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public byte[] CBC_TEABitmapDecrypt(string key, byte[] input, string init_vector) {
+            try {
+                if (key.Length != 16) { throw new Exception("invalid key"); }
+
+                CBC_TEA cbc_tea = new CBC_TEA(key, init_vector);
+                return cbc_tea.decrypt_bitmap_from_bytes(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public byte[] CBC_TEAFileCrypt(string key, byte[] input, string init_vector) {
+            try {
+                if (key.Length != 16) { throw new Exception("invalid key"); }
+
+                CBC_TEA cbc_tea = new CBC_TEA(key, init_vector);
+                return cbc_tea.encrypt_bytes_to_bytes(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public byte[] CBC_TEAFileDecrypt(string key, byte[] input, string init_vector) {
+            try {
+                if (key.Length != 16) { throw new Exception("invalid key"); }
+
+                CBC_TEA cbc_tea = new CBC_TEA(key, init_vector);
+                return cbc_tea.decrypt_bytes_to_bytes(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
