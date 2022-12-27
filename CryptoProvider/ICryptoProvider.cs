@@ -9,32 +9,59 @@ namespace CryptoProvider {
     [ServiceContract]
     public interface ICryptoProvider {
 
-        // RC4
-        [OperationContract] string RC4Crypt(string key, string input);
-        [OperationContract] string RC4Decrypt(string key, string input);
-        [OperationContract] byte[] RC4BitmapCrypt(string key, byte[] input);
-        [OperationContract] byte[] RC4BitmapDecrypt(string key, byte[] input);
-        [OperationContract] byte[] RC4FileCrypt(string key, byte[] input);
-        [OperationContract] byte[] RC4FileDecrypt(string key, byte[] input);
+        // ###################################### RC4 ######################################
+        [OperationContract] byte[] RC4_EncryptFile(string key, byte[] input);
+        [OperationContract] byte[] RC4_DecryptFile(string key, byte[] input);
+
+        [OperationContract] byte[] RC4_EncryptBitmap(string key, byte[] input);
+        [OperationContract] byte[] RC4_DecryptBitmap(string key, byte[] input);
+
+        [OperationContract] string[] RC4_EncryptText(string key, string[] input);
+        [OperationContract] string[] RC4_DecryptText(string key, string[] input);
+
+        [OperationContract] string RC4_EncryptPlaintext(string key, string input);
+        [OperationContract] string RC4_DecryptPlaintext(string key, string input);
+
+        // ###################################### TEA ######################################
+        [OperationContract] byte[] TEA_EncryptFile(string key, byte[] input);
+        [OperationContract] byte[] TEA_DecryptFile(string key, byte[] input);
+
+        [OperationContract] byte[] TEA_EncryptBitmap(string key, byte[] input);
+        [OperationContract] byte[] TEA_DecryptBitmap(string key, byte[] input);
+
+        [OperationContract] string[] TEA_EncryptText(string key, string[] input);
+        [OperationContract] string[] TEA_DecryptText(string key, string[] input);
+
+        [OperationContract] string TEA_EncryptPlaintext(string key, string input);
+        [OperationContract] string TEA_DecryptPlaintext(string key, string input);
+
+
+
+
+
+
+
+
+
 
         // ENIGMA
-        [OperationContract] string EnigmaCrypt(EnigmaState state, string input);
+        //[OperationContract] string EnigmaCrypt(EnigmaState state, string input);
 
-        // TEA
-        [OperationContract] string TEACrypt(string key, string input);
-        [OperationContract] string TEADecrypt(string key, string input);
-        [OperationContract] byte[] TEABitmapCrypt(string key, byte[] input);
-        [OperationContract] byte[] TEABitmapDecrypt(string key, byte[] input);
-        [OperationContract] byte[] TEAFileCrypt(string key, byte[] input);
-        [OperationContract] byte[] TEAFileDecrypt(string key, byte[] input);
+        //// TEA
+        //[OperationContract] string TEACrypt(string key, string input);
+        //[OperationContract] string TEADecrypt(string key, string input);
+        //[OperationContract] byte[] TEABitmapCrypt(string key, byte[] input);
+        //[OperationContract] byte[] TEABitmapDecrypt(string key, byte[] input);
+        //[OperationContract] byte[] TEAFileCrypt(string key, byte[] input);
+        //[OperationContract] byte[] TEAFileDecrypt(string key, byte[] input);
 
-        // CBC_TEA
-        [OperationContract] string CBC_TEACrypt(string key, string input, string init_vector);
-        [OperationContract] string CBC_TEADecrypt(string key, string input, string init_vector);
-        [OperationContract] byte[] CBC_TEABitmapCrypt(string key, byte[] input, string init_vector);
-        [OperationContract] byte[] CBC_TEABitmapDecrypt(string key, byte[] input, string init_vector);
-        [OperationContract] byte[] CBC_TEAFileCrypt(string key, byte[] input, string init_vector);
-        [OperationContract] byte[] CBC_TEAFileDecrypt(string key, byte[] input, string init_vector);
+        //// CBC_TEA
+        //[OperationContract] string CBC_TEACrypt(string key, string input, string init_vector);
+        //[OperationContract] string CBC_TEADecrypt(string key, string input, string init_vector);
+        //[OperationContract] byte[] CBC_TEABitmapCrypt(string key, byte[] input, string init_vector);
+        //[OperationContract] byte[] CBC_TEABitmapDecrypt(string key, byte[] input, string init_vector);
+        //[OperationContract] byte[] CBC_TEAFileCrypt(string key, byte[] input, string init_vector);
+        //[OperationContract] byte[] CBC_TEAFileDecrypt(string key, byte[] input, string init_vector);
 
     }
 

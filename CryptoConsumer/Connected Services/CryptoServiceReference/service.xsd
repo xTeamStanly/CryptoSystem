@@ -1,7 +1,97 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import namespace="http://schemas.datacontract.org/2004/07/CryptoProvider" />
-  <xs:element name="RC4Crypt">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="RC4_EncryptFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="input" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RC4_EncryptFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RC4_EncryptFileResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RC4_DecryptFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="input" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RC4_DecryptFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RC4_DecryptFileResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RC4_EncryptBitmap">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="input" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RC4_EncryptBitmapResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RC4_EncryptBitmapResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RC4_DecryptBitmap">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="input" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RC4_DecryptBitmapResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RC4_DecryptBitmapResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RC4_EncryptText">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="input" nillable="true" type="q1:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RC4_EncryptTextResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RC4_EncryptTextResult" nillable="true" type="q2:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RC4_DecryptText">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="input" nillable="true" type="q3:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RC4_DecryptTextResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RC4_DecryptTextResult" nillable="true" type="q4:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RC4_EncryptPlaintext">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
@@ -9,14 +99,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RC4CryptResponse">
+  <xs:element name="RC4_EncryptPlaintextResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="RC4CryptResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC4_EncryptPlaintextResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RC4Decrypt">
+  <xs:element name="RC4_DecryptPlaintext">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
@@ -24,14 +114,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RC4DecryptResponse">
+  <xs:element name="RC4_DecryptPlaintextResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="RC4DecryptResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC4_DecryptPlaintextResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RC4BitmapCrypt">
+  <xs:element name="TEA_EncryptFile">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
@@ -39,14 +129,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RC4BitmapCryptResponse">
+  <xs:element name="TEA_EncryptFileResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="RC4BitmapCryptResult" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="TEA_EncryptFileResult" nillable="true" type="xs:base64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RC4BitmapDecrypt">
+  <xs:element name="TEA_DecryptFile">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
@@ -54,14 +144,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RC4BitmapDecryptResponse">
+  <xs:element name="TEA_DecryptFileResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="RC4BitmapDecryptResult" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="TEA_DecryptFileResult" nillable="true" type="xs:base64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RC4FileCrypt">
+  <xs:element name="TEA_EncryptBitmap">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
@@ -69,14 +159,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RC4FileCryptResponse">
+  <xs:element name="TEA_EncryptBitmapResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="RC4FileCryptResult" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="TEA_EncryptBitmapResult" nillable="true" type="xs:base64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RC4FileDecrypt">
+  <xs:element name="TEA_DecryptBitmap">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
@@ -84,29 +174,59 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RC4FileDecryptResponse">
+  <xs:element name="TEA_DecryptBitmapResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="RC4FileDecryptResult" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="TEA_DecryptBitmapResult" nillable="true" type="xs:base64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="EnigmaCrypt">
+  <xs:element name="TEA_EncryptText">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/CryptoProvider" minOccurs="0" name="state" nillable="true" type="q1:EnigmaState" />
+        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="input" nillable="true" type="q5:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TEA_EncryptTextResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="TEA_EncryptTextResult" nillable="true" type="q6:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TEA_DecryptText">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="input" nillable="true" type="q7:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TEA_DecryptTextResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="TEA_DecryptTextResult" nillable="true" type="q8:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TEA_EncryptPlaintext">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="input" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="EnigmaCryptResponse">
+  <xs:element name="TEA_EncryptPlaintextResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="EnigmaCryptResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TEA_EncryptPlaintextResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="TEACrypt">
+  <xs:element name="TEA_DecryptPlaintext">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
@@ -114,117 +234,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="TEACryptResponse">
+  <xs:element name="TEA_DecryptPlaintextResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="TEACryptResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TEADecrypt">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="input" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TEADecryptResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="TEADecryptResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TEABitmapCrypt">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="input" nillable="true" type="xs:base64Binary" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TEABitmapCryptResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="TEABitmapCryptResult" nillable="true" type="xs:base64Binary" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TEABitmapDecrypt">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="input" nillable="true" type="xs:base64Binary" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TEABitmapDecryptResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="TEABitmapDecryptResult" nillable="true" type="xs:base64Binary" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TEAFileCrypt">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="input" nillable="true" type="xs:base64Binary" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TEAFileCryptResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="TEAFileCryptResult" nillable="true" type="xs:base64Binary" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TEAFileDecrypt">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="input" nillable="true" type="xs:base64Binary" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TEAFileDecryptResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="TEAFileDecryptResult" nillable="true" type="xs:base64Binary" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="CBC_TEACrypt">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="input" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="init_vector" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="CBC_TEACryptResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="CBC_TEACryptResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="CBC_TEADecrypt">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="input" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="init_vector" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="CBC_TEADecryptResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="CBC_TEADecryptResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TEA_DecryptPlaintextResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

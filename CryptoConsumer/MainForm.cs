@@ -1,26 +1,123 @@
-﻿using System;
+﻿using CryptoConsumer.Forms;
+using Library;
+using System;
 using System.Drawing;
-using System.IO;
+using System.Linq;
 using System.Windows.Forms;
-using CryptoLibrary;
-using CryptoLibrary.Enigma;
-using CryptoProvider;
 
 namespace CryptoConsumer {
     public partial class MainForm : Form {
 
-        CryptoProviderServiceReference.ICryptoProvider cryptoProvider = null;
+        
+        private CryptoServiceReference.ICryptoProvider cryptoProvider = null;
         
         public MainForm() {
             InitializeComponent();
-
-            // enigma form init
-            enigma_state_to_form(default_enigma_state);
+            cryptoProvider = new CryptoServiceReference.CryptoProviderClient();
         }
 
         private void MainForm_Load(object sender, EventArgs e) {
-            cryptoProvider = new CryptoProviderServiceReference.CryptoProviderClient();
+            GUI.SetColor(rc4_button, false);
+            GUI.SetColor(enigma_button, false);
+            GUI.SetColor(tea_button, false);
+            GUI.SetColor(cbc_button, false);
+            GUI.SetColor(crc_button, false);
         }
+
+        private bool rc4_visible = false;
+        private bool enigma_visible = false;
+        private bool tea_visible = false;
+        private bool cbc_visible = false;
+        private bool crc_visible = false;
+
+        // todo list form objects
+        RC4Form rc4_form = null;
+        TEAForm tea_form = null;
+
+
+
+
+        // ################################ RC4 ################################
+        public void close_rc4_form(bool call_from_child_form) {
+            rc4_visible = false;
+            if (call_from_child_form == false) {
+                if (rc4_form != null) { rc4_form.Close(); }
+            } else {
+                GUI.SetColor(rc4_button, rc4_visible);
+            }
+        }
+        private void control_panel_rc4_button_Click(object sender, EventArgs e) {
+            rc4_visible = !rc4_visible;
+            GUI.SetColor(rc4_button, rc4_visible);
+
+            if (rc4_visible == true) {
+                rc4_form = new RC4Form(this, cryptoProvider);
+                rc4_form.Show();
+            } else {
+                close_rc4_form(false);
+            }
+        }
+
+        // ################################ TEA ################################
+        public void close_tea_form(bool call_from_child_form) {
+            tea_visible = false;
+            if (call_from_child_form == false) {
+                if (tea_form != null) { tea_form.Close(); }
+            } else {
+                GUI.SetColor(tea_button, tea_visible);
+            }
+        }
+        private void control_panel_tea_button_Click(object sender, EventArgs e) {
+            tea_visible = !tea_visible;
+            GUI.SetColor(tea_button, tea_visible);
+
+            if (tea_visible == true) {
+                tea_form = new TEAForm(this, cryptoProvider);
+                tea_form.Show();
+            } else {
+                close_tea_form(false);
+            }
+        }
+
+        // ################################ TODO ################################
+
+
+
+
+        private void control_panel_enigma_button_Click(object sender, EventArgs e) {
+            enigma_visible = !enigma_visible;
+            GUI.SetColor(enigma_button, enigma_visible);
+        }
+
+        
+
+        private void cbc_button_Click(object sender, EventArgs e) {
+            cbc_visible = !cbc_visible;
+            GUI.SetColor(cbc_button, cbc_visible);
+        }
+
+        private void crc_button_Click(object sender, EventArgs e) {
+            crc_visible = !crc_visible;
+            GUI.SetColor(crc_button, crc_visible);
+        }
+
+        // todo
+        private void hide_all_buton_Click(object sender, EventArgs e) {
+            if (rc4_form != null) { rc4_form.Close(); }
+            if (tea_form != null) { tea_form.Close(); }
+
+
+
+
+
+
+
+
+        }
+
+
+
+
 
         private void handler_DragEnter(object sender, DragEventArgs e) {
             if (e.Data.GetDataPresent(DataFormats.FileDrop) == true) {
@@ -29,701 +126,5 @@ namespace CryptoConsumer {
                 e.Effect = DragDropEffects.None;
             }
         }
-
-        // ENIGMA
-        private EnigmaState default_enigma_state = new EnigmaState {
-            I_Key = 1, I_Rotor_Configuration = "EKMFLGDQVZNTOWYHXUSPAIBRCJ", I_Rotor_Turnover_Letter = 'Q',
-            II_Key = 1, II_Rotor_Configuration = "BDFHJLCPRTXVZNYEIWGAKMUSQO", II_Rotor_Turnover_Letter = 'V',
-            III_Key = 1, III_Rotor_Configuration = "AJDKSIRUXBLHWTMCQGZNPYFVOE", III_Rotor_Turnover_Letter = 'E',
-            Reflector_Configuration = "YRUHQSLDPXNGOKMIEBFZCWVJAT",
-            Plug_Board_Configuration = "PO ML IU KJ NH YT GB VF RE DC"
-        };
-        private EnigmaState form_to_enigma_state() {
-            try {
-                EnigmaState enigma_state = new EnigmaState();
-
-                enigma_state.I_Key = Int32.Parse(enigma_rotor1_key_input.Text);
-                enigma_state.II_Key = Int32.Parse(enigma_rotor2_key_input.Text);
-                enigma_state.III_Key = Int32.Parse(enigma_rotor3_key_input.Text);
-
-                enigma_state.I_Rotor_Turnover_Letter = (enigma_rotor1_turnover_input.Text.ToCharArray())[0];
-                enigma_state.II_Rotor_Turnover_Letter = (enigma_rotor2_turnover_input.Text.ToCharArray())[0];
-                enigma_state.III_Rotor_Turnover_Letter = (enigma_rotor3_turnover_input.Text.ToCharArray())[0];
-
-                enigma_state.I_Rotor_Configuration = enigma_rotor1_config_input.Text;
-                enigma_state.II_Rotor_Configuration = enigma_rotor2_config_input.Text;
-                enigma_state.III_Rotor_Configuration = enigma_rotor3_config_input.Text;
-
-                enigma_state.Reflector_Configuration = enigma_reflector_config_input.Text;
-                enigma_state.Plug_Board_Configuration = enigma_plugboard_input.Text;
-
-                return enigma_state;
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-        private void enigma_state_to_form(EnigmaState enigma_state) {
-            try {
-                enigma_rotor1_key_input.Text = enigma_state.I_Key.ToString();
-                enigma_rotor2_key_input.Text = enigma_state.II_Key.ToString();
-                enigma_rotor3_key_input.Text = enigma_state.III_Key.ToString();
-
-                enigma_rotor1_turnover_input.Text = enigma_state.I_Rotor_Turnover_Letter.ToString();
-                enigma_rotor2_turnover_input.Text = enigma_state.II_Rotor_Turnover_Letter.ToString();
-                enigma_rotor3_turnover_input.Text = enigma_state.III_Rotor_Turnover_Letter.ToString();
-
-                enigma_rotor1_config_input.Text = enigma_state.I_Rotor_Configuration;
-                enigma_rotor2_config_input.Text = enigma_state.II_Rotor_Configuration;
-                enigma_rotor3_config_input.Text = enigma_state.III_Rotor_Configuration;
-
-                enigma_reflector_config_input.Text = enigma_state.Reflector_Configuration;
-                enigma_plugboard_input.Text = enigma_state.Plug_Board_Configuration;
-            } catch(Exception ex) {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-        private async void enigma_encode_button_Click(object sender, EventArgs e) {
-            try {
-                EnigmaState enigma_state = form_to_enigma_state();
-
-                string enigma_result;
-                if (enigma_offline.Checked == false) {
-                    enigma_result = await cryptoProvider.EnigmaCryptAsync(enigma_state, enigma_input.Text);
-                } else {
-                    Enigma enigma = new Enigma(
-                        Int32.Parse(enigma_rotor1_key_input.Text), enigma_rotor1_config_input.Text, (enigma_rotor1_turnover_input.Text.ToCharArray())[0],
-                        Int32.Parse(enigma_rotor2_key_input.Text), enigma_rotor2_config_input.Text, (enigma_rotor2_turnover_input.Text.ToCharArray())[0],
-                        Int32.Parse(enigma_rotor3_key_input.Text), enigma_rotor3_config_input.Text, (enigma_rotor3_turnover_input.Text.ToCharArray())[0],
-                        enigma_reflector_config_input.Text, enigma_plugboard_input.Text
-                    );
-                    enigma_result = enigma.Get(enigma_input.Text);
-                }
-
-                enigma_output.Text = enigma_result;
-            } catch(Exception ex) {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private async void enigma_decode_button_Click(object sender, EventArgs e) {
-            try {
-                EnigmaState enigma_state = form_to_enigma_state();
-
-                string enigma_result;
-                if (enigma_offline.Checked == false) {
-                    enigma_result = await cryptoProvider.EnigmaCryptAsync(enigma_state, enigma_input.Text);
-                } else {
-                    Enigma enigma = new Enigma(
-                        Int32.Parse(enigma_rotor1_key_input.Text), enigma_rotor1_config_input.Text, (enigma_rotor1_turnover_input.Text.ToCharArray())[0],
-                        Int32.Parse(enigma_rotor2_key_input.Text), enigma_rotor2_config_input.Text, (enigma_rotor2_turnover_input.Text.ToCharArray())[0],
-                        Int32.Parse(enigma_rotor3_key_input.Text), enigma_rotor3_config_input.Text, (enigma_rotor3_turnover_input.Text.ToCharArray())[0],
-                        enigma_reflector_config_input.Text, enigma_plugboard_input.Text
-                    );
-                    enigma_result = enigma.Get(enigma_input.Text);
-                }
-
-                enigma_output.Text = enigma_result;
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void enigma_switch_button_Click(object sender, EventArgs e) {
-            string temp = enigma_input.Text;
-            enigma_input.Text = enigma_output.Text;
-            enigma_output.Text = temp;
-        }
-        private void enigma_plugboard_input_KeyPress(object sender, KeyPressEventArgs e) {
-            e.KeyChar = Char.ToUpper(e.KeyChar);
-            if ((e.KeyChar >= 'A' && e.KeyChar <= 'Z') || e.KeyChar == ' ') {
-                e.Handled = false;
-            } else {
-                e.Handled = true;
-            }
-        }
-        private void enigma_input_KeyPress(object sender, KeyPressEventArgs e) {
-            e.KeyChar = Char.ToUpper(e.KeyChar);
-        }
-
-        // RC4 BITMAP
-        private string rc4_bitmap_input_filepath = "";
-        private string rc4_bitmap_output_filepath = "";
-        private void rc4_bitmap_input_button_Click(object sender, EventArgs e) {
-            DialogResult dialog_result = rc4_bitmap_openfile_dialog.ShowDialog();
-            if (dialog_result == DialogResult.OK) {
-                rc4_bitmap_input_filepath = rc4_bitmap_openfile_dialog.FileName;
-                rc4_bitmap_input_path_textbox.Text = rc4_bitmap_input_filepath;
-            }
-        }
-        private void rc4_bitmap_output_button_Click(object sender, EventArgs e) {
-            DialogResult dialog_result = rc4_bitmap_savefile_dialog.ShowDialog();
-            if (dialog_result == DialogResult.OK) {
-                rc4_bitmap_output_filepath = rc4_bitmap_savefile_dialog.FileName;
-                rc4_bitmap_output_path_textbox.Text = rc4_bitmap_output_filepath;
-            }
-        }
-        
-        private async void rc4_bitmap_encrypt_button_Click(object sender, EventArgs e) {
-            try {
-
-                rc4_bitmap_input_filepath = rc4_bitmap_input_path_textbox.Text;
-                rc4_bitmap_output_filepath = rc4_bitmap_output_path_textbox.Text;
-
-                byte[] input_image_bytes = Utility.open_file_to_bytes(rc4_bitmap_input_filepath);
-
-                byte[] output_image_bytes = null;
-
-                if (rc4_bitmap_offline.Checked == true) {
-                    RC4 rc4 = new RC4(rc4_bitmap_key_textbox.Text);
-                    output_image_bytes = rc4.encrypt_bitmap_from_bytes(input_image_bytes);
-                } else {
-                    output_image_bytes = await cryptoProvider.RC4BitmapCryptAsync(rc4_bitmap_key_textbox.Text, input_image_bytes);
-                }
-
-                
-                Bitmap input_image;
-                using (MemoryStream ms = new MemoryStream(input_image_bytes)) {
-                    input_image = new Bitmap(ms);
-                }
-                rc4_bitmap_input_image_box.Image = input_image;
-
-                Bitmap output_image;
-                using (MemoryStream ms = new MemoryStream(output_image_bytes)) {
-                    output_image = new Bitmap(ms);
-                }
-                rc4_bitmap_output_image_box.Image = output_image;
-
-
-                Utility.write_bytes_to_file(rc4_bitmap_output_filepath, output_image_bytes);
-                MessageBox.Show("Encrypted bitmap successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private async void rc4_bitmap_decrypt_button_Click(object sender, EventArgs e) {
-            try {
-
-                rc4_bitmap_input_filepath = rc4_bitmap_input_path_textbox.Text;
-                rc4_bitmap_output_filepath = rc4_bitmap_output_path_textbox.Text;
-
-                byte[] input_image_bytes = Utility.open_file_to_bytes(rc4_bitmap_input_filepath);
-
-                byte[] output_image_bytes = null;
-
-                if (rc4_bitmap_offline.Checked == true) {
-                    RC4 rc4 = new RC4(rc4_bitmap_key_textbox.Text);
-                    output_image_bytes = rc4.decrypt_bitmap_from_bytes(input_image_bytes);
-                } else {
-                    output_image_bytes = await cryptoProvider.RC4BitmapDecryptAsync(rc4_bitmap_key_textbox.Text, input_image_bytes);
-                }
-
-
-                Bitmap input_image;
-                using (MemoryStream ms = new MemoryStream(input_image_bytes)) {
-                    input_image = new Bitmap(ms);
-                }
-                rc4_bitmap_input_image_box.Image = input_image;
-
-                Bitmap output_image;
-                using (MemoryStream ms = new MemoryStream(output_image_bytes)) {
-                    output_image = new Bitmap(ms);
-                }
-                rc4_bitmap_output_image_box.Image = output_image;
-
-
-                Utility.write_bytes_to_file(rc4_bitmap_output_filepath, output_image_bytes);
-                MessageBox.Show("Decrypted bitmap successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        
-        private void rc4_bitmap_random_key_button_Click(object sender, EventArgs e) {
-            rc4_bitmap_key_textbox.Text = Utility.rc4_random_key();
-        }
-        private void rc4_bitmap_swap_button_Click(object sender, EventArgs e) {
-            string temp = rc4_bitmap_input_path_textbox.Text;
-            rc4_bitmap_input_path_textbox.Text = rc4_bitmap_output_path_textbox.Text;
-            rc4_bitmap_output_path_textbox.Text = temp;
-        }
-       
-        private void rc4_bitmap_input_panel_DragDrop(object sender, DragEventArgs e) {
-            rc4_bitmap_input_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
-            rc4_bitmap_input_path_textbox.Text = rc4_bitmap_input_filepath;
-        }
-        private void rc4_bitmap_output_panel_DragDrop(object sender, DragEventArgs e) {
-            rc4_bitmap_output_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
-            rc4_bitmap_output_path_textbox.Text = rc4_bitmap_output_filepath;
-        }
-
-        // RC4 TEXT
-        private async void rc4_text_encrypt_button_Click(object sender, EventArgs e) {
-            try {
-                string rc4_result;
-
-                if (rc4_text_offline.Checked == true) {
-                    RC4 rc4 = new RC4(rc4_text_key_textbox.Text);
-                    rc4_result = rc4.encrypt_unicode_to_unicode(rc4_text_input_textbox.Text);
-                } else {
-                    rc4_result = await cryptoProvider.RC4CryptAsync(rc4_text_key_textbox.Text, rc4_text_input_textbox.Text);
-                }
-
-                rc4_text_output_textbox.Text = rc4_result;
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private async void rc4_text_decrypt_button_Click(object sender, EventArgs e) {
-            try {
-                string rc4_result;
-
-                if (rc4_text_offline.Checked == true) {
-                    RC4 rc4 = new RC4(rc4_text_key_textbox.Text);
-                    rc4_result = rc4.decrypt_unicode_to_unicode(rc4_text_input_textbox.Text);
-                } else {
-                    rc4_result = await cryptoProvider.RC4DecryptAsync(rc4_text_key_textbox.Text, rc4_text_input_textbox.Text);
-                }
-
-                rc4_text_output_textbox.Text = rc4_result;
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private bool rc4_text_info_message_shown = false;
-        private void rc4_tabs_SelectedIndexChanged(object sender, EventArgs e) {
-            if (rc4_tabs.SelectedIndex == 2 && rc4_text_info_message_shown == false) {
-                rc4_text_info_message_shown = true;
-                MessageBox.Show("Ovaj režim ne funkcioniše najbolje sa tekstom, a na to utiče postojanje \\0 (0x00) karaktera. Moguće je da se neki karakter šifruje/dešifruje u 0x00 i pri prikazivanju rastumači kao kraj string-a, što dovodi do preranog odsecanja ostalih karaktera sledbenika u nizu.", "RC4 (Text) - Napomena", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        private void rc4_text_swap_button_Click(object sender, EventArgs e) {
-            string temp = rc4_text_input_textbox.Text;
-            rc4_text_input_textbox.Text = rc4_text_output_textbox.Text;
-            rc4_text_output_textbox.Text = temp;
-        }
-        private void rc4_text_random_button_Click(object sender, EventArgs e) {
-            rc4_text_key_textbox.Text = Utility.rc4_random_key();
-        }
-
-        // RC4 FILE
-        private string rc4_file_input_filepath = "";
-        private string rc4_file_output_filepath = "";
-        private void rc4_file_input_button_Click(object sender, EventArgs e) {
-            DialogResult dialog_result = rc4_file_openfile_dialog.ShowDialog();
-            if (dialog_result == DialogResult.OK) {
-                rc4_file_input_filepath = rc4_file_openfile_dialog.FileName;
-                rc4_file_input_path_textbox.Text = rc4_file_input_filepath;
-            }
-        }
-        private void rc4_file_output_button_Click(object sender, EventArgs e) {
-            DialogResult dialog_result = rc4_file_savefile_dialog.ShowDialog();
-            if (dialog_result == DialogResult.OK) {
-                rc4_file_output_filepath = rc4_file_savefile_dialog.FileName;
-                rc4_file_output_path_textbox.Text = rc4_file_output_filepath;
-            }
-        }
-        
-        private void rc4_file_key_random_Click(object sender, EventArgs e) {
-            rc4_file_key_textbox.Text = Utility.rc4_random_key();
-        }
-        private void rc4_file_swap_button_Click(object sender, EventArgs e) {
-            string temp = rc4_file_input_path_textbox.Text;
-            rc4_file_input_path_textbox.Text = rc4_file_output_path_textbox.Text;
-            rc4_file_output_path_textbox.Text = temp;
-        }
-        
-        private async void rc4_file_encrypt_button_Click(object sender, EventArgs e) {
-            try {
-
-                rc4_file_input_filepath = rc4_file_input_path_textbox.Text;
-                rc4_file_output_filepath = rc4_file_output_path_textbox.Text;
-
-                byte[] input_file_bytes = Utility.open_file_to_bytes(rc4_file_input_filepath);
-
-                byte[] output_file_bytes = null;
-
-                if (rc4_file_offline.Checked == true) {
-                    RC4 rc4 = new RC4(rc4_file_key_textbox.Text);
-                    output_file_bytes = rc4.encrypt_bytes_to_bytes(input_file_bytes);
-                } else {
-                    output_file_bytes = await cryptoProvider.RC4FileCryptAsync(rc4_file_key_textbox.Text, input_file_bytes);
-                }
-
-                Utility.write_bytes_to_file(rc4_file_output_filepath, output_file_bytes);
-                MessageBox.Show("Encrypted file successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private async void rc4_file_decrypt_button_Click(object sender, EventArgs e) {
-            try {
-
-                rc4_file_input_filepath = rc4_file_input_path_textbox.Text;
-                rc4_file_output_filepath = rc4_file_output_path_textbox.Text;
-
-                byte[] input_file_bytes = Utility.open_file_to_bytes(rc4_file_input_filepath);
-
-                byte[] output_file_bytes = null;
-
-                if (rc4_file_offline.Checked == true) {
-                    RC4 rc4 = new RC4(rc4_file_key_textbox.Text);
-                    output_file_bytes = rc4.decrypt_bytes_to_bytes(input_file_bytes);
-                } else {
-                    output_file_bytes = await cryptoProvider.RC4FileDecryptAsync(rc4_file_key_textbox.Text, input_file_bytes);
-                }
-
-                Utility.write_bytes_to_file(rc4_file_output_filepath, output_file_bytes);
-                MessageBox.Show("Decrypted file successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        
-        private void rc4_file_input_panel_DragDrop(object sender, DragEventArgs e) {
-            rc4_file_input_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
-            rc4_file_input_path_textbox.Text = rc4_file_input_filepath;
-        }
-        private void rc4_file_output_panel_DragDrop(object sender, DragEventArgs e) {
-            rc4_file_output_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
-            rc4_file_output_path_textbox.Text = rc4_file_output_filepath;
-        }
-
-        // TEA FILE
-        private string tea_file_input_filepath = "";
-        private string tea_file_output_filepath = "";
-        private void tea_file_input_button_Click(object sender, EventArgs e) {
-            DialogResult dialog_result = tea_file_openfile_dialog.ShowDialog();
-            if (dialog_result == DialogResult.OK) {
-                tea_file_input_filepath = tea_file_openfile_dialog.FileName;
-                tea_file_input_path_textbox.Text = tea_file_input_filepath;
-            }
-        }
-        private void tea_file_output_button_Click(object sender, EventArgs e) {
-            DialogResult dialog_result = tea_file_savefile_dialog.ShowDialog();
-            if (dialog_result == DialogResult.OK) {
-                tea_file_output_filepath = tea_file_savefile_dialog.FileName;
-                tea_file_output_path_textbox.Text = tea_file_output_filepath;
-            }
-        }
-
-        private void tea_file_key_random_Click(object sender, EventArgs e) {
-            tea_file_key_textbox.Text = Utility.tea_random_key();
-        }
-        private void tea_file_swap_button_Click(object sender, EventArgs e) {
-            string temp = tea_file_input_path_textbox.Text;
-            tea_file_input_path_textbox.Text = tea_file_output_path_textbox.Text;
-            tea_file_output_path_textbox.Text = temp;
-        }
-        
-        private async void tea_file_encrypt_button_Click(object sender, EventArgs e) {
-            try {
-
-                tea_file_input_filepath = tea_file_input_path_textbox.Text;
-                tea_file_output_filepath = tea_file_output_path_textbox.Text;
-
-                byte[] input_file_bytes = Utility.open_file_to_bytes(tea_file_input_filepath);
-
-                byte[] output_file_bytes = null;
-
-                if (tea_file_offline.Checked == true) {
-                    TEA tea = new TEA(tea_file_key_textbox.Text);
-                    output_file_bytes = tea.encrypt_bytes_to_bytes(input_file_bytes);
-                } else {
-                    output_file_bytes = await cryptoProvider.TEAFileCryptAsync(tea_file_key_textbox.Text, input_file_bytes);
-                }
-
-                Utility.write_bytes_to_file(tea_file_output_filepath, output_file_bytes);
-                MessageBox.Show("Encrypted file successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private async void tea_file_decrypt_button_Click(object sender, EventArgs e) {
-            try {
-
-                tea_file_input_filepath = tea_file_input_path_textbox.Text;
-                tea_file_output_filepath = tea_file_output_path_textbox.Text;
-
-                byte[] input_file_bytes = Utility.open_file_to_bytes(tea_file_input_filepath);
-
-                byte[] output_file_bytes = null;
-
-                if (tea_file_offline.Checked == true) {
-                    TEA tea = new TEA(tea_file_key_textbox.Text);
-                    output_file_bytes = tea.decrypt_bytes_to_bytes(input_file_bytes);
-                } else {
-                    output_file_bytes = await cryptoProvider.TEAFileDecryptAsync(tea_file_key_textbox.Text, input_file_bytes);
-                }
-
-                Utility.write_bytes_to_file(tea_file_output_filepath, output_file_bytes);
-                MessageBox.Show("Decrypted file successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void tea_file_output_panel_DragDrop(object sender, DragEventArgs e) {
-            tea_file_output_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
-            tea_file_output_path_textbox.Text = tea_file_output_filepath;
-        }
-        private void tea_file_input_panel_DragDrop(object sender, DragEventArgs e) {
-            tea_file_input_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
-            tea_file_input_path_textbox.Text = tea_file_input_filepath;
-        }
-
-        // TEA BITMAP
-        private string tea_bitmap_input_filepath = "";
-        private string tea_bitmap_output_filepath = "";
-
-        private void tea_bitmap_input_button_Click(object sender, EventArgs e) {
-            DialogResult dialog_result = tea_bitmap_openfile_dialog.ShowDialog();
-            if (dialog_result == DialogResult.OK) {
-                tea_bitmap_input_filepath = tea_bitmap_openfile_dialog.FileName;
-                tea_bitmap_input_path_textbox.Text = tea_bitmap_input_filepath;
-            }
-        }
-        private void tea_bitmap_output_button_Click(object sender, EventArgs e) {
-            DialogResult dialog_result = tea_bitmap_savefile_dialog.ShowDialog();
-            if (dialog_result == DialogResult.OK) {
-                tea_bitmap_output_filepath = tea_bitmap_savefile_dialog.FileName;
-                tea_bitmap_output_path_textbox.Text = tea_bitmap_output_filepath;
-            }
-        }
-
-        private void tea_bitmap_random_Click(object sender, EventArgs e) {
-            tea_bitmap_key_textbox.Text = Utility.tea_random_key();
-        }
-        private void tea_bitmap_swap_button_Click(object sender, EventArgs e) {
-            string temp = tea_bitmap_input_path_textbox.Text;
-            tea_bitmap_input_path_textbox.Text = tea_bitmap_output_path_textbox.Text;
-            tea_bitmap_output_path_textbox.Text = temp;
-        }
-
-        private async void tea_bitmap_encrypt_button_Click(object sender, EventArgs e) {
-            try {
-
-                tea_bitmap_input_filepath = tea_bitmap_input_path_textbox.Text;
-                tea_bitmap_output_filepath = tea_bitmap_output_path_textbox.Text;
-
-                byte[] input_image_bytes = Utility.open_file_to_bytes(tea_bitmap_input_filepath);
-
-                byte[] output_image_bytes = null;
-
-                if (tea_bitmap_offline.Checked == true) {
-                    TEA tea = new TEA(tea_bitmap_key_textbox.Text);
-                    output_image_bytes = tea.encrypt_bitmap_from_bytes(input_image_bytes);
-                } else {
-                    output_image_bytes = await cryptoProvider.TEABitmapCryptAsync(tea_bitmap_key_textbox.Text, input_image_bytes);
-                }
-
-
-                Bitmap input_image;
-                using (MemoryStream ms = new MemoryStream(input_image_bytes)) {
-                    input_image = new Bitmap(ms);
-                }
-                tea_bitmap_input_image_box.Image = input_image;
-
-                Bitmap output_image;
-                using (MemoryStream ms = new MemoryStream(output_image_bytes)) {
-                    output_image = new Bitmap(ms);
-                }
-                tea_bitmap_output_image_box.Image = output_image;
-
-
-                Utility.write_bytes_to_file(tea_bitmap_output_filepath, output_image_bytes);
-                MessageBox.Show("Encrypted bitmap successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private async void tea_bitmap_decrypt_button_Click(object sender, EventArgs e) {
-            try {
-
-                tea_bitmap_input_filepath = tea_bitmap_input_path_textbox.Text;
-                tea_bitmap_output_filepath = tea_bitmap_output_path_textbox.Text;
-
-                byte[] input_image_bytes = Utility.open_file_to_bytes(tea_bitmap_input_filepath);
-
-                byte[] output_image_bytes = null;
-
-                if (tea_bitmap_offline.Checked == true) {
-                    TEA tea = new TEA(tea_bitmap_key_textbox.Text);
-                    output_image_bytes = tea.decrypt_bitmap_from_bytes(input_image_bytes);
-                } else {
-                    output_image_bytes = await cryptoProvider.TEABitmapDecryptAsync(tea_bitmap_key_textbox.Text, input_image_bytes);
-                }
-
-
-                Bitmap input_image;
-                using (MemoryStream ms = new MemoryStream(input_image_bytes)) {
-                    input_image = new Bitmap(ms);
-                }
-                tea_bitmap_input_image_box.Image = input_image;
-
-                Bitmap output_image;
-                using (MemoryStream ms = new MemoryStream(output_image_bytes)) {
-                    output_image = new Bitmap(ms);
-                }
-                tea_bitmap_output_image_box.Image = output_image;
-
-
-                Utility.write_bytes_to_file(tea_bitmap_output_filepath, output_image_bytes);
-                MessageBox.Show("Decrypted bitmap successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void tea_bitmap_input_panel_DragDrop(object sender, DragEventArgs e) {
-            tea_bitmap_input_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
-            tea_bitmap_input_path_textbox.Text = tea_bitmap_input_filepath;
-        }
-        private void tea_bitmap_output_panel_DragDrop(object sender, DragEventArgs e) {
-            tea_bitmap_output_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
-            tea_bitmap_output_path_textbox.Text = tea_bitmap_output_filepath;
-        }
-        
-        // TEA TEXT
-        private bool tea_text_info_message_shown = false;
-        private void tea_tabs_SelectedIndexChanged(object sender, EventArgs e) {
-            if (tea_tabs.SelectedIndex == 2 && tea_text_info_message_shown == false) {
-                tea_text_info_message_shown = true;
-                MessageBox.Show("Ovaj režim ne funkcioniše najbolje sa tekstom, a na to utiče postojanje \\0 (0x00) karaktera. Moguće je da se neki karakter šifruje/dešifruje u 0x00 i pri prikazivanju rastumači kao kraj string-a, što dovodi do preranog odsecanja ostalih karaktera sledbenika u nizu.", "TEA (Text) - Napomena", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        private void tea_text_key_button_Click(object sender, EventArgs e) {
-            tea_text_key_textbox.Text = Utility.tea_random_key();
-        }
-        private void tea_text_swap_button_Click(object sender, EventArgs e) {
-            string temp = tea_text_input_textbox.Text;
-            tea_text_input_textbox.Text = tea_text_output_textbox.Text;
-            tea_text_output_textbox.Text = temp;
-        }
-        private async void tea_text_encrypt_button_Click(object sender, EventArgs e) {
-            try {
-                string tea_result;
-
-                if (tea_text_offline.Checked == true) {
-                    TEA tea = new TEA(tea_text_key_textbox.Text);
-                    tea_result = tea.encrypt_unicode_to_unicode(tea_text_input_textbox.Text);
-                } else {
-                    tea_result = await cryptoProvider.TEACryptAsync(tea_text_key_textbox.Text, tea_text_input_textbox.Text);
-                }
-
-                tea_text_output_textbox.Text = tea_result;
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private async void tea_text_decrypt_button_Click(object sender, EventArgs e) {
-            try {
-                string tea_result;
-
-                if (tea_text_offline.Checked == true) {
-                    TEA tea = new TEA(tea_text_key_textbox.Text);
-                    tea_result = tea.decrypt_unicode_to_unicode(tea_text_input_textbox.Text);
-                } else {
-                    tea_result = await cryptoProvider.TEADecryptAsync(tea_text_key_textbox.Text, tea_text_input_textbox.Text);
-                }
-
-                tea_text_output_textbox.Text = tea_result;
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
-
-
-
-
-        // TEA
-        //private async void tea_encrypt_button_Click(object sender, EventArgs e) {
-        //    try {
-        //        string tea_result = await cryptoProvider.TEACryptAsync(tea_key_input.Text, tea_input_textbox.Text/*, tea_padding_checkbox.Checked*/);
-        //        tea_output_textbox.Text = tea_result.Replace(@"\0", "\0"); // todo check this
-        //    } catch (Exception ex) {
-        //        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-        //private async void tea_decrypt_button_Click(object sender, EventArgs e) {
-        //    try {
-        //        string tea_result = await cryptoProvider.TEADecryptAsync(tea_key_input.Text, tea_input_textbox.Text/*, tea_padding_checkbox.Checked*/);
-        //        tea_output_textbox.Text = tea_result.Replace("\0", @"\0"); // todo check this
-        //    } catch (Exception ex) {
-        //        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-        //private void tea_switch_button_Click(object sender, EventArgs e) {
-        //    string temp = tea_output_textbox.Text;
-        //    tea_output_textbox.Text = tea_input_textbox.Text;
-        //    tea_input_textbox.Text = temp;
-        //}
-        //private void tea_random_key_Click(object sender, EventArgs e) {
-        //    tea_key_input.Text = Utility.tea_random_key();
-        //}
-
-        //// RC4
-        //private async void rc4_crypt_Click(object sender, EventArgs e) {
-        //    try {
-        //        string rc4_result = await cryptoProvider.RC4CryptAsync(rc4_key.Text, rc4_input.Text);
-        //        rc4_output.Text = rc4_result.Replace(@"\0", "\0");
-        //    } catch (Exception ex) {
-        //        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-        //private async void rc4_decrypt_Click(object sender, EventArgs e) {
-        //    try {
-        //        string rc4_result = await cryptoProvider.RC4DecryptAsync(rc4_key.Text, rc4_input.Text);
-        //        rc4_output.Text = rc4_result.Replace("\0", @"\0");
-        //    } catch (Exception ex) {
-        //        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-        //private void rc4_swap_Click(object sender, EventArgs e) {
-        //    string temp = rc4_input.Text;
-        //    rc4_input.Text = rc4_output.Text;
-        //    rc4_output.Text = temp;
-        //}
-        //private void rc4_random_key_Click(object sender, EventArgs e) {
-        //    rc4_key.Text = Utility.rc4_random_key();
-        //}
-
-        //// CBC
-        //private async void cbc_encrypt_Click(object sender, EventArgs e) {
-        //    try {
-        //        string cbc_result = await cryptoProvider.CBC_TEACryptAsync(cbc_key.Text, cbc_input.Text, cbc_vector.Text/*, cbc_padding_checkbox.Checked*/);
-        //        cbc_output.Text = cbc_result.Replace(@"\0", "\0"); // todo check this
-        //    } catch (Exception ex) {
-        //        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-        //private async void cbc_decrypt_Click(object sender, EventArgs e) {
-        //    try {
-        //        string cbc_result = await cryptoProvider.CBC_TEADecryptAsync(cbc_key.Text, cbc_input.Text, cbc_vector.Text/*, cbc_padding_checkbox.Checked*/);
-        //        cbc_output.Text = cbc_result.Replace("\0", @"\0"); // todo check this
-        //    } catch (Exception ex) {
-        //        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-        //private void cbc_swap_Click(object sender, EventArgs e) {
-        //    string temp = cbc_input.Text;
-        //    cbc_input.Text = cbc_output.Text;
-        //    cbc_output.Text = temp;
-        //}
-        //private void cbc_random_key_Click(object sender, EventArgs e) {
-        //    cbc_key.Text = Utility.tea_random_key();
-        //}
-        //private void cbc_random_iv_Click(object sender, EventArgs e) {
-        //    cbc_vector.Text = Utility.tea_random_key();
-        //}
     }
 }

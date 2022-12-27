@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,10 +51,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\CryptoProviderServiceReference\Reference.cs">
+    <Compile Include="Connected Services\CryptoServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TEAForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TEAForm.Designer.cs">
+      <DependentUpon>TEAForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -61,6 +70,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Forms\RC4Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RC4Form.Designer.cs">
+      <DependentUpon>RC4Form.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\RC4Form.resx">
+      <DependentUpon>RC4Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TEAForm.resx">
+      <DependentUpon>TEAForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -72,15 +93,16 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Connected Services\CryptoProviderServiceReference\CryptoProvider.xsd">
+    <None Include="Connected Services\CryptoServiceReference\Arrays.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\CryptoProviderServiceReference\service.wsdl" />
-    <None Include="Connected Services\CryptoProviderServiceReference\service.xsd">
+    <None Include="Connected Services\CryptoServiceReference\service.wsdl" />
+    <None Include="Connected Services\CryptoServiceReference\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\CryptoProviderServiceReference\service1.xsd">
+    <None Include="Connected Services\CryptoServiceReference\service1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
@@ -97,9 +119,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CryptoLibrary\CryptoLibrary.csproj">
+    <ProjectReference Include="..\CryptoLibrary\Library.csproj">
       <Project>{4e0f93a8-37e3-47c2-b4f1-33092b6bef3d}</Project>
-      <Name>CryptoLibrary</Name>
+      <Name>Library</Name>
     </ProjectReference>
     <ProjectReference Include="..\CryptoProvider\CryptoProvider.csproj">
       <Project>{90042FBF-5A00-4B35-98A7-64C2C5878B17}</Project>
@@ -110,19 +132,16 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\CryptoProviderServiceReference\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\CryptoProviderServiceReference\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\CryptoProviderServiceReference\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\CryptoProviderServiceReference\Reference.svcmap">
+    <None Include="Connected Services\CryptoServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Connected Services\CryptoServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\CryptoServiceReference\configuration91.svcinfo" />
+    <Content Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\CryptoServiceReference\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

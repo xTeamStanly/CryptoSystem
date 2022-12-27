@@ -17,12 +17,13 @@ namespace CryptoConsumer {
         [STAThread]
         static void Main() {
 
-            RC4 a = new RC4("1234");
-            string asd = a.encrypt_unicode_to_unicode("a");
+            // RC4 a = new RC4("1234");
+            // string asd = a.encrypt_unicode_to_unicode("a");
+
+
+            // Library.Convertor.unicode_to_bytes("");
 
             //CBC_TEA cbc = new CBC_TEA("vZQS2MEkE-Z%R$PK", "1");
-
-
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
