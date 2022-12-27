@@ -110,6 +110,54 @@ namespace CryptoConsumer.CryptoServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEA_DecryptPlaintext", ReplyAction="http://tempuri.org/ICryptoProvider/TEA_DecryptPlaintextResponse")]
         System.Threading.Tasks.Task<string> TEA_DecryptPlaintextAsync(string key, string input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_EncryptFile", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_EncryptFileResponse")]
+        byte[] CBC_EncryptFile(string key, byte[] input, string initialization_vector);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_EncryptFile", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_EncryptFileResponse")]
+        System.Threading.Tasks.Task<byte[]> CBC_EncryptFileAsync(string key, byte[] input, string initialization_vector);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_DecryptFile", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_DecryptFileResponse")]
+        byte[] CBC_DecryptFile(string key, byte[] input, string initialization_vector);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_DecryptFile", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_DecryptFileResponse")]
+        System.Threading.Tasks.Task<byte[]> CBC_DecryptFileAsync(string key, byte[] input, string initialization_vector);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_EncryptBitmap", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_EncryptBitmapResponse")]
+        byte[] CBC_EncryptBitmap(string key, byte[] input, string initialization_vector);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_EncryptBitmap", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_EncryptBitmapResponse")]
+        System.Threading.Tasks.Task<byte[]> CBC_EncryptBitmapAsync(string key, byte[] input, string initialization_vector);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_DecryptBitmap", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_DecryptBitmapResponse")]
+        byte[] CBC_DecryptBitmap(string key, byte[] input, string initialization_vector);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_DecryptBitmap", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_DecryptBitmapResponse")]
+        System.Threading.Tasks.Task<byte[]> CBC_DecryptBitmapAsync(string key, byte[] input, string initialization_vector);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_EncryptText", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_EncryptTextResponse")]
+        string[] CBC_EncryptText(string key, string[] input, string initialization_vector);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_EncryptText", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_EncryptTextResponse")]
+        System.Threading.Tasks.Task<string[]> CBC_EncryptTextAsync(string key, string[] input, string initialization_vector);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_DecryptText", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_DecryptTextResponse")]
+        string[] CBC_DecryptText(string key, string[] input, string initialization_vector);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_DecryptText", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_DecryptTextResponse")]
+        System.Threading.Tasks.Task<string[]> CBC_DecryptTextAsync(string key, string[] input, string initialization_vector);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_EncryptPlaintext", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_EncryptPlaintextResponse")]
+        string CBC_EncryptPlaintext(string key, string input, string initialization_vector);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_EncryptPlaintext", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_EncryptPlaintextResponse")]
+        System.Threading.Tasks.Task<string> CBC_EncryptPlaintextAsync(string key, string input, string initialization_vector);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_DecryptPlaintext", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_DecryptPlaintextResponse")]
+        string CBC_DecryptPlaintext(string key, string input, string initialization_vector);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_DecryptPlaintext", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_DecryptPlaintextResponse")]
+        System.Threading.Tasks.Task<string> CBC_DecryptPlaintextAsync(string key, string input, string initialization_vector);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -265,6 +313,70 @@ namespace CryptoConsumer.CryptoServiceReference {
         
         public System.Threading.Tasks.Task<string> TEA_DecryptPlaintextAsync(string key, string input) {
             return base.Channel.TEA_DecryptPlaintextAsync(key, input);
+        }
+        
+        public byte[] CBC_EncryptFile(string key, byte[] input, string initialization_vector) {
+            return base.Channel.CBC_EncryptFile(key, input, initialization_vector);
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> CBC_EncryptFileAsync(string key, byte[] input, string initialization_vector) {
+            return base.Channel.CBC_EncryptFileAsync(key, input, initialization_vector);
+        }
+        
+        public byte[] CBC_DecryptFile(string key, byte[] input, string initialization_vector) {
+            return base.Channel.CBC_DecryptFile(key, input, initialization_vector);
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> CBC_DecryptFileAsync(string key, byte[] input, string initialization_vector) {
+            return base.Channel.CBC_DecryptFileAsync(key, input, initialization_vector);
+        }
+        
+        public byte[] CBC_EncryptBitmap(string key, byte[] input, string initialization_vector) {
+            return base.Channel.CBC_EncryptBitmap(key, input, initialization_vector);
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> CBC_EncryptBitmapAsync(string key, byte[] input, string initialization_vector) {
+            return base.Channel.CBC_EncryptBitmapAsync(key, input, initialization_vector);
+        }
+        
+        public byte[] CBC_DecryptBitmap(string key, byte[] input, string initialization_vector) {
+            return base.Channel.CBC_DecryptBitmap(key, input, initialization_vector);
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> CBC_DecryptBitmapAsync(string key, byte[] input, string initialization_vector) {
+            return base.Channel.CBC_DecryptBitmapAsync(key, input, initialization_vector);
+        }
+        
+        public string[] CBC_EncryptText(string key, string[] input, string initialization_vector) {
+            return base.Channel.CBC_EncryptText(key, input, initialization_vector);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> CBC_EncryptTextAsync(string key, string[] input, string initialization_vector) {
+            return base.Channel.CBC_EncryptTextAsync(key, input, initialization_vector);
+        }
+        
+        public string[] CBC_DecryptText(string key, string[] input, string initialization_vector) {
+            return base.Channel.CBC_DecryptText(key, input, initialization_vector);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> CBC_DecryptTextAsync(string key, string[] input, string initialization_vector) {
+            return base.Channel.CBC_DecryptTextAsync(key, input, initialization_vector);
+        }
+        
+        public string CBC_EncryptPlaintext(string key, string input, string initialization_vector) {
+            return base.Channel.CBC_EncryptPlaintext(key, input, initialization_vector);
+        }
+        
+        public System.Threading.Tasks.Task<string> CBC_EncryptPlaintextAsync(string key, string input, string initialization_vector) {
+            return base.Channel.CBC_EncryptPlaintextAsync(key, input, initialization_vector);
+        }
+        
+        public string CBC_DecryptPlaintext(string key, string input, string initialization_vector) {
+            return base.Channel.CBC_DecryptPlaintext(key, input, initialization_vector);
+        }
+        
+        public System.Threading.Tasks.Task<string> CBC_DecryptPlaintextAsync(string key, string input, string initialization_vector) {
+            return base.Channel.CBC_DecryptPlaintextAsync(key, input, initialization_vector);
         }
     }
 }

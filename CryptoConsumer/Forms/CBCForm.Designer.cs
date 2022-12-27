@@ -1,5 +1,5 @@
-﻿namespace CryptoConsumer {
-    partial class RC4Form {
+﻿namespace CryptoConsumer.Forms {
+    partial class CBCForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RC4Form));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CBCForm));
             this.tabs = new System.Windows.Forms.TabControl();
             this.file_tab = new System.Windows.Forms.TabPage();
             this.file_layout = new System.Windows.Forms.TableLayoutPanel();
@@ -38,10 +38,6 @@
             this.file_input_layout = new System.Windows.Forms.TableLayoutPanel();
             this.file_input_button = new System.Windows.Forms.Button();
             this.file_input_textbox = new System.Windows.Forms.TextBox();
-            this.file_key_groupbox = new System.Windows.Forms.GroupBox();
-            this.file_key_layout = new System.Windows.Forms.TableLayoutPanel();
-            this.file_key_button = new System.Windows.Forms.Button();
-            this.file_key_textbox = new System.Windows.Forms.TextBox();
             this.file_output_groupbox = new System.Windows.Forms.GroupBox();
             this.file_output_layout = new System.Windows.Forms.TableLayoutPanel();
             this.file_output_button = new System.Windows.Forms.Button();
@@ -110,8 +106,15 @@
             this.plaintext_key_layout = new System.Windows.Forms.TableLayoutPanel();
             this.plaintext_key_button = new System.Windows.Forms.Button();
             this.plaintext_key_textbox = new System.Windows.Forms.TextBox();
-            this.open_file_dialog = new System.Windows.Forms.OpenFileDialog();
-            this.save_file_dialog = new System.Windows.Forms.SaveFileDialog();
+            this.file_keyvector_layout = new System.Windows.Forms.TableLayoutPanel();
+            this.file_key_groupbox = new System.Windows.Forms.GroupBox();
+            this.file_key_layout = new System.Windows.Forms.TableLayoutPanel();
+            this.file_key_button = new System.Windows.Forms.Button();
+            this.file_key_textbox = new System.Windows.Forms.TextBox();
+            this.file_vector_groupbox = new System.Windows.Forms.GroupBox();
+            this.file_vector_layout = new System.Windows.Forms.TableLayoutPanel();
+            this.file_vector_button = new System.Windows.Forms.Button();
+            this.file_vector_textbox = new System.Windows.Forms.TextBox();
             this.tabs.SuspendLayout();
             this.file_tab.SuspendLayout();
             this.file_layout.SuspendLayout();
@@ -120,8 +123,6 @@
             this.file_extra_layout.SuspendLayout();
             this.file_input_groupbox.SuspendLayout();
             this.file_input_layout.SuspendLayout();
-            this.file_key_groupbox.SuspendLayout();
-            this.file_key_layout.SuspendLayout();
             this.file_output_groupbox.SuspendLayout();
             this.file_output_layout.SuspendLayout();
             this.bitmap_tab.SuspendLayout();
@@ -160,6 +161,11 @@
             this.plaintext_input_groupbox.SuspendLayout();
             this.plaintext_key_groupbox.SuspendLayout();
             this.plaintext_key_layout.SuspendLayout();
+            this.file_keyvector_layout.SuspendLayout();
+            this.file_key_groupbox.SuspendLayout();
+            this.file_key_layout.SuspendLayout();
+            this.file_vector_groupbox.SuspendLayout();
+            this.file_vector_layout.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabs
@@ -172,9 +178,8 @@
             this.tabs.Location = new System.Drawing.Point(10, 10);
             this.tabs.Name = "tabs";
             this.tabs.SelectedIndex = 0;
-            this.tabs.Size = new System.Drawing.Size(1058, 724);
-            this.tabs.TabIndex = 0;
-            this.tabs.SelectedIndexChanged += new System.EventHandler(this.tabs_SelectedIndexChanged);
+            this.tabs.Size = new System.Drawing.Size(1291, 807);
+            this.tabs.TabIndex = 2;
             // 
             // file_tab
             // 
@@ -183,7 +188,7 @@
             this.file_tab.Location = new System.Drawing.Point(4, 29);
             this.file_tab.Name = "file_tab";
             this.file_tab.Padding = new System.Windows.Forms.Padding(16);
-            this.file_tab.Size = new System.Drawing.Size(1050, 691);
+            this.file_tab.Size = new System.Drawing.Size(1283, 774);
             this.file_tab.TabIndex = 0;
             this.file_tab.Text = "File";
             // 
@@ -193,8 +198,8 @@
             this.file_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.file_layout.Controls.Add(this.file_buttons_layout, 0, 3);
             this.file_layout.Controls.Add(this.file_input_groupbox, 0, 0);
-            this.file_layout.Controls.Add(this.file_key_groupbox, 0, 2);
             this.file_layout.Controls.Add(this.file_output_groupbox, 0, 1);
+            this.file_layout.Controls.Add(this.file_keyvector_layout, 0, 2);
             this.file_layout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.file_layout.Location = new System.Drawing.Point(16, 16);
             this.file_layout.Name = "file_layout";
@@ -203,7 +208,7 @@
             this.file_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27F));
             this.file_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27F));
             this.file_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19F));
-            this.file_layout.Size = new System.Drawing.Size(1018, 659);
+            this.file_layout.Size = new System.Drawing.Size(1251, 742);
             this.file_layout.TabIndex = 3;
             // 
             // file_buttons_layout
@@ -217,24 +222,23 @@
             this.file_buttons_layout.Controls.Add(this.file_encrypt_button, 0, 0);
             this.file_buttons_layout.Controls.Add(this.extra_groupbox, 3, 0);
             this.file_buttons_layout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.file_buttons_layout.Location = new System.Drawing.Point(3, 534);
+            this.file_buttons_layout.Location = new System.Drawing.Point(3, 603);
             this.file_buttons_layout.Name = "file_buttons_layout";
             this.file_buttons_layout.RowCount = 1;
             this.file_buttons_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.file_buttons_layout.Size = new System.Drawing.Size(1012, 122);
+            this.file_buttons_layout.Size = new System.Drawing.Size(1245, 136);
             this.file_buttons_layout.TabIndex = 6;
             // 
             // file_decrypt_button
             // 
             this.file_decrypt_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.file_decrypt_button.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.file_decrypt_button.Location = new System.Drawing.Point(306, 3);
+            this.file_decrypt_button.Location = new System.Drawing.Point(376, 3);
             this.file_decrypt_button.Name = "file_decrypt_button";
-            this.file_decrypt_button.Size = new System.Drawing.Size(297, 116);
+            this.file_decrypt_button.Size = new System.Drawing.Size(367, 130);
             this.file_decrypt_button.TabIndex = 7;
             this.file_decrypt_button.Text = "Decrypt";
             this.file_decrypt_button.UseVisualStyleBackColor = true;
-            this.file_decrypt_button.Click += new System.EventHandler(this.file_decrypt_button_Click);
             // 
             // file_encrypt_button
             // 
@@ -242,21 +246,20 @@
             this.file_encrypt_button.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
             this.file_encrypt_button.Location = new System.Drawing.Point(3, 3);
             this.file_encrypt_button.Name = "file_encrypt_button";
-            this.file_encrypt_button.Size = new System.Drawing.Size(297, 116);
+            this.file_encrypt_button.Size = new System.Drawing.Size(367, 130);
             this.file_encrypt_button.TabIndex = 6;
             this.file_encrypt_button.Text = "Encrypt";
             this.file_encrypt_button.UseVisualStyleBackColor = true;
-            this.file_encrypt_button.Click += new System.EventHandler(this.file_encrypt_button_Click);
             // 
             // extra_groupbox
             // 
             this.extra_groupbox.Controls.Add(this.file_extra_layout);
             this.extra_groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.extra_groupbox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.extra_groupbox.Location = new System.Drawing.Point(710, 3);
+            this.extra_groupbox.Location = new System.Drawing.Point(873, 3);
             this.extra_groupbox.Name = "extra_groupbox";
             this.extra_groupbox.Padding = new System.Windows.Forms.Padding(4);
-            this.extra_groupbox.Size = new System.Drawing.Size(299, 116);
+            this.extra_groupbox.Size = new System.Drawing.Size(369, 130);
             this.extra_groupbox.TabIndex = 5;
             this.extra_groupbox.TabStop = false;
             this.extra_groupbox.Text = "Extra";
@@ -273,7 +276,7 @@
             this.file_extra_layout.Name = "file_extra_layout";
             this.file_extra_layout.RowCount = 1;
             this.file_extra_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.file_extra_layout.Size = new System.Drawing.Size(291, 80);
+            this.file_extra_layout.Size = new System.Drawing.Size(361, 94);
             this.file_extra_layout.TabIndex = 1;
             // 
             // file_offline_checkbox
@@ -282,14 +285,13 @@
             this.file_offline_checkbox.AutoSize = true;
             this.file_offline_checkbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.file_offline_checkbox.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
-            this.file_offline_checkbox.Location = new System.Drawing.Point(148, 3);
+            this.file_offline_checkbox.Location = new System.Drawing.Point(183, 3);
             this.file_offline_checkbox.Name = "file_offline_checkbox";
-            this.file_offline_checkbox.Size = new System.Drawing.Size(140, 74);
+            this.file_offline_checkbox.Size = new System.Drawing.Size(175, 88);
             this.file_offline_checkbox.TabIndex = 6;
             this.file_offline_checkbox.Text = "Offline Mode";
             this.file_offline_checkbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.file_offline_checkbox.UseVisualStyleBackColor = true;
-            this.file_offline_checkbox.CheckedChanged += new System.EventHandler(this.file_offline_checkbox_CheckedChanged);
             // 
             // file_swap_button
             // 
@@ -297,11 +299,10 @@
             this.file_swap_button.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
             this.file_swap_button.Location = new System.Drawing.Point(3, 3);
             this.file_swap_button.Name = "file_swap_button";
-            this.file_swap_button.Size = new System.Drawing.Size(139, 74);
+            this.file_swap_button.Size = new System.Drawing.Size(174, 88);
             this.file_swap_button.TabIndex = 1;
             this.file_swap_button.Text = "Swap Input/Output";
             this.file_swap_button.UseVisualStyleBackColor = true;
-            this.file_swap_button.Click += new System.EventHandler(this.file_swap_button_Click);
             // 
             // file_input_groupbox
             // 
@@ -311,7 +312,7 @@
             this.file_input_groupbox.Location = new System.Drawing.Point(3, 3);
             this.file_input_groupbox.Name = "file_input_groupbox";
             this.file_input_groupbox.Padding = new System.Windows.Forms.Padding(16);
-            this.file_input_groupbox.Size = new System.Drawing.Size(1012, 171);
+            this.file_input_groupbox.Size = new System.Drawing.Size(1245, 194);
             this.file_input_groupbox.TabIndex = 0;
             this.file_input_groupbox.TabStop = false;
             this.file_input_groupbox.Text = "Input File Path";
@@ -329,22 +330,19 @@
             this.file_input_layout.Name = "file_input_layout";
             this.file_input_layout.RowCount = 1;
             this.file_input_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.file_input_layout.Size = new System.Drawing.Size(980, 111);
+            this.file_input_layout.Size = new System.Drawing.Size(1213, 134);
             this.file_input_layout.TabIndex = 1;
-            this.file_input_layout.DragDrop += new System.Windows.Forms.DragEventHandler(this.file_input_groupbox_DragDrop);
-            this.file_input_layout.DragEnter += new System.Windows.Forms.DragEventHandler(this.handler_DragEnter);
             // 
             // file_input_button
             // 
             this.file_input_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.file_input_button.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold);
-            this.file_input_button.Location = new System.Drawing.Point(787, 3);
+            this.file_input_button.Location = new System.Drawing.Point(973, 3);
             this.file_input_button.Name = "file_input_button";
-            this.file_input_button.Size = new System.Drawing.Size(190, 105);
+            this.file_input_button.Size = new System.Drawing.Size(237, 128);
             this.file_input_button.TabIndex = 0;
             this.file_input_button.Text = "Browse";
             this.file_input_button.UseVisualStyleBackColor = true;
-            this.file_input_button.Click += new System.EventHandler(this.file_input_button_Click);
             // 
             // file_input_textbox
             // 
@@ -352,68 +350,18 @@
             this.file_input_textbox.Location = new System.Drawing.Point(3, 3);
             this.file_input_textbox.Multiline = true;
             this.file_input_textbox.Name = "file_input_textbox";
-            this.file_input_textbox.Size = new System.Drawing.Size(778, 105);
+            this.file_input_textbox.Size = new System.Drawing.Size(964, 128);
             this.file_input_textbox.TabIndex = 1;
-            // 
-            // file_key_groupbox
-            // 
-            this.file_key_groupbox.Controls.Add(this.file_key_layout);
-            this.file_key_groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.file_key_groupbox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.file_key_groupbox.Location = new System.Drawing.Point(3, 357);
-            this.file_key_groupbox.Name = "file_key_groupbox";
-            this.file_key_groupbox.Padding = new System.Windows.Forms.Padding(16);
-            this.file_key_groupbox.Size = new System.Drawing.Size(1012, 171);
-            this.file_key_groupbox.TabIndex = 2;
-            this.file_key_groupbox.TabStop = false;
-            this.file_key_groupbox.Text = "Key";
-            // 
-            // file_key_layout
-            // 
-            this.file_key_layout.ColumnCount = 2;
-            this.file_key_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.file_key_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.file_key_layout.Controls.Add(this.file_key_button, 1, 0);
-            this.file_key_layout.Controls.Add(this.file_key_textbox, 0, 0);
-            this.file_key_layout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.file_key_layout.Location = new System.Drawing.Point(16, 44);
-            this.file_key_layout.Name = "file_key_layout";
-            this.file_key_layout.RowCount = 1;
-            this.file_key_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.file_key_layout.Size = new System.Drawing.Size(980, 111);
-            this.file_key_layout.TabIndex = 1;
-            // 
-            // file_key_button
-            // 
-            this.file_key_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.file_key_button.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold);
-            this.file_key_button.Location = new System.Drawing.Point(787, 3);
-            this.file_key_button.Name = "file_key_button";
-            this.file_key_button.Size = new System.Drawing.Size(190, 105);
-            this.file_key_button.TabIndex = 0;
-            this.file_key_button.Text = "Random Key";
-            this.file_key_button.UseVisualStyleBackColor = true;
-            this.file_key_button.Click += new System.EventHandler(this.file_key_button_Click);
-            // 
-            // file_key_textbox
-            // 
-            this.file_key_textbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.file_key_textbox.Location = new System.Drawing.Point(3, 3);
-            this.file_key_textbox.Multiline = true;
-            this.file_key_textbox.Name = "file_key_textbox";
-            this.file_key_textbox.Size = new System.Drawing.Size(778, 105);
-            this.file_key_textbox.TabIndex = 1;
-            this.file_key_textbox.Text = "zastita--informacija--2022";
             // 
             // file_output_groupbox
             // 
             this.file_output_groupbox.Controls.Add(this.file_output_layout);
             this.file_output_groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.file_output_groupbox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.file_output_groupbox.Location = new System.Drawing.Point(3, 180);
+            this.file_output_groupbox.Location = new System.Drawing.Point(3, 203);
             this.file_output_groupbox.Name = "file_output_groupbox";
             this.file_output_groupbox.Padding = new System.Windows.Forms.Padding(16);
-            this.file_output_groupbox.Size = new System.Drawing.Size(1012, 171);
+            this.file_output_groupbox.Size = new System.Drawing.Size(1245, 194);
             this.file_output_groupbox.TabIndex = 2;
             this.file_output_groupbox.TabStop = false;
             this.file_output_groupbox.Text = "Ouput File Path";
@@ -431,22 +379,19 @@
             this.file_output_layout.Name = "file_output_layout";
             this.file_output_layout.RowCount = 1;
             this.file_output_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.file_output_layout.Size = new System.Drawing.Size(980, 111);
+            this.file_output_layout.Size = new System.Drawing.Size(1213, 134);
             this.file_output_layout.TabIndex = 1;
-            this.file_output_layout.DragDrop += new System.Windows.Forms.DragEventHandler(this.file_output_groupbox_DragDrop);
-            this.file_output_layout.DragEnter += new System.Windows.Forms.DragEventHandler(this.handler_DragEnter);
             // 
             // file_output_button
             // 
             this.file_output_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.file_output_button.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold);
-            this.file_output_button.Location = new System.Drawing.Point(787, 3);
+            this.file_output_button.Location = new System.Drawing.Point(973, 3);
             this.file_output_button.Name = "file_output_button";
-            this.file_output_button.Size = new System.Drawing.Size(190, 105);
+            this.file_output_button.Size = new System.Drawing.Size(237, 128);
             this.file_output_button.TabIndex = 0;
             this.file_output_button.Text = "Browse";
             this.file_output_button.UseVisualStyleBackColor = true;
-            this.file_output_button.Click += new System.EventHandler(this.file_output_button_Click);
             // 
             // file_output_textbox
             // 
@@ -454,7 +399,7 @@
             this.file_output_textbox.Location = new System.Drawing.Point(3, 3);
             this.file_output_textbox.Multiline = true;
             this.file_output_textbox.Name = "file_output_textbox";
-            this.file_output_textbox.Size = new System.Drawing.Size(778, 105);
+            this.file_output_textbox.Size = new System.Drawing.Size(964, 128);
             this.file_output_textbox.TabIndex = 1;
             // 
             // bitmap_tab
@@ -517,7 +462,6 @@
             this.bitmap_decrypt_button.TabIndex = 7;
             this.bitmap_decrypt_button.Text = "Decrypt";
             this.bitmap_decrypt_button.UseVisualStyleBackColor = true;
-            this.bitmap_decrypt_button.Click += new System.EventHandler(this.bitmap_decrypt_button_Click);
             // 
             // bitmap_encrypt_button
             // 
@@ -529,7 +473,6 @@
             this.bitmap_encrypt_button.TabIndex = 6;
             this.bitmap_encrypt_button.Text = "Encrypt";
             this.bitmap_encrypt_button.UseVisualStyleBackColor = true;
-            this.bitmap_encrypt_button.Click += new System.EventHandler(this.bitmap_encrypt_button_Click);
             // 
             // bitmap_extra_layout
             // 
@@ -572,7 +515,6 @@
             this.bitmap_offline_checkbox.Text = "Offline Mode";
             this.bitmap_offline_checkbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bitmap_offline_checkbox.UseVisualStyleBackColor = true;
-            this.bitmap_offline_checkbox.CheckedChanged += new System.EventHandler(this.bitmap_offline_checkbox_CheckedChanged);
             // 
             // bitmap_swap_button
             // 
@@ -584,7 +526,6 @@
             this.bitmap_swap_button.TabIndex = 1;
             this.bitmap_swap_button.Text = "Swap Input/Output";
             this.bitmap_swap_button.UseVisualStyleBackColor = true;
-            this.bitmap_swap_button.Click += new System.EventHandler(this.bitmap_swap_button_Click);
             // 
             // bitmap_input_groupbox
             // 
@@ -614,8 +555,6 @@
             this.bitmap_input_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.bitmap_input_layout.Size = new System.Drawing.Size(980, 32);
             this.bitmap_input_layout.TabIndex = 1;
-            this.bitmap_input_layout.DragDrop += new System.Windows.Forms.DragEventHandler(this.bitmap_input_groupbox_DragDrop);
-            this.bitmap_input_layout.DragEnter += new System.Windows.Forms.DragEventHandler(this.handler_DragEnter);
             // 
             // bitmap_input_button
             // 
@@ -627,7 +566,6 @@
             this.bitmap_input_button.TabIndex = 0;
             this.bitmap_input_button.Text = "Browse";
             this.bitmap_input_button.UseVisualStyleBackColor = true;
-            this.bitmap_input_button.Click += new System.EventHandler(this.bitmap_input_button_Click);
             // 
             // bitmap_input_textbox
             // 
@@ -649,7 +587,7 @@
             this.bitmap_key_groupbox.Size = new System.Drawing.Size(1012, 92);
             this.bitmap_key_groupbox.TabIndex = 2;
             this.bitmap_key_groupbox.TabStop = false;
-            this.bitmap_key_groupbox.Text = "Key";
+            this.bitmap_key_groupbox.Text = "Key (128bit - 16 char)";
             // 
             // bitmap_key_layout
             // 
@@ -676,17 +614,17 @@
             this.bitmap_key_button.TabIndex = 0;
             this.bitmap_key_button.Text = "Random Key";
             this.bitmap_key_button.UseVisualStyleBackColor = true;
-            this.bitmap_key_button.Click += new System.EventHandler(this.bitmap_key_button_Click);
             // 
             // bitmap_key_textbox
             // 
             this.bitmap_key_textbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bitmap_key_textbox.Location = new System.Drawing.Point(3, 3);
+            this.bitmap_key_textbox.MaxLength = 16;
             this.bitmap_key_textbox.Multiline = true;
             this.bitmap_key_textbox.Name = "bitmap_key_textbox";
             this.bitmap_key_textbox.Size = new System.Drawing.Size(778, 26);
             this.bitmap_key_textbox.TabIndex = 1;
-            this.bitmap_key_textbox.Text = "zastita--informacija--2022";
+            this.bitmap_key_textbox.Text = "vZQS2MEkE-Z%R$PK";
             // 
             // bitmap_output_groupbox
             // 
@@ -716,8 +654,6 @@
             this.bitmap_output_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.bitmap_output_layout.Size = new System.Drawing.Size(980, 32);
             this.bitmap_output_layout.TabIndex = 1;
-            this.bitmap_output_layout.DragDrop += new System.Windows.Forms.DragEventHandler(this.bitmap_output_groupbox_DragDrop);
-            this.bitmap_output_layout.DragEnter += new System.Windows.Forms.DragEventHandler(this.handler_DragEnter);
             // 
             // bitmap_output_button
             // 
@@ -729,7 +665,6 @@
             this.bitmap_output_button.TabIndex = 0;
             this.bitmap_output_button.Text = "Browse";
             this.bitmap_output_button.UseVisualStyleBackColor = true;
-            this.bitmap_output_button.Click += new System.EventHandler(this.bitmap_output_button_Click);
             // 
             // bitmap_output_textbox
             // 
@@ -861,7 +796,6 @@
             this.text_decrypt_button.TabIndex = 7;
             this.text_decrypt_button.Text = "Decrypt";
             this.text_decrypt_button.UseVisualStyleBackColor = true;
-            this.text_decrypt_button.Click += new System.EventHandler(this.text_decrypt_button_Click);
             // 
             // text_encrypt_button
             // 
@@ -873,7 +807,6 @@
             this.text_encrypt_button.TabIndex = 6;
             this.text_encrypt_button.Text = "Encrypt";
             this.text_encrypt_button.UseVisualStyleBackColor = true;
-            this.text_encrypt_button.Click += new System.EventHandler(this.text_encrypt_button_Click);
             // 
             // text_extra_groupbox
             // 
@@ -916,7 +849,6 @@
             this.text_offline_checkbox.Text = "Offline Mode";
             this.text_offline_checkbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.text_offline_checkbox.UseVisualStyleBackColor = true;
-            this.text_offline_checkbox.CheckedChanged += new System.EventHandler(this.text_offline_checkbox_CheckedChanged);
             // 
             // text_swap_button
             // 
@@ -928,7 +860,6 @@
             this.text_swap_button.TabIndex = 1;
             this.text_swap_button.Text = "Swap Input/Output";
             this.text_swap_button.UseVisualStyleBackColor = true;
-            this.text_swap_button.Click += new System.EventHandler(this.text_swap_button_Click);
             // 
             // text_input_groupbox
             // 
@@ -958,8 +889,6 @@
             this.text_input_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.text_input_layout.Size = new System.Drawing.Size(980, 111);
             this.text_input_layout.TabIndex = 1;
-            this.text_input_layout.DragDrop += new System.Windows.Forms.DragEventHandler(this.text_input_groupbox_DragDrop);
-            this.text_input_layout.DragEnter += new System.Windows.Forms.DragEventHandler(this.handler_DragEnter);
             // 
             // text_input_button
             // 
@@ -971,7 +900,6 @@
             this.text_input_button.TabIndex = 0;
             this.text_input_button.Text = "Browse";
             this.text_input_button.UseVisualStyleBackColor = true;
-            this.text_input_button.Click += new System.EventHandler(this.text_input_button_Click);
             // 
             // text_input_textbox
             // 
@@ -993,7 +921,7 @@
             this.text_key_groupbox.Size = new System.Drawing.Size(1012, 171);
             this.text_key_groupbox.TabIndex = 2;
             this.text_key_groupbox.TabStop = false;
-            this.text_key_groupbox.Text = "Key";
+            this.text_key_groupbox.Text = "Key (128bit - 16 char)";
             // 
             // text_key_layout
             // 
@@ -1020,17 +948,17 @@
             this.text_key_button.TabIndex = 0;
             this.text_key_button.Text = "Random Key";
             this.text_key_button.UseVisualStyleBackColor = true;
-            this.text_key_button.Click += new System.EventHandler(this.text_key_button_Click);
             // 
             // text_key_textbox
             // 
             this.text_key_textbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.text_key_textbox.Location = new System.Drawing.Point(3, 3);
+            this.text_key_textbox.MaxLength = 16;
             this.text_key_textbox.Multiline = true;
             this.text_key_textbox.Name = "text_key_textbox";
             this.text_key_textbox.Size = new System.Drawing.Size(778, 105);
             this.text_key_textbox.TabIndex = 1;
-            this.text_key_textbox.Text = "zastita--informacija--2022";
+            this.text_key_textbox.Text = "vZQS2MEkE-Z%R$PK";
             // 
             // text_output_groupbox
             // 
@@ -1060,8 +988,6 @@
             this.text_output_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.text_output_layout.Size = new System.Drawing.Size(980, 111);
             this.text_output_layout.TabIndex = 1;
-            this.text_output_layout.DragDrop += new System.Windows.Forms.DragEventHandler(this.text_output_groupbox_DragDrop);
-            this.text_output_layout.DragEnter += new System.Windows.Forms.DragEventHandler(this.handler_DragEnter);
             // 
             // text_output_button
             // 
@@ -1073,7 +999,6 @@
             this.text_output_button.TabIndex = 0;
             this.text_output_button.Text = "Browse";
             this.text_output_button.UseVisualStyleBackColor = true;
-            this.text_output_button.Click += new System.EventHandler(this.text_output_button_Click);
             // 
             // text_output_textbox
             // 
@@ -1165,7 +1090,6 @@
             this.plaintext_decrypt_button.TabIndex = 7;
             this.plaintext_decrypt_button.Text = "Decrypt";
             this.plaintext_decrypt_button.UseVisualStyleBackColor = true;
-            this.plaintext_decrypt_button.Click += new System.EventHandler(this.plaintext_decrypt_button_Click);
             // 
             // plaintext_encrypt_button
             // 
@@ -1177,7 +1101,6 @@
             this.plaintext_encrypt_button.TabIndex = 6;
             this.plaintext_encrypt_button.Text = "Encrypt";
             this.plaintext_encrypt_button.UseVisualStyleBackColor = true;
-            this.plaintext_encrypt_button.Click += new System.EventHandler(this.plaintext_encrypt_button_Click);
             // 
             // plaintext_extra_groupbox
             // 
@@ -1220,7 +1143,6 @@
             this.plaintext_offline_checkbox.Text = "Offline Mode";
             this.plaintext_offline_checkbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.plaintext_offline_checkbox.UseVisualStyleBackColor = true;
-            this.plaintext_offline_checkbox.CheckedChanged += new System.EventHandler(this.plaintext_offline_checkbox_CheckedChanged);
             // 
             // plaintext_swap_button
             // 
@@ -1232,7 +1154,6 @@
             this.plaintext_swap_button.TabIndex = 1;
             this.plaintext_swap_button.Text = "Swap Input/Output";
             this.plaintext_swap_button.UseVisualStyleBackColor = true;
-            this.plaintext_swap_button.Click += new System.EventHandler(this.plaintext_swap_button_Click);
             // 
             // plaintext_input_groupbox
             // 
@@ -1267,7 +1188,7 @@
             this.plaintext_key_groupbox.Size = new System.Drawing.Size(1012, 171);
             this.plaintext_key_groupbox.TabIndex = 2;
             this.plaintext_key_groupbox.TabStop = false;
-            this.plaintext_key_groupbox.Text = "Key";
+            this.plaintext_key_groupbox.Text = "Key (128bit - 16 char)";
             // 
             // plaintext_key_layout
             // 
@@ -1294,33 +1215,145 @@
             this.plaintext_key_button.TabIndex = 0;
             this.plaintext_key_button.Text = "Random Key";
             this.plaintext_key_button.UseVisualStyleBackColor = true;
-            this.plaintext_key_button.Click += new System.EventHandler(this.plaintext_key_button_Click);
             // 
             // plaintext_key_textbox
             // 
             this.plaintext_key_textbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plaintext_key_textbox.Location = new System.Drawing.Point(3, 3);
+            this.plaintext_key_textbox.MaxLength = 16;
             this.plaintext_key_textbox.Multiline = true;
             this.plaintext_key_textbox.Name = "plaintext_key_textbox";
             this.plaintext_key_textbox.Size = new System.Drawing.Size(778, 105);
             this.plaintext_key_textbox.TabIndex = 1;
-            this.plaintext_key_textbox.Text = "zastita--informacija--2022";
+            this.plaintext_key_textbox.Text = "vZQS2MEkE-Z%R$PK";
             // 
-            // RC4Form
+            // file_keyvector_layout
+            // 
+            this.file_keyvector_layout.ColumnCount = 2;
+            this.file_keyvector_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.file_keyvector_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.file_keyvector_layout.Controls.Add(this.file_vector_groupbox, 0, 0);
+            this.file_keyvector_layout.Controls.Add(this.file_key_groupbox, 0, 0);
+            this.file_keyvector_layout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.file_keyvector_layout.Location = new System.Drawing.Point(3, 403);
+            this.file_keyvector_layout.Name = "file_keyvector_layout";
+            this.file_keyvector_layout.RowCount = 1;
+            this.file_keyvector_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.file_keyvector_layout.Size = new System.Drawing.Size(1245, 194);
+            this.file_keyvector_layout.TabIndex = 7;
+            // 
+            // file_key_groupbox
+            // 
+            this.file_key_groupbox.Controls.Add(this.file_key_layout);
+            this.file_key_groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.file_key_groupbox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
+            this.file_key_groupbox.Location = new System.Drawing.Point(3, 3);
+            this.file_key_groupbox.Name = "file_key_groupbox";
+            this.file_key_groupbox.Padding = new System.Windows.Forms.Padding(16);
+            this.file_key_groupbox.Size = new System.Drawing.Size(616, 188);
+            this.file_key_groupbox.TabIndex = 3;
+            this.file_key_groupbox.TabStop = false;
+            this.file_key_groupbox.Text = "Key (128bit - 16 char)";
+            // 
+            // file_key_layout
+            // 
+            this.file_key_layout.ColumnCount = 2;
+            this.file_key_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.file_key_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.file_key_layout.Controls.Add(this.file_key_button, 1, 0);
+            this.file_key_layout.Controls.Add(this.file_key_textbox, 0, 0);
+            this.file_key_layout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.file_key_layout.Location = new System.Drawing.Point(16, 44);
+            this.file_key_layout.Name = "file_key_layout";
+            this.file_key_layout.RowCount = 1;
+            this.file_key_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.file_key_layout.Size = new System.Drawing.Size(584, 128);
+            this.file_key_layout.TabIndex = 1;
+            // 
+            // file_key_button
+            // 
+            this.file_key_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.file_key_button.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold);
+            this.file_key_button.Location = new System.Drawing.Point(392, 3);
+            this.file_key_button.Name = "file_key_button";
+            this.file_key_button.Size = new System.Drawing.Size(189, 122);
+            this.file_key_button.TabIndex = 0;
+            this.file_key_button.Text = "Random Key";
+            this.file_key_button.UseVisualStyleBackColor = true;
+            // 
+            // file_key_textbox
+            // 
+            this.file_key_textbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.file_key_textbox.Location = new System.Drawing.Point(3, 3);
+            this.file_key_textbox.MaxLength = 16;
+            this.file_key_textbox.Multiline = true;
+            this.file_key_textbox.Name = "file_key_textbox";
+            this.file_key_textbox.Size = new System.Drawing.Size(383, 122);
+            this.file_key_textbox.TabIndex = 1;
+            this.file_key_textbox.Text = "vZQS2MEkE-Z%R$PK";
+            // 
+            // file_vector_groupbox
+            // 
+            this.file_vector_groupbox.Controls.Add(this.file_vector_layout);
+            this.file_vector_groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.file_vector_groupbox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
+            this.file_vector_groupbox.Location = new System.Drawing.Point(625, 3);
+            this.file_vector_groupbox.Name = "file_vector_groupbox";
+            this.file_vector_groupbox.Padding = new System.Windows.Forms.Padding(16);
+            this.file_vector_groupbox.Size = new System.Drawing.Size(617, 188);
+            this.file_vector_groupbox.TabIndex = 4;
+            this.file_vector_groupbox.TabStop = false;
+            this.file_vector_groupbox.Text = "Initialization Vector (64bit - 8 char)";
+            // 
+            // file_vector_layout
+            // 
+            this.file_vector_layout.ColumnCount = 2;
+            this.file_vector_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.file_vector_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.file_vector_layout.Controls.Add(this.file_vector_button, 1, 0);
+            this.file_vector_layout.Controls.Add(this.file_vector_textbox, 0, 0);
+            this.file_vector_layout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.file_vector_layout.Location = new System.Drawing.Point(16, 44);
+            this.file_vector_layout.Name = "file_vector_layout";
+            this.file_vector_layout.RowCount = 1;
+            this.file_vector_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.file_vector_layout.Size = new System.Drawing.Size(585, 128);
+            this.file_vector_layout.TabIndex = 1;
+            // 
+            // file_vector_button
+            // 
+            this.file_vector_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.file_vector_button.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold);
+            this.file_vector_button.Location = new System.Drawing.Point(393, 3);
+            this.file_vector_button.Name = "file_vector_button";
+            this.file_vector_button.Size = new System.Drawing.Size(189, 122);
+            this.file_vector_button.TabIndex = 0;
+            this.file_vector_button.Text = "Random Key";
+            this.file_vector_button.UseVisualStyleBackColor = true;
+            // 
+            // file_vector_textbox
+            // 
+            this.file_vector_textbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.file_vector_textbox.Location = new System.Drawing.Point(3, 3);
+            this.file_vector_textbox.MaxLength = 8;
+            this.file_vector_textbox.Multiline = true;
+            this.file_vector_textbox.Name = "file_vector_textbox";
+            this.file_vector_textbox.Size = new System.Drawing.Size(384, 122);
+            this.file_vector_textbox.TabIndex = 1;
+            this.file_vector_textbox.Text = "CBC--TEA";
+            // 
+            // CBCForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(1078, 744);
+            this.ClientSize = new System.Drawing.Size(1311, 827);
             this.Controls.Add(this.tabs);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "RC4Form";
+            this.Name = "CBCForm";
             this.Padding = new System.Windows.Forms.Padding(10);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "RC4";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RC4Form_FormClosing);
-            this.Load += new System.EventHandler(this.RC4Form_Load);
+            this.Text = "CBC-TEA";
             this.tabs.ResumeLayout(false);
             this.file_tab.ResumeLayout(false);
             this.file_layout.ResumeLayout(false);
@@ -1331,9 +1364,6 @@
             this.file_input_groupbox.ResumeLayout(false);
             this.file_input_layout.ResumeLayout(false);
             this.file_input_layout.PerformLayout();
-            this.file_key_groupbox.ResumeLayout(false);
-            this.file_key_layout.ResumeLayout(false);
-            this.file_key_layout.PerformLayout();
             this.file_output_groupbox.ResumeLayout(false);
             this.file_output_layout.ResumeLayout(false);
             this.file_output_layout.PerformLayout();
@@ -1385,6 +1415,13 @@
             this.plaintext_key_groupbox.ResumeLayout(false);
             this.plaintext_key_layout.ResumeLayout(false);
             this.plaintext_key_layout.PerformLayout();
+            this.file_keyvector_layout.ResumeLayout(false);
+            this.file_key_groupbox.ResumeLayout(false);
+            this.file_key_layout.ResumeLayout(false);
+            this.file_key_layout.PerformLayout();
+            this.file_vector_groupbox.ResumeLayout(false);
+            this.file_vector_layout.ResumeLayout(false);
+            this.file_vector_layout.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1393,31 +1430,23 @@
 
         private System.Windows.Forms.TabControl tabs;
         private System.Windows.Forms.TabPage file_tab;
-        private System.Windows.Forms.TabPage bitmap_tab;
-        private System.Windows.Forms.TabPage text_tab;
-        private System.Windows.Forms.GroupBox file_key_groupbox;
-        private System.Windows.Forms.TableLayoutPanel file_key_layout;
-        private System.Windows.Forms.Button file_key_button;
-        private System.Windows.Forms.TextBox file_key_textbox;
-        private System.Windows.Forms.GroupBox file_output_groupbox;
-        private System.Windows.Forms.TableLayoutPanel file_output_layout;
-        private System.Windows.Forms.Button file_output_button;
-        private System.Windows.Forms.TextBox file_output_textbox;
-        private System.Windows.Forms.GroupBox file_input_groupbox;
-        private System.Windows.Forms.TableLayoutPanel file_input_layout;
-        private System.Windows.Forms.Button file_input_button;
-        private System.Windows.Forms.TextBox file_input_textbox;
-        private System.Windows.Forms.TabPage plaintext_tab;
         private System.Windows.Forms.TableLayoutPanel file_layout;
+        private System.Windows.Forms.TableLayoutPanel file_buttons_layout;
+        private System.Windows.Forms.Button file_decrypt_button;
+        private System.Windows.Forms.Button file_encrypt_button;
         private System.Windows.Forms.GroupBox extra_groupbox;
         private System.Windows.Forms.TableLayoutPanel file_extra_layout;
         private System.Windows.Forms.CheckBox file_offline_checkbox;
         private System.Windows.Forms.Button file_swap_button;
-        private System.Windows.Forms.TableLayoutPanel file_buttons_layout;
-        private System.Windows.Forms.Button file_decrypt_button;
-        private System.Windows.Forms.Button file_encrypt_button;
-        private System.Windows.Forms.OpenFileDialog open_file_dialog;
-        private System.Windows.Forms.SaveFileDialog save_file_dialog;
+        private System.Windows.Forms.GroupBox file_input_groupbox;
+        private System.Windows.Forms.TableLayoutPanel file_input_layout;
+        private System.Windows.Forms.Button file_input_button;
+        private System.Windows.Forms.TextBox file_input_textbox;
+        private System.Windows.Forms.GroupBox file_output_groupbox;
+        private System.Windows.Forms.TableLayoutPanel file_output_layout;
+        private System.Windows.Forms.Button file_output_button;
+        private System.Windows.Forms.TextBox file_output_textbox;
+        private System.Windows.Forms.TabPage bitmap_tab;
         private System.Windows.Forms.TableLayoutPanel bitmap_layout;
         private System.Windows.Forms.TableLayoutPanel bitmap_buttons_layout;
         private System.Windows.Forms.Button bitmap_decrypt_button;
@@ -1443,6 +1472,7 @@
         private System.Windows.Forms.PictureBox bitmap_preview_input_picturebox;
         private System.Windows.Forms.GroupBox bitmap_preview_output_groupbox;
         private System.Windows.Forms.PictureBox bitmap_preview_output_picturebox;
+        private System.Windows.Forms.TabPage text_tab;
         private System.Windows.Forms.TableLayoutPanel text_layout;
         private System.Windows.Forms.TableLayoutPanel text_buttons_layout;
         private System.Windows.Forms.Button text_decrypt_button;
@@ -1463,6 +1493,7 @@
         private System.Windows.Forms.TableLayoutPanel text_output_layout;
         private System.Windows.Forms.Button text_output_button;
         private System.Windows.Forms.TextBox text_output_textbox;
+        private System.Windows.Forms.TabPage plaintext_tab;
         private System.Windows.Forms.TableLayoutPanel plaintext_layout;
         private System.Windows.Forms.GroupBox plaintext_output_groupbox;
         private System.Windows.Forms.TextBox plaintext_output_textbox;
@@ -1479,5 +1510,14 @@
         private System.Windows.Forms.TableLayoutPanel plaintext_key_layout;
         private System.Windows.Forms.Button plaintext_key_button;
         private System.Windows.Forms.TextBox plaintext_key_textbox;
+        private System.Windows.Forms.TableLayoutPanel file_keyvector_layout;
+        private System.Windows.Forms.GroupBox file_vector_groupbox;
+        private System.Windows.Forms.TableLayoutPanel file_vector_layout;
+        private System.Windows.Forms.Button file_vector_button;
+        private System.Windows.Forms.TextBox file_vector_textbox;
+        private System.Windows.Forms.GroupBox file_key_groupbox;
+        private System.Windows.Forms.TableLayoutPanel file_key_layout;
+        private System.Windows.Forms.Button file_key_button;
+        private System.Windows.Forms.TextBox file_key_textbox;
     }
 }

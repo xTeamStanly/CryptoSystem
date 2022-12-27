@@ -1,4 +1,4 @@
-﻿using CryptoLibrary;
+﻿using Library.Crypto;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -16,15 +16,6 @@ namespace CryptoConsumer {
         /// </summary>
         [STAThread]
         static void Main() {
-
-            // RC4 a = new RC4("1234");
-            // string asd = a.encrypt_unicode_to_unicode("a");
-
-
-            // Library.Convertor.unicode_to_bytes("");
-
-            //CBC_TEA cbc = new CBC_TEA("vZQS2MEkE-Z%R$PK", "1");
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());

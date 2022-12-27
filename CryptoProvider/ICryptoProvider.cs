@@ -35,6 +35,19 @@ namespace CryptoProvider {
         [OperationContract] string TEA_EncryptPlaintext(string key, string input);
         [OperationContract] string TEA_DecryptPlaintext(string key, string input);
 
+        // ###################################### CBC-TEA ######################################
+        [OperationContract] byte[] CBC_EncryptFile(string key, byte[] input, string initialization_vector);
+        [OperationContract] byte[] CBC_DecryptFile(string key, byte[] input, string initialization_vector);
+
+        [OperationContract] byte[] CBC_EncryptBitmap(string key, byte[] input, string initialization_vector);
+        [OperationContract] byte[] CBC_DecryptBitmap(string key, byte[] input, string initialization_vector);
+
+        [OperationContract] string[] CBC_EncryptText(string key, string[] input, string initialization_vector);
+        [OperationContract] string[] CBC_DecryptText(string key, string[] input, string initialization_vector);
+
+        [OperationContract] string CBC_EncryptPlaintext(string key, string input, string initialization_vector);
+        [OperationContract] string CBC_DecryptPlaintext(string key, string input, string initialization_vector);
+
 
 
 

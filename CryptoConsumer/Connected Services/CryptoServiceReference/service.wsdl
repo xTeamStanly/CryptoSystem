@@ -103,6 +103,54 @@
   <wsdl:message name="ICryptoProvider_TEA_DecryptPlaintext_OutputMessage">
     <wsdl:part name="parameters" element="tns:TEA_DecryptPlaintextResponse" />
   </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_EncryptFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_EncryptFile" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_EncryptFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_EncryptFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_DecryptFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_DecryptFile" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_DecryptFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_DecryptFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_EncryptBitmap_InputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_EncryptBitmap" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_EncryptBitmap_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_EncryptBitmapResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_DecryptBitmap_InputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_DecryptBitmap" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_DecryptBitmap_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_DecryptBitmapResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_EncryptText_InputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_EncryptText" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_EncryptText_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_EncryptTextResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_DecryptText_InputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_DecryptText" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_DecryptText_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_DecryptTextResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_EncryptPlaintext_InputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_EncryptPlaintext" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_EncryptPlaintext_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_EncryptPlaintextResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_DecryptPlaintext_InputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_DecryptPlaintext" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CBC_DecryptPlaintext_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CBC_DecryptPlaintextResponse" />
+  </wsdl:message>
   <wsdl:portType name="ICryptoProvider">
     <wsdl:operation name="RC4_EncryptFile">
       <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/RC4_EncryptFile" message="tns:ICryptoProvider_RC4_EncryptFile_InputMessage" />
@@ -167,6 +215,38 @@
     <wsdl:operation name="TEA_DecryptPlaintext">
       <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/TEA_DecryptPlaintext" message="tns:ICryptoProvider_TEA_DecryptPlaintext_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/TEA_DecryptPlaintextResponse" message="tns:ICryptoProvider_TEA_DecryptPlaintext_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CBC_EncryptFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_EncryptFile" message="tns:ICryptoProvider_CBC_EncryptFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_EncryptFileResponse" message="tns:ICryptoProvider_CBC_EncryptFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CBC_DecryptFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_DecryptFile" message="tns:ICryptoProvider_CBC_DecryptFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_DecryptFileResponse" message="tns:ICryptoProvider_CBC_DecryptFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CBC_EncryptBitmap">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_EncryptBitmap" message="tns:ICryptoProvider_CBC_EncryptBitmap_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_EncryptBitmapResponse" message="tns:ICryptoProvider_CBC_EncryptBitmap_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CBC_DecryptBitmap">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_DecryptBitmap" message="tns:ICryptoProvider_CBC_DecryptBitmap_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_DecryptBitmapResponse" message="tns:ICryptoProvider_CBC_DecryptBitmap_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CBC_EncryptText">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_EncryptText" message="tns:ICryptoProvider_CBC_EncryptText_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_EncryptTextResponse" message="tns:ICryptoProvider_CBC_EncryptText_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CBC_DecryptText">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_DecryptText" message="tns:ICryptoProvider_CBC_DecryptText_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_DecryptTextResponse" message="tns:ICryptoProvider_CBC_DecryptText_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CBC_EncryptPlaintext">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_EncryptPlaintext" message="tns:ICryptoProvider_CBC_EncryptPlaintext_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_EncryptPlaintextResponse" message="tns:ICryptoProvider_CBC_EncryptPlaintext_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CBC_DecryptPlaintext">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_DecryptPlaintext" message="tns:ICryptoProvider_CBC_DecryptPlaintext_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_DecryptPlaintextResponse" message="tns:ICryptoProvider_CBC_DecryptPlaintext_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICryptoProvider" type="tns:ICryptoProvider">
@@ -308,6 +388,78 @@
     </wsdl:operation>
     <wsdl:operation name="TEA_DecryptPlaintext">
       <soap:operation soapAction="http://tempuri.org/ICryptoProvider/TEA_DecryptPlaintext" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CBC_EncryptFile">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/CBC_EncryptFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CBC_DecryptFile">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/CBC_DecryptFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CBC_EncryptBitmap">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/CBC_EncryptBitmap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CBC_DecryptBitmap">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/CBC_DecryptBitmap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CBC_EncryptText">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/CBC_EncryptText" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CBC_DecryptText">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/CBC_DecryptText" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CBC_EncryptPlaintext">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/CBC_EncryptPlaintext" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CBC_DecryptPlaintext">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/CBC_DecryptPlaintext" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

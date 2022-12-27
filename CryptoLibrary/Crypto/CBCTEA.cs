@@ -5,111 +5,62 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Library.Crypto {
-    public class TEA : ICipher, ICipherReference {
-        private readonly static uint delta_const = 0x9E3779B9;
-        private readonly static uint sum_const = 0xC6EF3720; // (delta_const << 5) & 0xFFFFFFFF
+    public class CBCTEA : ICipher, ICipherReference {
+        private TEA tea = null;
+        private uint[] initialization_vector = null;
+        private uint[] IV_key = null;
 
-        private uint[] key;
-        public uint[] Key { get { return key; } }
+        public CBCTEA(string tea_key, string initialization_vector) {
+            tea = new TEA(tea_key);
 
-        private static uint[] unicode_key_to_unsigned_key(string unicode_key) {
-            uint[] key = new uint[4];
-            
-            uint[] key_parts = Convertor.string_to_bytes(unicode_key).Select(i => (uint)i).ToArray();
-            for (uint subkey_index = 0 ; subkey_index < 4 ; subkey_index++) {
-                uint index = subkey_index * 4;
+            byte[] iv_bytes = Convertor.string_to_bytes(initialization_vector);
+            this.initialization_vector = Convertor.byte_array_to_unsigned_array(iv_bytes, 2);
 
-                uint subkey = 0;
-                subkey += (key_parts[index]);
-                subkey += (key_parts[index + 1] << 8);
-                subkey += (key_parts[index + 2] << 16);
-                subkey += (key_parts[index + 3] << 24);
-
-                key[subkey_index] = subkey;
-            }
-
-            return key;
-        }
-
-        public TEA(string unicode_key) {
-            if (unicode_key == null) { throw new ArgumentNullException("Key is null"); }
-
-            // 128b = char (8b) * 16
-            if (unicode_key.Length != 16) { throw new ArgumentException("Key lenght is not valid");}
-
-            key = unicode_key_to_unsigned_key(unicode_key);
-        }
-
-        public void encrypt_one_cycle(uint[] v) {
-            uint v0 = v[0];
-            uint v1 = v[1];
-            uint sum = 0;
-            uint i;
-
-            uint k0 = key[0];
-            uint k1 = key[1];
-            uint k2 = key[2];
-            uint k3 = key[3];
-
-            for (i = 0 ; i < 32 ; i++) {
-                sum += delta_const;
-                v0 += ((v1 << 4) + k0) ^ (v1 + sum) ^ ((v1 >> 5) + k1);
-                v1 += ((v0 << 4) + k2) ^ (v0 + sum) ^ ((v0 >> 5) + k3);
-            }
-
-            v[0] = v0;
-            v[1] = v1;
-        }
-        public void decrypt_one_cycle(uint[] v) {
-            uint v0 = v[0];
-            uint v1 = v[1];
-            uint sum = sum_const;
-            uint i;
-
-            uint k0 = key[0];
-            uint k1 = key[1];
-            uint k2 = key[2];
-            uint k3 = key[3];
-
-            for (i = 0 ; i < 32 ; i++) {
-                v1 -= ((v0 << 4) + k2) ^ (v0 + sum) ^ ((v0 >> 5) + k3);
-                v0 -= ((v1 << 4) + k0) ^ (v1 + sum) ^ ((v1 >> 5) + k1);
-                sum -= delta_const;
-            }
-
-            v[0] = v0;
-            v[1] = v1;
+            IV_key = new uint[2];
         }
 
         public void Encrypt(ref uint[] input) {
             if (input == null) { throw new ArgumentNullException("Input uint array is null"); }
 
+            // CBCTEA pocetno stanje
+            Array.Copy(initialization_vector, IV_key, 2);
+
+            // CBCTEA jedna runda
             for (int i = 0 ; i < input.Length ; i += 2) {
                 uint[] arr = new uint[2];
-                arr[0] = input[i];
-                arr[1] = input[i + 1];
+                arr[0] = input[i] ^ IV_key[0];
+                arr[1] = input[i + 1] ^ IV_key[1];
 
-                encrypt_one_cycle(arr);
+                tea.encrypt_one_cycle(arr);
 
                 input[i] = arr[0];
                 input[i + 1] = arr[1];
+
+                Array.Copy(arr, IV_key, 2);
             }
         }
         public void Decrypt(ref uint[] input) {
             if (input == null) { throw new Exception("Input uint array is null"); }
+;
+            Array.Copy(initialization_vector, IV_key, 2);
 
             for (int i = 0 ; i < input.Length ; i += 2) {
                 uint[] arr = new uint[2];
                 arr[0] = input[i];
                 arr[1] = input[i + 1];
 
-                decrypt_one_cycle(arr);
+                uint[] input_copy = new uint[2];
+                Array.Copy(arr, input_copy, 2);
 
-                input[i] = arr[0];
-                input[i + 1] = arr[1];
+                tea.decrypt_one_cycle(arr);
+
+                input[i] = arr[0] ^ IV_key[0];
+                input[i + 1] = arr[1] ^ IV_key[1];
+
+                Array.Copy(input_copy, IV_key, 2);
             }
         }
-        
+
         public byte[] EncryptFile(byte[] input) {
             uint[] data = Convertor.byte_array_to_unsigned_array_with_end_padding(input, 2);
             Encrypt(ref data);
@@ -198,7 +149,7 @@ namespace Library.Crypto {
             string[] output_strings = DecryptText(input_strings);
             IO.SaveTextFile(outputpath, output_strings);
         }
-        
+
 
         public string EncryptPlaintext(string input) {
             byte[] input_bytes = Convertor.string_to_bytes(input);

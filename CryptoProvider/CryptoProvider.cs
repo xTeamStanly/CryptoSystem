@@ -160,6 +160,81 @@ namespace CryptoProvider {
             }
         }
 
+        // ###################################### CBC-TEA ######################################
+        public byte[] CBC_EncryptFile(string key, byte[] input, string initialization_vector) {
+            try {
+                CBCTEA cipher = new CBCTEA(key, initialization_vector);
+                return cipher.EncryptFile(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public byte[] CBC_DecryptFile(string key, byte[] input, string initialization_vector) {
+            try {
+                CBCTEA cipher = new CBCTEA(key, initialization_vector);
+                return cipher.DecryptFile(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public byte[] CBC_EncryptBitmap(string key, byte[] input, string initialization_vector) {
+            try {
+                CBCTEA cipher = new CBCTEA(key, initialization_vector);
+                return cipher.EncryptBitmap(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public byte[] CBC_DecryptBitmap(string key, byte[] input, string initialization_vector) {
+            try {
+                CBCTEA cipher = new CBCTEA(key, initialization_vector);
+                return cipher.DecryptBitmap(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public string[] CBC_EncryptText(string key, string[] input, string initialization_vector) {
+            try {
+                CBCTEA cipher = new CBCTEA(key, initialization_vector);
+                return cipher.EncryptText(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public string[] CBC_DecryptText(string key, string[] input, string initialization_vector) {
+            try {
+                CBCTEA cipher = new CBCTEA(key, initialization_vector);
+                return cipher.DecryptText(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public string CBC_EncryptPlaintext(string key, string input, string initialization_vector) {
+            try {
+                CBCTEA cipher = new CBCTEA(key, initialization_vector);
+                return cipher.EncryptPlaintext(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public string CBC_DecryptPlaintext(string key, string input, string initialization_vector) {
+            try {
+                CBCTEA cipher = new CBCTEA(key, initialization_vector);
+                return cipher.DecryptPlaintext(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+
         // ENIGMA
         //public string EnigmaCrypt(EnigmaState state, string input) {
         //    try {
@@ -178,7 +253,7 @@ namespace CryptoProvider {
         //    }
         //}
 
-        
+
 
         //// CBC_TEA
         //public string CBC_TEACrypt(string key, string input, string init_vector) {

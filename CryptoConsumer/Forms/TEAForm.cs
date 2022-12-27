@@ -32,7 +32,7 @@ namespace CryptoConsumer.Forms {
         private void tabs_SelectedIndexChanged(object sender, EventArgs e) {
             if (tabs.SelectedIndex == 3 && plaintext_show_warning == true) {
                 plaintext_show_warning = false;
-                GUI.ShowInformation("TEA (Text) - Napomena", "Ovaj režim ne funkcioniše najbolje sa tekstom, a na to utiče postojanje \\\\0 (0x00) karaktera. Moguće je da se neki karakter šifruje/dešifruje u 0x00 i pri prikazivanju rastumači kao kraj string-a, što dovodi do preranog odsecanja ostalih karaktera sledbenika u nizu.");
+                GUI.ShowInformation("TEA (Plaintext) - Napomena", "Ovaj režim ne funkcioniše najbolje sa tekstom, a na to utiče postojanje \\\\0 (0x00) karaktera. Moguće je da se neki karakter šifruje/dešifruje u 0x00 i pri prikazivanju rastumači kao kraj string-a, što dovodi do preranog odsecanja ostalih karaktera sledbenika u nizu.");
             }
         }
 
@@ -182,7 +182,7 @@ namespace CryptoConsumer.Forms {
 
                 if (bitmap_offline_mode == true) {
                     TEA cipher = new TEA(bitmap_key_textbox.Text);
-                    output_bytes = cipher.EncryptBitmap(input_bytes);
+                    output_bytes = cipher.DecryptBitmap(input_bytes);
                 } else {
                     output_bytes = await cryptoProvider.TEA_DecryptBitmapAsync(bitmap_key_textbox.Text, input_bytes);
                     if (output_bytes == null) { throw new Exception("Server error!"); }
@@ -325,7 +325,11 @@ namespace CryptoConsumer.Forms {
 
         // ################################ drag & drop ################################
         private void handler_DragEnter(object sender, DragEventArgs e) {
-
+            if (e.Data.GetDataPresent(DataFormats.FileDrop) == true) {
+                e.Effect = DragDropEffects.Copy;
+            } else {
+                e.Effect = DragDropEffects.None;
+            }
         }
 
         private void file_input_groupbox_DragDrop(object sender, DragEventArgs e) {
@@ -354,7 +358,7 @@ namespace CryptoConsumer.Forms {
         }
 
         private void text_output_groupbox_DragDrop(object sender, DragEventArgs e) {
-            text_output_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+           text_output_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
             text_output_textbox.Text = text_output_filepath;
         }
     }
