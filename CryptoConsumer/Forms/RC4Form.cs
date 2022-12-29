@@ -32,7 +32,7 @@ namespace CryptoConsumer {
         private void tabs_SelectedIndexChanged(object sender, EventArgs e) {
             if (tabs.SelectedIndex == 3 && plaintext_show_warning == true) {
                 plaintext_show_warning = false;
-                GUI.ShowInformation("RC4 (Plaintext) - Napomena", "Ovaj režim ne funkcioniše najbolje sa tekstom, a na to utiče postojanje \\\\0 (0x00) karaktera. Moguće je da se neki karakter šifruje/dešifruje u 0x00 i pri prikazivanju rastumači kao kraj string-a, što dovodi do preranog odsecanja ostalih karaktera sledbenika u nizu.");
+                GUI.ShowInformation("RC4 (Plaintext) - Napomena", "Ovaj režim ne funkcioniše najbolje sa tekstom, a na to utiče postojanje \\0 (0x00) karaktera. Moguće je da se neki karakter šifruje/dešifruje u 0x00 i pri prikazivanju rastumači kao kraj string-a, što dovodi do preranog odsecanja ostalih karaktera sledbenika u nizu.");
             }
         }
 
@@ -294,7 +294,7 @@ namespace CryptoConsumer {
                     RC4 cipher = new RC4(file_key_textbox.Text);
                     plaintext_output_textbox.Text = cipher.EncryptPlaintext(plaintext_input_textbox.Text);
                 } else {
-                    plaintext_output_textbox.Text = await cryptoProvider.RC4_EncryptPlaintextAsync(file_key_textbox.Text, plaintext_input_textbox.Text);
+                    plaintext_output_textbox.Text = await cryptoProvider.RC4_EncryptPlaintextAsync(plaintext_key_textbox.Text, plaintext_input_textbox.Text);
                 }
             } catch (Exception ex) {
                 GUI.ShowError(ex.Message);
@@ -306,7 +306,7 @@ namespace CryptoConsumer {
                     RC4 cipher = new RC4(file_key_textbox.Text);
                     plaintext_output_textbox.Text = cipher.DecryptPlaintext(plaintext_input_textbox.Text);
                 } else {
-                    plaintext_output_textbox.Text = await cryptoProvider.RC4_DecryptPlaintextAsync(file_key_textbox.Text, plaintext_input_textbox.Text);
+                    plaintext_output_textbox.Text = await cryptoProvider.RC4_DecryptPlaintextAsync(plaintext_key_textbox.Text, plaintext_input_textbox.Text);
                 }
             } catch (Exception ex) {
                 GUI.ShowError(ex.Message);

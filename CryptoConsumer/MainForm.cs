@@ -33,6 +33,7 @@ namespace CryptoConsumer {
         // todo list form objects
         RC4Form rc4_form = null;
         TEAForm tea_form = null;
+        CBCForm cbc_form = null;
 
 
 
@@ -79,6 +80,30 @@ namespace CryptoConsumer {
             }
         }
 
+        // ################################ CBC ################################
+        public void close_cbc_form(bool call_from_child_form) {
+            cbc_visible = false;
+            if (call_from_child_form == false) {
+                if (cbc_form != null) { cbc_form.Close(); }
+            } else {
+                GUI.SetColor(cbc_button, cbc_visible);
+            }
+        }
+        private void cbc_button_Click(object sender, EventArgs e) {
+            cbc_visible = !cbc_visible;
+            GUI.SetColor(cbc_button, cbc_visible);
+
+            if (cbc_visible == true) {
+                cbc_form = new CBCForm(this, cryptoProvider);
+                cbc_form.Show();
+            } else {
+                close_cbc_form(false);
+            }
+        }
+
+
+
+
         // ################################ TODO ################################
 
 
@@ -91,10 +116,7 @@ namespace CryptoConsumer {
 
         
 
-        private void cbc_button_Click(object sender, EventArgs e) {
-            cbc_visible = !cbc_visible;
-            GUI.SetColor(cbc_button, cbc_visible);
-        }
+        
 
         private void crc_button_Click(object sender, EventArgs e) {
             crc_visible = !crc_visible;
@@ -105,6 +127,7 @@ namespace CryptoConsumer {
         private void hide_all_buton_Click(object sender, EventArgs e) {
             if (rc4_form != null) { rc4_form.Close(); }
             if (tea_form != null) { tea_form.Close(); }
+            if (cbc_form != null) { cbc_form.Close(); }
 
 
 

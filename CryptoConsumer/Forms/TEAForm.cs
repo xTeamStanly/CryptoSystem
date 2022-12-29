@@ -32,7 +32,7 @@ namespace CryptoConsumer.Forms {
         private void tabs_SelectedIndexChanged(object sender, EventArgs e) {
             if (tabs.SelectedIndex == 3 && plaintext_show_warning == true) {
                 plaintext_show_warning = false;
-                GUI.ShowInformation("TEA (Plaintext) - Napomena", "Ovaj režim ne funkcioniše najbolje sa tekstom, a na to utiče postojanje \\\\0 (0x00) karaktera. Moguće je da se neki karakter šifruje/dešifruje u 0x00 i pri prikazivanju rastumači kao kraj string-a, što dovodi do preranog odsecanja ostalih karaktera sledbenika u nizu.");
+                GUI.ShowInformation("TEA (Plaintext) - Napomena", "Ovaj režim ne funkcioniše najbolje sa tekstom, a na to utiče postojanje \\0 (0x00) karaktera. Moguće je da se neki karakter šifruje/dešifruje u 0x00 i pri prikazivanju rastumači kao kraj string-a, što dovodi do preranog odsecanja ostalih karaktera sledbenika u nizu.");
             }
         }
 
@@ -68,7 +68,7 @@ namespace CryptoConsumer.Forms {
             try {
                 file_input_filepath = file_input_textbox.Text;
                 file_output_filepath = file_output_textbox.Text;
-
+                
                 if (file_offline_mode == true) {
                     TEA cipher = new TEA(file_key_textbox.Text);
                     cipher.EncryptFile(file_input_filepath, file_output_filepath);
@@ -291,10 +291,10 @@ namespace CryptoConsumer.Forms {
         private async void plaintext_encrypt_button_Click(object sender, EventArgs e) {
             try {
                 if (plaintext_offline_mode == true) {
-                    TEA cipher = new TEA(file_key_textbox.Text);
+                    TEA cipher = new TEA(plaintext_key_textbox.Text);
                     plaintext_output_textbox.Text = cipher.EncryptPlaintext(plaintext_input_textbox.Text);
                 } else {
-                    plaintext_output_textbox.Text = await cryptoProvider.TEA_EncryptPlaintextAsync(file_key_textbox.Text, plaintext_input_textbox.Text);
+                    plaintext_output_textbox.Text = await cryptoProvider.TEA_EncryptPlaintextAsync(plaintext_key_textbox.Text, plaintext_input_textbox.Text);
                 }
             } catch (Exception ex) {
                 GUI.ShowError(ex.Message);
@@ -303,10 +303,10 @@ namespace CryptoConsumer.Forms {
         private async void plaintext_decrypt_button_Click(object sender, EventArgs e) {
             try {
                 if (plaintext_offline_mode == true) {
-                    TEA cipher = new TEA(file_key_textbox.Text);
+                    TEA cipher = new TEA(plaintext_key_textbox.Text);
                     plaintext_output_textbox.Text = cipher.DecryptPlaintext(plaintext_input_textbox.Text);
                 } else {
-                    plaintext_output_textbox.Text = await cryptoProvider.TEA_DecryptPlaintextAsync(file_key_textbox.Text, plaintext_input_textbox.Text);
+                    plaintext_output_textbox.Text = await cryptoProvider.TEA_DecryptPlaintextAsync(plaintext_key_textbox.Text, plaintext_input_textbox.Text);
                 }
             } catch (Exception ex) {
                 GUI.ShowError(ex.Message);

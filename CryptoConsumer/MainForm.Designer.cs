@@ -171,7 +171,6 @@
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Zaštita Informacija - 17784";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.control_panel_groupbox.ResumeLayout(false);
             this.control_panel_button_layout.ResumeLayout(false);

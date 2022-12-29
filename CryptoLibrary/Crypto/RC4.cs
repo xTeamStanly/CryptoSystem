@@ -53,6 +53,8 @@ namespace Library.Crypto {
         }
 
         public byte[] Encrypt(byte[] input) {
+            if (input == null) { throw new ArgumentNullException("Input byte array is null"); }
+
             uint i, j, n;
 
             // key schedule algorithm
@@ -98,11 +100,15 @@ namespace Library.Crypto {
         }
         public void EncryptFile(string inputpath, string outputpath) {
             byte[] input_bytes = IO.OpenFile(inputpath);
+            if (input_bytes.Length == 0) { throw new Exception("No data"); }
+            
             byte[] output_bytes = Encrypt(input_bytes);
             IO.SaveFile(outputpath, output_bytes);
         }
         public void DecryptFile(string inputpath, string outputpath) {
             byte[] input_bytes = IO.OpenFile(inputpath);
+            if (input_bytes.Length == 0) { throw new Exception("No data"); }
+            
             byte[] output_bytes = Decrypt(input_bytes);
             IO.SaveFile(outputpath, output_bytes);
         }
@@ -153,30 +159,42 @@ namespace Library.Crypto {
         }
         public void EncryptBitmap(string inputpath, string outputpath) {
             byte[] input_bytes = IO.OpenFile(inputpath);
+            if (input_bytes.Length == 0) { throw new Exception("No data"); }
+            
             byte[] output_bytes = EncryptBitmap(input_bytes);
             IO.SaveFile(outputpath, output_bytes);
         }
         public void DecryptBitmap(string inputpath, string outputpath) {
             byte[] input_bytes = IO.OpenFile(inputpath);
+            if (input_bytes.Length == 0) { throw new Exception("No data"); }
+            
             byte[] output_bytes = DecryptBitmap(input_bytes);
             IO.SaveFile(outputpath, output_bytes);
         }
 
         public string[] EncryptText(string[] input) {
             if (input == null) { throw new Exception("Input string array is null"); }
+            if (input.Length == 0) { throw new Exception("No data"); }
+
             return input.Select(i => EncryptPlaintext(i)).ToArray();
         }
         public string[] DecryptText(string[] input) {
             if (input == null) { throw new Exception("Input string array is null"); }
+            if (input.Length == 0) { throw new Exception("No data"); }
+
             return input.Select(i => DecryptPlaintext(i)).ToArray();
         }
         public void EncryptText(string inputpath, string outputpath) {
             string[] input_strings = IO.OpenTextFile(inputpath);
+            if (input_strings.Length == 0) { throw new Exception("No data"); }
+
             string[] output_strings = EncryptText(input_strings);
             IO.SaveTextFile(outputpath, output_strings);
         }
         public void DecryptText(string inputpath, string outputpath) {
             string[] input_strings = IO.OpenTextFile(inputpath);
+            if (input_strings.Length == 0) { throw new Exception("No data"); }
+
             string[] output_strings = DecryptText(input_strings);
             IO.SaveTextFile(outputpath, output_strings);
         }
@@ -184,12 +202,16 @@ namespace Library.Crypto {
         public string EncryptPlaintext(string input) {
             if (input == null) { throw new Exception("Input string is null"); }
             byte[] bytes = Convertor.string_to_bytes(input);
+            if (bytes.Length == 0) { throw new Exception("No data"); }
+
             bytes = Encrypt(bytes);
             return Convertor.bytes_to_string(bytes);
         }
         public string DecryptPlaintext(string input) {
             if (input == null) { throw new Exception("Input string is null"); }
             byte[] bytes = Convertor.string_to_bytes(input);
+            if (bytes.Length == 0) { throw new Exception("No data"); }
+
             bytes = Decrypt(bytes);
             return Convertor.bytes_to_string(bytes);
         }

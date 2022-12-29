@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CBC_TEA.cs" />
     <Compile Include="Convertor.cs" />
     <Compile Include="CryptoLibrary.cs" />
     <Compile Include="Crypto\CBCTEA.cs" />
@@ -63,7 +62,6 @@
     <Compile Include="GUI.cs" />
     <Compile Include="IO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TEA.cs" />
     <Compile Include="Tools.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>

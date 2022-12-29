@@ -78,10 +78,16 @@ namespace Library {
 
             return result.ToArray();
         }
-        public static byte[] unsigned_array_to_byte_array_remove_padding(uint[] input) {
+        public static byte[] unsigned_array_to_byte_array_remove_padding(uint[] input, int padding_size) {
             if (input.Length == 0) { return new byte[0]; }
 
+            padding_size = Math.Abs(padding_size);
+            uint pad_size = Convert.ToUInt32(padding_size);
+            uint max_padding_size = 3 + (pad_size - 1 + pad_size) * 4;
+
             uint last_uint = input[input.Length - 1];
+            if (last_uint > max_padding_size) { throw new Exception("Invalid padding size"); }
+
 
             byte[] input_bytes = unsigned_array_to_byte_array(input);
             byte[] result_bytes = new byte[input_bytes.Length - last_uint];
