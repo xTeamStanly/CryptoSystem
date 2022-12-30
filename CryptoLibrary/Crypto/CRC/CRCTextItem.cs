@@ -18,8 +18,8 @@ namespace Library.Crypto {
         [System.ComponentModel.DisplayName("Date Calculated")]
         public DateTime DateCalculated { get; set; }
 
-        [System.ComponentModel.DisplayName("Date Created")]
-        public DateTime DateAdded { get; set; }
+        [System.ComponentModel.DisplayName("Calculation Duration")]
+        public string CalculationDuration { get; set; }
 
         [System.ComponentModel.DisplayName("File Size")]
         public string FileSize { get; set; }

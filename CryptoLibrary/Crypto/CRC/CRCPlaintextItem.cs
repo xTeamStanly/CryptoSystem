@@ -14,6 +14,9 @@ namespace Library.Crypto {
         [System.ComponentModel.DisplayName("Date Calculated")]
         public DateTime DateCalculated { get; set; }
 
+        [System.ComponentModel.DisplayName("Calculation Duration")]
+        public string CalculationDuration { get; set; }
+
         [System.ComponentModel.DisplayName("Length")]
         public int Length { get; set; }
     }

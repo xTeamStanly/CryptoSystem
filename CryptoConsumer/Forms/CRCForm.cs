@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -74,11 +75,16 @@ namespace CryptoConsumer.Forms {
 
                 ulong? checksum = null;
 
+                Stopwatch timer = new Stopwatch();
                 if (file_offline_mode == true) {
                     CRC cipher = new CRC(file_key_textbox.Text);
+                    timer.Start();
                     checksum = cipher.ChecksumFile(bytes);
+                    timer.Stop();
                 } else {
+                    timer.Start();
                     checksum = await cryptoProvider.CRC_ChecksumFileAsync(file_key_textbox.Text, bytes);
+                    timer.Stop();
                     if (checksum == null) { throw new Exception("Server error!"); }
                 }
 
@@ -88,7 +94,7 @@ namespace CryptoConsumer.Forms {
                     FilePath = file_input_filepath,
                     CheckSum = (ulong)checksum,
                     CheckSumHex = CRC.unsigned_to_hexstring((ulong)checksum),
-                    DateAdded = fileinfo.CreationTime,
+                    CalculationDuration = String.Format("{0} ms", timer.ElapsedMilliseconds),
                     DateCalculated = DateTime.Now,
                     FileSize = IO.calculate_filesize((decimal)fileinfo.Length)
                 };
@@ -149,11 +155,16 @@ namespace CryptoConsumer.Forms {
 
                 ulong? checksum = null;
 
+                Stopwatch timer = new Stopwatch();
                 if (text_offline_mode == true) {
                     CRC cipher = new CRC(text_key_textbox.Text);
+                    timer.Start();
                     checksum = cipher.ChecksumTextFile(lines);
+                    timer.Stop();
                 } else {
+                    timer.Start();
                     checksum = await cryptoProvider.CRC_ChecksumTextFileAsync(file_key_textbox.Text, lines);
+                    timer.Stop();
                     if (checksum == null) { throw new Exception("Server error!"); }
                 }
 
@@ -163,7 +174,7 @@ namespace CryptoConsumer.Forms {
                     FilePath = file_input_filepath,
                     CheckSum = (ulong)checksum,
                     CheckSumHex = CRC.unsigned_to_hexstring((ulong)checksum),
-                    DateAdded = fileinfo.CreationTime,
+                    CalculationDuration = String.Format("{0} ms", timer.ElapsedMilliseconds),
                     DateCalculated = DateTime.Now,
                     FileSize = IO.calculate_filesize((decimal)fileinfo.Length),
                     Lines = lines.Length
@@ -199,11 +210,16 @@ namespace CryptoConsumer.Forms {
             try {
                 ulong? checksum = null;
 
+                Stopwatch timer = new Stopwatch();
                 if (plaintext_offline_mode == true) {
                     CRC cipher = new CRC(plaintext_key_textbox.Text);
+                    timer.Start();
                     checksum = cipher.ChecksumPlaintext(plaintext_input_textbox.Text);
+                    timer.Stop();
                 } else {
+                    timer.Start();
                     checksum = await cryptoProvider.CRC_ChecksumPlaintextAsync(file_key_textbox.Text, plaintext_input_textbox.Text);
+                    timer.Stop();
                     if (checksum == null) { throw new Exception("Server error!"); }
                 }
 
@@ -214,7 +230,8 @@ namespace CryptoConsumer.Forms {
                     CheckSum = (ulong)checksum,
                     CheckSumHex = CRC.unsigned_to_hexstring((ulong)checksum),
                     DateCalculated = DateTime.Now,
-                    Length = plaintext_input_textbox.Text.Length
+                    Length = plaintext_input_textbox.Text.Length,
+                    CalculationDuration = String.Format("{0} ms", timer.ElapsedMilliseconds)
                 };
                 CRC.PlaintextHistory.Add(plaintextitem);
                 BindingSource binding_source = new BindingSource();
