@@ -1,5 +1,6 @@
-﻿using CryptoLibrary;
+﻿using Library.Crypto;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -17,13 +18,13 @@ namespace CryptoConsumer {
         [STAThread]
         static void Main() {
 
-            TEA tea = new TEA("vZQS2MEkE-Z%R$PK");
-            string res = tea.encrypt_unicode_to_unicode("BRUH");
-            // string ress = Encoding.ASCII.GetString(res);
+            //CRC crc = new CRC("11011001101011101010110");
+            //byte[] crcinput = new byte[] { 0xAA, 0xBB };
+            //ulong crcoutput = crc.Checksum(crcinput);
 
-            // TEA tea = new TEA("vZQS2MEkE-Z%R$PK");
-            // tea.encrypt_bitmap_file_from_path(@"C:\Users\Stanko\Desktop\bitmap\original.bmp", @"C:\Users\Stanko\Desktop\bitmap\encrypted.bmp");
-            // tea.decrypt_bitmap_file_from_path(@"C:\Users\Stanko\Desktop\bitmap\encrypted.bmp", @"C:\Users\Stanko\Desktop\bitmap\decrypted.bmp");
+            // BitArray barr = CRC.unicode_poynomial_to_bitarray("1100000");
+
+            // CRC crc = new CRC("01010100110010101");
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
