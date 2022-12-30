@@ -30,13 +30,10 @@ namespace CryptoConsumer {
         private bool cbc_visible = false;
         private bool crc_visible = false;
 
-        // todo list form objects
         RC4Form rc4_form = null;
         TEAForm tea_form = null;
         CBCForm cbc_form = null;
-
-
-
+        CRCForm crc_form = null;
 
         // ################################ RC4 ################################
         public void close_rc4_form(bool call_from_child_form) {
@@ -101,7 +98,26 @@ namespace CryptoConsumer {
             }
         }
 
+        // ################################ CRC ################################
+        public void close_crc_form(bool call_from_child_form) {
+            crc_visible = false;
+            if (call_from_child_form == false) {
+                if (crc_form != null) { crc_form.Close(); }
+            } else {
+                GUI.SetColor(crc_button, crc_visible);
+            }
+        }
+        private void crc_button_Click(object sender, EventArgs e) {
+            crc_visible = !crc_visible;
+            GUI.SetColor(crc_button, crc_visible);
 
+            if (crc_visible == true) {
+                crc_form = new CRCForm(this, cryptoProvider);
+                crc_form.Show();
+            } else {
+                close_crc_form(false);
+            }
+        }
 
 
         // ################################ TODO ################################
@@ -118,16 +134,14 @@ namespace CryptoConsumer {
 
         
 
-        private void crc_button_Click(object sender, EventArgs e) {
-            crc_visible = !crc_visible;
-            GUI.SetColor(crc_button, crc_visible);
-        }
+        
 
         // todo
         private void hide_all_buton_Click(object sender, EventArgs e) {
             if (rc4_form != null) { rc4_form.Close(); }
             if (tea_form != null) { tea_form.Close(); }
             if (cbc_form != null) { cbc_form.Close(); }
+            if (crc_form != null) { crc_form.Close(); }
 
 
 
@@ -138,16 +152,5 @@ namespace CryptoConsumer {
 
         }
 
-
-
-
-
-        private void handler_DragEnter(object sender, DragEventArgs e) {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop) == true) {
-                e.Effect = DragDropEffects.Copy;
-            } else {
-                e.Effect = DragDropEffects.None;
-            }
-        }
     }
 }

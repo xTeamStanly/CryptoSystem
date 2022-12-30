@@ -48,33 +48,13 @@ namespace CryptoProvider {
         [OperationContract] string CBC_EncryptPlaintext(string key, string input, string initialization_vector);
         [OperationContract] string CBC_DecryptPlaintext(string key, string input, string initialization_vector);
 
-
-
-
-
-
-
-
-
+        // ###################################### CRC ######################################
+        [OperationContract] ulong? CRC_ChecksumFile(string key, byte[] input);
+        [OperationContract] ulong? CRC_ChecksumTextFile(string key, string[] input);
+        [OperationContract] ulong? CRC_ChecksumPlaintext(string key, string input);
 
         // ENIGMA
         //[OperationContract] string EnigmaCrypt(EnigmaState state, string input);
-
-        //// TEA
-        //[OperationContract] string TEACrypt(string key, string input);
-        //[OperationContract] string TEADecrypt(string key, string input);
-        //[OperationContract] byte[] TEABitmapCrypt(string key, byte[] input);
-        //[OperationContract] byte[] TEABitmapDecrypt(string key, byte[] input);
-        //[OperationContract] byte[] TEAFileCrypt(string key, byte[] input);
-        //[OperationContract] byte[] TEAFileDecrypt(string key, byte[] input);
-
-        //// CBC_TEA
-        //[OperationContract] string CBC_TEACrypt(string key, string input, string init_vector);
-        //[OperationContract] string CBC_TEADecrypt(string key, string input, string init_vector);
-        //[OperationContract] byte[] CBC_TEABitmapCrypt(string key, byte[] input, string init_vector);
-        //[OperationContract] byte[] CBC_TEABitmapDecrypt(string key, byte[] input, string init_vector);
-        //[OperationContract] byte[] CBC_TEAFileCrypt(string key, byte[] input, string init_vector);
-        //[OperationContract] byte[] CBC_TEAFileDecrypt(string key, byte[] input, string init_vector);
 
     }
 

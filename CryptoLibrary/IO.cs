@@ -42,5 +42,16 @@ namespace Library {
             File.WriteAllText(filepath, String.Join("\r\n", input));
         }
 
+        private static readonly string[] units = { "B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
+        public static string calculate_filesize(decimal filesize_bytes) {
+            ulong unit_index = 0;
+            while (filesize_bytes >= 1024) {
+                filesize_bytes /= 1024;
+                unit_index++;
+            }
+
+            return string.Format("{0:0.###} {1}", filesize_bytes, units[unit_index]);
+        }
+
     }
 }

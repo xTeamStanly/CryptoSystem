@@ -234,6 +234,34 @@ namespace CryptoProvider {
             }
         }
 
+        // ###################################### CRC ######################################
+        public ulong? CRC_ChecksumFile(string key, byte[] input) {
+            try {
+                CRC cipher = new CRC(key);
+                return cipher.ChecksumFile(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public ulong? CRC_ChecksumTextFile(string key, string[] input) {
+            try {
+                CRC cipher = new CRC(key);
+                return cipher.ChecksumTextFile(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public ulong? CRC_ChecksumPlaintext(string key, string input) {
+            try {
+                CRC cipher = new CRC(key);
+                return cipher.ChecksumPlaintext(input);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
 
         // ENIGMA
         //public string EnigmaCrypt(EnigmaState state, string input) {

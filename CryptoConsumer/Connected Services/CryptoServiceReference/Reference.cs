@@ -158,6 +158,24 @@ namespace CryptoConsumer.CryptoServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_DecryptPlaintext", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_DecryptPlaintextResponse")]
         System.Threading.Tasks.Task<string> CBC_DecryptPlaintextAsync(string key, string input, string initialization_vector);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumFile", ReplyAction="http://tempuri.org/ICryptoProvider/CRC_ChecksumFileResponse")]
+        System.Nullable<ulong> CRC_ChecksumFile(string key, byte[] input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumFile", ReplyAction="http://tempuri.org/ICryptoProvider/CRC_ChecksumFileResponse")]
+        System.Threading.Tasks.Task<System.Nullable<ulong>> CRC_ChecksumFileAsync(string key, byte[] input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumTextFile", ReplyAction="http://tempuri.org/ICryptoProvider/CRC_ChecksumTextFileResponse")]
+        System.Nullable<ulong> CRC_ChecksumTextFile(string key, string[] input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumTextFile", ReplyAction="http://tempuri.org/ICryptoProvider/CRC_ChecksumTextFileResponse")]
+        System.Threading.Tasks.Task<System.Nullable<ulong>> CRC_ChecksumTextFileAsync(string key, string[] input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumPlaintext", ReplyAction="http://tempuri.org/ICryptoProvider/CRC_ChecksumPlaintextResponse")]
+        System.Nullable<ulong> CRC_ChecksumPlaintext(string key, string input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumPlaintext", ReplyAction="http://tempuri.org/ICryptoProvider/CRC_ChecksumPlaintextResponse")]
+        System.Threading.Tasks.Task<System.Nullable<ulong>> CRC_ChecksumPlaintextAsync(string key, string input);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -377,6 +395,30 @@ namespace CryptoConsumer.CryptoServiceReference {
         
         public System.Threading.Tasks.Task<string> CBC_DecryptPlaintextAsync(string key, string input, string initialization_vector) {
             return base.Channel.CBC_DecryptPlaintextAsync(key, input, initialization_vector);
+        }
+        
+        public System.Nullable<ulong> CRC_ChecksumFile(string key, byte[] input) {
+            return base.Channel.CRC_ChecksumFile(key, input);
+        }
+        
+        public System.Threading.Tasks.Task<System.Nullable<ulong>> CRC_ChecksumFileAsync(string key, byte[] input) {
+            return base.Channel.CRC_ChecksumFileAsync(key, input);
+        }
+        
+        public System.Nullable<ulong> CRC_ChecksumTextFile(string key, string[] input) {
+            return base.Channel.CRC_ChecksumTextFile(key, input);
+        }
+        
+        public System.Threading.Tasks.Task<System.Nullable<ulong>> CRC_ChecksumTextFileAsync(string key, string[] input) {
+            return base.Channel.CRC_ChecksumTextFileAsync(key, input);
+        }
+        
+        public System.Nullable<ulong> CRC_ChecksumPlaintext(string key, string input) {
+            return base.Channel.CRC_ChecksumPlaintext(key, input);
+        }
+        
+        public System.Threading.Tasks.Task<System.Nullable<ulong>> CRC_ChecksumPlaintextAsync(string key, string input) {
+            return base.Channel.CRC_ChecksumPlaintextAsync(key, input);
         }
     }
 }

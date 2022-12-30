@@ -151,6 +151,24 @@
   <wsdl:message name="ICryptoProvider_CBC_DecryptPlaintext_OutputMessage">
     <wsdl:part name="parameters" element="tns:CBC_DecryptPlaintextResponse" />
   </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CRC_ChecksumFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:CRC_ChecksumFile" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CRC_ChecksumFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CRC_ChecksumFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CRC_ChecksumTextFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:CRC_ChecksumTextFile" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CRC_ChecksumTextFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CRC_ChecksumTextFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CRC_ChecksumPlaintext_InputMessage">
+    <wsdl:part name="parameters" element="tns:CRC_ChecksumPlaintext" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_CRC_ChecksumPlaintext_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CRC_ChecksumPlaintextResponse" />
+  </wsdl:message>
   <wsdl:portType name="ICryptoProvider">
     <wsdl:operation name="RC4_EncryptFile">
       <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/RC4_EncryptFile" message="tns:ICryptoProvider_RC4_EncryptFile_InputMessage" />
@@ -247,6 +265,18 @@
     <wsdl:operation name="CBC_DecryptPlaintext">
       <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_DecryptPlaintext" message="tns:ICryptoProvider_CBC_DecryptPlaintext_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/CBC_DecryptPlaintextResponse" message="tns:ICryptoProvider_CBC_DecryptPlaintext_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CRC_ChecksumFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumFile" message="tns:ICryptoProvider_CRC_ChecksumFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumFileResponse" message="tns:ICryptoProvider_CRC_ChecksumFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CRC_ChecksumTextFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumTextFile" message="tns:ICryptoProvider_CRC_ChecksumTextFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumTextFileResponse" message="tns:ICryptoProvider_CRC_ChecksumTextFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CRC_ChecksumPlaintext">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumPlaintext" message="tns:ICryptoProvider_CRC_ChecksumPlaintext_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumPlaintextResponse" message="tns:ICryptoProvider_CRC_ChecksumPlaintext_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICryptoProvider" type="tns:ICryptoProvider">
@@ -460,6 +490,33 @@
     </wsdl:operation>
     <wsdl:operation name="CBC_DecryptPlaintext">
       <soap:operation soapAction="http://tempuri.org/ICryptoProvider/CBC_DecryptPlaintext" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRC_ChecksumFile">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/CRC_ChecksumFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRC_ChecksumTextFile">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/CRC_ChecksumTextFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRC_ChecksumPlaintext">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/CRC_ChecksumPlaintext" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

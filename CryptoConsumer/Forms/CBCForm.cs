@@ -40,6 +40,7 @@ namespace CryptoConsumer.Forms {
             }
         }
 
+
         // ################################ file tab ################################
         private string file_input_filepath = "";
         private string file_output_filepath = "";
@@ -112,6 +113,9 @@ namespace CryptoConsumer.Forms {
         }
         private void file_key_button_Click(object sender, EventArgs e) {
             file_key_textbox.Text = Tools.RandomString(16);
+        }
+        private void file_vector_button_Click(object sender, EventArgs e) {
+            file_vector_textbox.Text = Tools.RandomString(8);
         }
 
         // ################################ bitmap tab ################################
@@ -213,6 +217,9 @@ namespace CryptoConsumer.Forms {
         private void bitmap_key_button_Click(object sender, EventArgs e) {
             bitmap_key_textbox.Text = Tools.RandomString(16);
         }
+        private void bitmap_vector_button_Click(object sender, EventArgs e) {
+            bitmap_vector_textbox.Text = Tools.RandomString(8);
+        }
 
         // ################################ text tab ################################
         private string text_input_filepath = "";
@@ -237,6 +244,9 @@ namespace CryptoConsumer.Forms {
         }
         private void text_key_button_Click(object sender, EventArgs e) {
             text_key_textbox.Text = Tools.RandomString(16);
+        }
+        private void text_vector_button_Click(object sender, EventArgs e) {
+            text_vector_textbox.Text = Tools.RandomString(8);
         }
         private async void text_encrypt_button_Click(object sender, EventArgs e) {
             try {
@@ -319,15 +329,15 @@ namespace CryptoConsumer.Forms {
         private void plaintext_key_button_Click(object sender, EventArgs e) {
             plaintext_key_textbox.Text = Tools.RandomString(16);
         }
-        private void plaintext_vector_button_Click(object sender, EventArgs e) {
-            plaintext_vector_textbox.Text = Tools.RandomString(8);
-        }
         private void plaintext_swap_button_Click(object sender, EventArgs e) {
             GUI.SwapText(plaintext_input_textbox, plaintext_output_textbox);
         }
         private void plaintext_offline_checkbox_CheckedChanged(object sender, EventArgs e) {
             plaintext_offline_mode = !plaintext_offline_mode;
             GUI.SetColor(plaintext_offline_checkbox, plaintext_offline_mode);
+        }
+        private void plaintext_vector_button_Click(object sender, EventArgs e) {
+            plaintext_vector_textbox.Text = Tools.RandomString(8);
         }
 
         // ################################ drag & drop ################################

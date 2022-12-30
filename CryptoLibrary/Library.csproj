@@ -49,6 +49,11 @@
     <Compile Include="Convertor.cs" />
     <Compile Include="CryptoLibrary.cs" />
     <Compile Include="Crypto\CBCTEA.cs" />
+    <Compile Include="Crypto\CRC\CRC.cs" />
+    <Compile Include="Crypto\CRC\CRCChecksum.cs" />
+    <Compile Include="Crypto\CRC\CRCFileItem.cs" />
+    <Compile Include="Crypto\CRC\CRCPlaintextItem.cs" />
+    <Compile Include="Crypto\CRC\CRCTextItem.cs" />
     <Compile Include="Crypto\ICipher.cs" />
     <Compile Include="Crypto\ICipherReference.cs" />
     <Compile Include="Crypto\ICipherValue.cs" />
