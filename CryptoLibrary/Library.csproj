@@ -7,8 +7,8 @@
     <ProjectGuid>{4E0F93A8-37E3-47C2-B4F1-33092B6BEF3D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CryptoLibrary</RootNamespace>
-    <AssemblyName>CryptoLibrary</AssemblyName>
+    <RootNamespace>Library</RootNamespace>
+    <AssemblyName>Library</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -30,9 +30,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,17 +46,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CBC_TEA.cs" />
+    <Compile Include="Convertor.cs" />
     <Compile Include="CryptoLibrary.cs" />
+    <Compile Include="Crypto\CBCTEA.cs" />
+    <Compile Include="Crypto\CRC\CRC.cs" />
+    <Compile Include="Crypto\CRC\CRCChecksum.cs" />
+    <Compile Include="Crypto\CRC\CRCFileItem.cs" />
+    <Compile Include="Crypto\CRC\CRCPlaintextItem.cs" />
+    <Compile Include="Crypto\CRC\CRCTextItem.cs" />
+    <Compile Include="Crypto\ICipher.cs" />
+    <Compile Include="Crypto\ICipherReference.cs" />
+    <Compile Include="Crypto\ICipherValue.cs" />
+    <Compile Include="Crypto\RC4.cs" />
+    <Compile Include="Crypto\TEA.cs" />
     <Compile Include="Enigma\Enigma.cs" />
     <Compile Include="Enigma\PlugBoard.cs" />
     <Compile Include="Enigma\Reflector.cs" />
     <Compile Include="Enigma\Rotor.cs" />
     <Compile Include="Enigma\RotorManager.cs" />
+    <Compile Include="GUI.cs" />
+    <Compile Include="IO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RC4.cs" />
-    <Compile Include="TEA.cs" />
+    <Compile Include="Tools.cs" />
     <Compile Include="Utility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

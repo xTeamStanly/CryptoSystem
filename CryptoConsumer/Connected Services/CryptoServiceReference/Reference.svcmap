@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="59c3fc63-2f27-46ab-9774-9a6173ebacaa" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="c74f5d70-8a30-41e4-bbdb-17234e6bb44e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,10 +22,10 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/CryptoProvider/Service1/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="66762050-6789-497a-ab88-ad69095295a7" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CryptoProvider/Service1/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="f4c68c0b-6fdb-40b2-95d3-14743583fc1b" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CryptoProvider/Service1/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="1cf0e881-96c1-48bf-9104-2f7fd0496906" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CryptoProvider/Service1/mex" />
-    <MetadataFile FileName="CryptoProvider.xsd" MetadataType="Schema" ID="220c1526-c641-4107-8276-825591788758" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CryptoProvider/Service1/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="a0e84779-d07b-4a86-933a-8bccef501b28" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CryptoProvider/Service1/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="375fc5a7-752b-443f-a158-c76dea6b5b06" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CryptoProvider/Service1/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="d558fa0f-5840-4977-9fa1-56cc95c73b41" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CryptoProvider/Service1/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="2a89d863-bcb1-410d-b125-bb3cbbf283e8" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CryptoProvider/Service1/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

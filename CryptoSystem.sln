@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoConsumer", "CryptoCon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoProvider", "CryptoProvider\CryptoProvider.csproj", "{90042FBF-5A00-4B35-98A7-64C2C5878B17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoLibrary", "CryptoLibrary\CryptoLibrary.csproj", "{4E0F93A8-37E3-47C2-B4F1-33092B6BEF3D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "CryptoLibrary\Library.csproj", "{4E0F93A8-37E3-47C2-B4F1-33092B6BEF3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

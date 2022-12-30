@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="Upoo9f2b1KFMNn0qqEW8pz/3thLfjmawkhhXVQOgEf4=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="BBSe+q7Sos+mrt29RszIOXrIRvy1GDhMCqG/BbO2m5Y=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_ICryptoProvider">
       <properties>
@@ -112,7 +112,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_ICryptoProvider" contract="CryptoProviderServiceReference.ICryptoProvider" bindingType="basicHttpBinding" address="http://localhost:8733/Design_Time_Addresses/CryptoProvider/Service1/" bindingConfiguration="BasicHttpBinding_ICryptoProvider">
+    <endpoint name="BasicHttpBinding_ICryptoProvider" contract="CryptoServiceReference.ICryptoProvider" bindingType="basicHttpBinding" address="http://localhost:8733/Design_Time_Addresses/CryptoProvider/Service1/" bindingConfiguration="BasicHttpBinding_ICryptoProvider">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:8733/Design_Time_Addresses/CryptoProvider/Service1/</serializedValue>
@@ -127,7 +127,7 @@
           <serializedValue>BasicHttpBinding_ICryptoProvider</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>CryptoProviderServiceReference.ICryptoProvider</serializedValue>
+          <serializedValue>CryptoServiceReference.ICryptoProvider</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>

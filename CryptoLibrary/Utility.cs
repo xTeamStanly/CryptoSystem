@@ -147,22 +147,22 @@ namespace CryptoLibrary {
 
             // string unicode = Encoding.UTF8.GetString(bytes_input);
             // return unicode;
-        }        
+        }
         
-        private static int padding_calculation(int lenght, int padding) {
+        private static uint padding_calculation(int lenght, int padding) {
             padding = Math.Abs(padding);
 
             int number_of_missing_elements = (padding - lenght % padding) % padding;
-            return number_of_missing_elements;
+            return Convert.ToUInt32(number_of_missing_elements);
         }
-        public static uint[] byte_array_to_unsigned_array(byte[] bytes, int padding_size) {   // PADDED BYTES
+        public static uint[] byte_array_to_unsigned_array_with_end_padding(byte[] bytes, int padding_size) {   // PADDED BYTES
             if (bytes == null) { throw new ArgumentNullException("invalid input"); }
             
             int bytes_lenght = bytes.Length;
             if (bytes_lenght == 0) { return new uint[0]; }
 
             // byte -> uint padding (fali byte: 0x12 0x13 0x14 -> UINT)
-            int byte_padding = padding_calculation(bytes_lenght, 4);
+            uint byte_padding = padding_calculation(bytes_lenght, 4);
             if (byte_padding  != 0) {
                 byte[] new_bytes = new byte[bytes_lenght + byte_padding];
                 Array.Copy(bytes, new_bytes, bytes_lenght);
@@ -176,13 +176,63 @@ namespace CryptoLibrary {
             }
 
             // uint padding
-            int uint_padding = padding_calculation(result.Count, padding_size);
+            uint uint_padding = padding_calculation(result.Count, padding_size);
+            for (int i = 0 ; i < uint_padding ; i++) { result.Add(0); }
+
+            // koliki je bio ukupan padding u bajtovima: byte_padding + 4 * uint_padding
+            // upisujemo ovaj padding kao uint na kraju podataka
+            uint final_byte_padding = byte_padding + (uint_padding + Convert.ToUInt32(padding_size)) * 4;
+            // ubacujemo dva puta zbog bloka
+            for (int i = 0 ; i < padding_size ; i++) { result.Add(final_byte_padding); }
+            
+
+            return result.ToArray();
+
+            // return bytes.Select(i => (uint)i).ToArray();
+        }
+
+        public static uint[] byte_array_to_unsigned_array(byte[] bytes, int padding_size) {   // PADDED BYTES
+            if (bytes == null) { throw new ArgumentNullException("invalid input"); }
+
+            int bytes_lenght = bytes.Length;
+            if (bytes_lenght == 0) { return new uint[0]; }
+
+            // byte -> uint padding (fali byte: 0x12 0x13 0x14 -> UINT)
+            uint byte_padding = padding_calculation(bytes_lenght, 4);
+            if (byte_padding  != 0) {
+                byte[] new_bytes = new byte[bytes_lenght + byte_padding];
+                Array.Copy(bytes, new_bytes, bytes_lenght);
+                bytes = new_bytes;
+            }
+
+            List<uint> result = new List<uint>();
+            for (int i = 0 ;i < bytes_lenght ;i += 4) {
+                uint value = BitConverter.ToUInt32(new byte[] { bytes[i], bytes[i + 1], bytes[i + 2], bytes[i + 3] }, 0);
+                result.Add(value);
+            }
+
+            // uint padding
+            uint uint_padding = padding_calculation(result.Count, padding_size);
             for (int i = 0 ; i < uint_padding ; i++) { result.Add(0); }
 
             return result.ToArray();
 
             // return bytes.Select(i => (uint)i).ToArray();
         }
+        public static byte[] unsigned_array_to_byte_array_remove_padding(uint[] input) {
+            
+            uint last_uint = input[input.Length - 1];
+            
+            byte[] input_bytes = unsigned_array_to_byte_array(input);
+
+            byte[] result_bytes = new byte[input_bytes.Length - last_uint];
+
+            Array.Copy(input_bytes, result_bytes, result_bytes.Length);
+
+            return result_bytes;
+
+        }
+
         public static byte[] unsigned_array_to_byte_array(uint[] input) {
             if (input == null) { throw new ArgumentNullException("invalid input"); }
             
