@@ -1,11 +1,7 @@
 ﻿using Library.Crypto;
+using Library.Crypto.Enigma;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
-// using CryptoLibrary.Enigma;
 
 namespace CryptoProvider {
 
@@ -263,93 +259,30 @@ namespace CryptoProvider {
             }
         }
 
-        // ENIGMA
-        //public string EnigmaCrypt(EnigmaState state, string input) {
-        //    try {
+        // ###################################### ENIGMA ######################################
+        public string Enigma_Encode(EnigmaState enigma_state, string message) {
+            try {
+                if (enigma_state == null) { throw new ArgumentNullException("Enigma state is null"); }
 
-        //        Enigma enigma = new Enigma(
-        //            state.I_Key, state.I_Rotor_Configuration, state.I_Rotor_Turnover_Letter,
-        //            state.II_Key, state.II_Rotor_Configuration, state.II_Rotor_Turnover_Letter,
-        //            state.III_Key, state.III_Rotor_Configuration, state.III_Rotor_Turnover_Letter,
-        //            state.Reflector_Configuration, state.Plug_Board_Configuration
-        //        );
+                Rotor slowrotor = new Rotor(Rotors.rotors[(int)enigma_state.SlowType]);
+                slowrotor.rotation = enigma_state.SlowRotation;
+                slowrotor.start_position = enigma_state.SlowStart;
 
-        //        return enigma.Get(input);
+                Rotor middlerotor = new Rotor(Rotors.rotors[(int)enigma_state.MiddleType]);
+                middlerotor.rotation = enigma_state.MiddleRotation;
+                middlerotor.start_position = enigma_state.MiddleStart;
 
-        //    } catch (Exception ex) {
-        //        return ex.Message;
-        //    }
-        //}
+                Rotor fastrotor = new Rotor(Rotors.rotors[(int)enigma_state.FastType]);
+                fastrotor.rotation = enigma_state.FastRotation;
+                fastrotor.start_position = enigma_state.FastStart;
 
+                Reflector reflector = new Reflector(Reflectors.reflectors[(int)enigma_state.ReflectorType]);
 
-
-        //// CBC_TEA
-        //public string CBC_TEACrypt(string key, string input, string init_vector) {
-        //    try {
-        //        if (key.Length != 16) { throw new Exception("invalid key"); }
-
-        //        CBC_TEA cbc_tea = new CBC_TEA(key, init_vector);
-        //        return cbc_tea.encrypt_unicode_to_unicode(input);
-        //    } catch (Exception ex) {
-        //        return ex.Message;
-        //    }
-        //}
-        //public string CBC_TEADecrypt(string key, string input, string init_vector) {
-        //    try {
-        //        // if (input.Length % 8 != 0) { throw new Exception("uncomplete block"); }
-        //        if (key.Length != 16) { throw new Exception("invalid key"); }
-
-        //        CBC_TEA cbc_tea = new CBC_TEA(key, init_vector);
-        //        return cbc_tea.decrypt_unicode_to_unicode(input);
-        //    } catch (Exception ex) {
-        //        return ex.Message;
-        //    }
-        //}
-        //public byte[] CBC_TEABitmapCrypt(string key, byte[] input, string init_vector) {
-        //    try {
-        //        if (key.Length != 16) { throw new Exception("invalid key"); }
-
-        //        CBC_TEA cbc_tea = new CBC_TEA(key, init_vector);
-        //        return cbc_tea.encrypt_bitmap_from_bytes(input);
-        //    } catch (Exception ex) {
-        //        Console.WriteLine(ex.Message);
-        //        return null;
-        //    }
-        //}
-        //public byte[] CBC_TEABitmapDecrypt(string key, byte[] input, string init_vector) {
-        //    try {
-        //        if (key.Length != 16) { throw new Exception("invalid key"); }
-
-        //        CBC_TEA cbc_tea = new CBC_TEA(key, init_vector);
-        //        return cbc_tea.decrypt_bitmap_from_bytes(input);
-        //    } catch (Exception ex) {
-        //        Console.WriteLine(ex.Message);
-        //        return null;
-        //    }
-        //}
-        //public byte[] CBC_TEAFileCrypt(string key, byte[] input, string init_vector) {
-        //    try {
-        //        if (key.Length != 16) { throw new Exception("invalid key"); }
-
-        //        CBC_TEA cbc_tea = new CBC_TEA(key, init_vector);
-        //        return cbc_tea.encrypt_bytes_to_bytes(input);
-        //    } catch (Exception ex) {
-        //        Console.WriteLine(ex.Message);
-        //        return null;
-        //    }
-        //}
-        //public byte[] CBC_TEAFileDecrypt(string key, byte[] input, string init_vector) {
-        //    try {
-        //        if (key.Length != 16) { throw new Exception("invalid key"); }
-
-        //        CBC_TEA cbc_tea = new CBC_TEA(key, init_vector);
-        //        return cbc_tea.decrypt_bytes_to_bytes(input);
-        //    } catch (Exception ex) {
-        //        Console.WriteLine(ex.Message);
-        //        return null;
-        //    }
-        //}
-
-
+                Enigma cipher = new Enigma(reflector, new Rotor[] { fastrotor, middlerotor, slowrotor }, enigma_state.PlugboardConfiguration);
+                return cipher.Get(message);
+            } catch (Exception ex) {
+                return ex.Message;
+            }
+        }        
     }
 }

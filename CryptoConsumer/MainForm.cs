@@ -1,14 +1,11 @@
 ﻿using CryptoConsumer.Forms;
 using Library;
 using System;
-using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace CryptoConsumer {
     public partial class MainForm : Form {
 
-        
         private CryptoServiceReference.ICryptoProvider cryptoProvider = null;
         
         public MainForm() {
@@ -31,6 +28,7 @@ namespace CryptoConsumer {
         private bool crc_visible = false;
 
         RC4Form rc4_form = null;
+        EnigmaForm enigma_form = null;
         TEAForm tea_form = null;
         CBCForm cbc_form = null;
         CRCForm crc_form = null;
@@ -53,6 +51,27 @@ namespace CryptoConsumer {
                 rc4_form.Show();
             } else {
                 close_rc4_form(false);
+            }
+        }
+
+        // ################################ ENIGMA ################################
+        public void close_enigma_form(bool call_from_child_form) {
+            enigma_visible = false;
+            if (call_from_child_form == false) {
+                if (enigma_form != null) { enigma_form.Close(); }
+            } else {
+                GUI.SetColor(enigma_button, enigma_visible);
+            }
+        }
+        private void control_panel_enigma_button_Click(object sender, EventArgs e) {
+            enigma_visible = !enigma_visible;
+            GUI.SetColor(enigma_button, enigma_visible);
+
+            if (enigma_visible == true) {
+                enigma_form = new EnigmaForm(this, cryptoProvider);
+                enigma_form.Show();
+            } else {
+                close_enigma_form(false);
             }
         }
 
@@ -119,38 +138,12 @@ namespace CryptoConsumer {
             }
         }
 
-
-        // ################################ TODO ################################
-
-
-
-
-        private void control_panel_enigma_button_Click(object sender, EventArgs e) {
-            enigma_visible = !enigma_visible;
-            GUI.SetColor(enigma_button, enigma_visible);
-        }
-
-        
-
-        
-
-        
-
-        // todo
         private void hide_all_buton_Click(object sender, EventArgs e) {
             if (rc4_form != null) { rc4_form.Close(); }
             if (tea_form != null) { tea_form.Close(); }
             if (cbc_form != null) { cbc_form.Close(); }
             if (crc_form != null) { crc_form.Close(); }
-
-
-
-
-
-
-
-
+            if (enigma_form != null) { enigma_form.Close(); }
         }
-
     }
 }

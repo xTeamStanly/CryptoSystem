@@ -63,6 +63,12 @@ namespace CryptoConsumer.CryptoServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/RC4_DecryptPlaintext", ReplyAction="http://tempuri.org/ICryptoProvider/RC4_DecryptPlaintextResponse")]
         System.Threading.Tasks.Task<string> RC4_DecryptPlaintextAsync(string key, string input);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/Enigma_Encode", ReplyAction="http://tempuri.org/ICryptoProvider/Enigma_EncodeResponse")]
+        string Enigma_Encode(CryptoProvider.EnigmaState enigma_state, string message);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/Enigma_Encode", ReplyAction="http://tempuri.org/ICryptoProvider/Enigma_EncodeResponse")]
+        System.Threading.Tasks.Task<string> Enigma_EncodeAsync(CryptoProvider.EnigmaState enigma_state, string message);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEA_EncryptFile", ReplyAction="http://tempuri.org/ICryptoProvider/TEA_EncryptFileResponse")]
         byte[] TEA_EncryptFile(string key, byte[] input);
         
@@ -267,6 +273,14 @@ namespace CryptoConsumer.CryptoServiceReference {
         
         public System.Threading.Tasks.Task<string> RC4_DecryptPlaintextAsync(string key, string input) {
             return base.Channel.RC4_DecryptPlaintextAsync(key, input);
+        }
+        
+        public string Enigma_Encode(CryptoProvider.EnigmaState enigma_state, string message) {
+            return base.Channel.Enigma_Encode(enigma_state, message);
+        }
+        
+        public System.Threading.Tasks.Task<string> Enigma_EncodeAsync(CryptoProvider.EnigmaState enigma_state, string message) {
+            return base.Channel.Enigma_EncodeAsync(enigma_state, message);
         }
         
         public byte[] TEA_EncryptFile(string key, byte[] input) {

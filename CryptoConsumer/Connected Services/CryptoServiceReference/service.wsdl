@@ -5,6 +5,8 @@
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/CryptoProvider" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Library.Crypto.Enigma" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ICryptoProvider_RC4_EncryptFile_InputMessage">
@@ -54,6 +56,12 @@
   </wsdl:message>
   <wsdl:message name="ICryptoProvider_RC4_DecryptPlaintext_OutputMessage">
     <wsdl:part name="parameters" element="tns:RC4_DecryptPlaintextResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_Enigma_Encode_InputMessage">
+    <wsdl:part name="parameters" element="tns:Enigma_Encode" />
+  </wsdl:message>
+  <wsdl:message name="ICryptoProvider_Enigma_Encode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Enigma_EncodeResponse" />
   </wsdl:message>
   <wsdl:message name="ICryptoProvider_TEA_EncryptFile_InputMessage">
     <wsdl:part name="parameters" element="tns:TEA_EncryptFile" />
@@ -202,6 +210,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/RC4_DecryptPlaintext" message="tns:ICryptoProvider_RC4_DecryptPlaintext_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/RC4_DecryptPlaintextResponse" message="tns:ICryptoProvider_RC4_DecryptPlaintext_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="Enigma_Encode">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/Enigma_Encode" message="tns:ICryptoProvider_Enigma_Encode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/Enigma_EncodeResponse" message="tns:ICryptoProvider_Enigma_Encode_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="TEA_EncryptFile">
       <wsdl:input wsaw:Action="http://tempuri.org/ICryptoProvider/TEA_EncryptFile" message="tns:ICryptoProvider_TEA_EncryptFile_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICryptoProvider/TEA_EncryptFileResponse" message="tns:ICryptoProvider_TEA_EncryptFile_OutputMessage" />
@@ -346,6 +358,15 @@
     </wsdl:operation>
     <wsdl:operation name="RC4_DecryptPlaintext">
       <soap:operation soapAction="http://tempuri.org/ICryptoProvider/RC4_DecryptPlaintext" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Enigma_Encode">
+      <soap:operation soapAction="http://tempuri.org/ICryptoProvider/Enigma_Encode" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

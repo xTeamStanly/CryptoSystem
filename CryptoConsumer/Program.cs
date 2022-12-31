@@ -1,4 +1,5 @@
 ﻿using Library.Crypto;
+using Library.Crypto.Enigma;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,15 +18,6 @@ namespace CryptoConsumer {
         /// </summary>
         [STAThread]
         static void Main() {
-
-            //CRC crc = new CRC("11011001101011101010110");
-            //byte[] crcinput = new byte[] { 0xAA, 0xBB };
-            //ulong crcoutput = crc.Checksum(crcinput);
-
-            // BitArray barr = CRC.unicode_poynomial_to_bitarray("1100000");
-
-            // CRC crc = new CRC("01010100110010101");
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
