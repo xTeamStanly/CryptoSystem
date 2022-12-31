@@ -105,7 +105,7 @@
             this.file_buttons_layout.RowCount = 1;
             this.file_buttons_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.file_buttons_layout.Size = new System.Drawing.Size(1302, 126);
-            this.file_buttons_layout.TabIndex = 4;
+            this.file_buttons_layout.TabIndex = 1;
             // 
             // encrypt_button
             // 
@@ -128,7 +128,7 @@
             this.extra_groupbox.Name = "extra_groupbox";
             this.extra_groupbox.Padding = new System.Windows.Forms.Padding(4);
             this.extra_groupbox.Size = new System.Drawing.Size(385, 120);
-            this.extra_groupbox.TabIndex = 2;
+            this.extra_groupbox.TabIndex = 1;
             this.extra_groupbox.TabStop = false;
             this.extra_groupbox.Text = "Extra";
             // 
@@ -188,7 +188,7 @@
             this.layout_inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.layout_inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.layout_inner.Size = new System.Drawing.Size(1302, 736);
-            this.layout_inner.TabIndex = 5;
+            this.layout_inner.TabIndex = 0;
             // 
             // layout_text
             // 
@@ -204,7 +204,7 @@
             this.layout_text.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.layout_text.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.layout_text.Size = new System.Drawing.Size(645, 730);
-            this.layout_text.TabIndex = 0;
+            this.layout_text.TabIndex = 1;
             // 
             // output_groupbox
             // 
@@ -215,12 +215,13 @@
             this.output_groupbox.Name = "output_groupbox";
             this.output_groupbox.Padding = new System.Windows.Forms.Padding(16);
             this.output_groupbox.Size = new System.Drawing.Size(639, 359);
-            this.output_groupbox.TabIndex = 2;
+            this.output_groupbox.TabIndex = 1;
             this.output_groupbox.TabStop = false;
             this.output_groupbox.Text = "Output Plaintext";
             // 
             // output_textbox
             // 
+            this.output_textbox.AllowDrop = true;
             this.output_textbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.output_textbox.Location = new System.Drawing.Point(16, 44);
             this.output_textbox.Multiline = true;
@@ -237,18 +238,21 @@
             this.input_groupbox.Name = "input_groupbox";
             this.input_groupbox.Padding = new System.Windows.Forms.Padding(16);
             this.input_groupbox.Size = new System.Drawing.Size(639, 359);
-            this.input_groupbox.TabIndex = 1;
+            this.input_groupbox.TabIndex = 0;
             this.input_groupbox.TabStop = false;
             this.input_groupbox.Text = "Input Plaintext";
             // 
             // input_textbox
             // 
+            this.input_textbox.AllowDrop = true;
             this.input_textbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.input_textbox.Location = new System.Drawing.Point(16, 44);
             this.input_textbox.Multiline = true;
             this.input_textbox.Name = "input_textbox";
             this.input_textbox.Size = new System.Drawing.Size(607, 299);
             this.input_textbox.TabIndex = 0;
+            this.input_textbox.DragDrop += new System.Windows.Forms.DragEventHandler(this.input_textbox_DragDrop);
+            this.input_textbox.DragEnter += new System.Windows.Forms.DragEventHandler(this.handler_DragEnter);
             // 
             // layout_configuration
             // 
@@ -267,7 +271,7 @@
             this.layout_configuration.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.layout_configuration.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.layout_configuration.Size = new System.Drawing.Size(645, 730);
-            this.layout_configuration.TabIndex = 1;
+            this.layout_configuration.TabIndex = 0;
             // 
             // plugboard_groupbox
             // 
@@ -278,7 +282,7 @@
             this.plugboard_groupbox.Name = "plugboard_groupbox";
             this.plugboard_groupbox.Padding = new System.Windows.Forms.Padding(10);
             this.plugboard_groupbox.Size = new System.Drawing.Size(639, 141);
-            this.plugboard_groupbox.TabIndex = 5;
+            this.plugboard_groupbox.TabIndex = 3;
             this.plugboard_groupbox.TabStop = false;
             this.plugboard_groupbox.Text = "Plug Board (PO AB DC ...)";
             // 
@@ -300,7 +304,7 @@
             this.reflector_groupbox.Name = "reflector_groupbox";
             this.reflector_groupbox.Padding = new System.Windows.Forms.Padding(10);
             this.reflector_groupbox.Size = new System.Drawing.Size(639, 103);
-            this.reflector_groupbox.TabIndex = 4;
+            this.reflector_groupbox.TabIndex = 2;
             this.reflector_groupbox.TabStop = false;
             this.reflector_groupbox.Text = "Reflector";
             // 
@@ -313,7 +317,7 @@
             this.reflector_selector.Location = new System.Drawing.Point(10, 47);
             this.reflector_selector.Name = "reflector_selector";
             this.reflector_selector.Size = new System.Drawing.Size(619, 31);
-            this.reflector_selector.TabIndex = 4;
+            this.reflector_selector.TabIndex = 0;
             // 
             // rotors_groupbox
             // 
@@ -324,7 +328,7 @@
             this.rotors_groupbox.Name = "rotors_groupbox";
             this.rotors_groupbox.Padding = new System.Windows.Forms.Padding(10);
             this.rotors_groupbox.Size = new System.Drawing.Size(639, 249);
-            this.rotors_groupbox.TabIndex = 3;
+            this.rotors_groupbox.TabIndex = 1;
             this.rotors_groupbox.TabStop = false;
             this.rotors_groupbox.Text = "Rotors";
             // 
@@ -369,7 +373,7 @@
             this.middle_rotor_selector.Location = new System.Drawing.Point(188, 85);
             this.middle_rotor_selector.Name = "middle_rotor_selector";
             this.middle_rotor_selector.Size = new System.Drawing.Size(428, 31);
-            this.middle_rotor_selector.TabIndex = 4;
+            this.middle_rotor_selector.TabIndex = 3;
             // 
             // fast_rotor_selector
             // 
@@ -380,7 +384,7 @@
             this.fast_rotor_selector.Location = new System.Drawing.Point(188, 18);
             this.fast_rotor_selector.Name = "fast_rotor_selector";
             this.fast_rotor_selector.Size = new System.Drawing.Size(428, 31);
-            this.fast_rotor_selector.TabIndex = 3;
+            this.fast_rotor_selector.TabIndex = 1;
             // 
             // enigma_fast_rotor_label
             // 
@@ -401,7 +405,7 @@
             this.enigma_middle_rotor_label.Location = new System.Drawing.Point(28, 89);
             this.enigma_middle_rotor_label.Name = "enigma_middle_rotor_label";
             this.enigma_middle_rotor_label.Size = new System.Drawing.Size(154, 23);
-            this.enigma_middle_rotor_label.TabIndex = 1;
+            this.enigma_middle_rotor_label.TabIndex = 2;
             this.enigma_middle_rotor_label.Text = "Middle Rotor";
             // 
             // enigma_slow_rotor_label
@@ -412,7 +416,7 @@
             this.enigma_slow_rotor_label.Location = new System.Drawing.Point(52, 156);
             this.enigma_slow_rotor_label.Name = "enigma_slow_rotor_label";
             this.enigma_slow_rotor_label.Size = new System.Drawing.Size(130, 23);
-            this.enigma_slow_rotor_label.TabIndex = 2;
+            this.enigma_slow_rotor_label.TabIndex = 4;
             this.enigma_slow_rotor_label.Text = "Slow Rotor";
             // 
             // rings_groupbox
@@ -424,7 +428,7 @@
             this.rings_groupbox.Name = "rings_groupbox";
             this.rings_groupbox.Padding = new System.Windows.Forms.Padding(10);
             this.rings_groupbox.Size = new System.Drawing.Size(639, 213);
-            this.rings_groupbox.TabIndex = 2;
+            this.rings_groupbox.TabIndex = 0;
             this.rings_groupbox.TabStop = false;
             this.rings_groupbox.Text = "Rings / Key";
             // 
@@ -469,7 +473,7 @@
             this.middle_key_selector.Location = new System.Drawing.Point(281, 67);
             this.middle_key_selector.Name = "middle_key_selector";
             this.middle_key_selector.Size = new System.Drawing.Size(335, 31);
-            this.middle_key_selector.TabIndex = 4;
+            this.middle_key_selector.TabIndex = 3;
             // 
             // fast_key_selector
             // 
@@ -480,7 +484,7 @@
             this.fast_key_selector.Location = new System.Drawing.Point(281, 12);
             this.fast_key_selector.Name = "fast_key_selector";
             this.fast_key_selector.Size = new System.Drawing.Size(335, 31);
-            this.fast_key_selector.TabIndex = 3;
+            this.fast_key_selector.TabIndex = 1;
             // 
             // enigma_fast_key_label
             // 
@@ -501,7 +505,7 @@
             this.enigma_middle_key_label.Location = new System.Drawing.Point(73, 71);
             this.enigma_middle_key_label.Name = "enigma_middle_key_label";
             this.enigma_middle_key_label.Size = new System.Drawing.Size(202, 23);
-            this.enigma_middle_key_label.TabIndex = 1;
+            this.enigma_middle_key_label.TabIndex = 2;
             this.enigma_middle_key_label.Text = "Middle Rotor Key";
             // 
             // enigma_slow_key_label
@@ -512,7 +516,7 @@
             this.enigma_slow_key_label.Location = new System.Drawing.Point(97, 126);
             this.enigma_slow_key_label.Name = "enigma_slow_key_label";
             this.enigma_slow_key_label.Size = new System.Drawing.Size(178, 23);
-            this.enigma_slow_key_label.TabIndex = 2;
+            this.enigma_slow_key_label.TabIndex = 4;
             this.enigma_slow_key_label.Text = "Slow Rotor Key";
             // 
             // EnigmaForm

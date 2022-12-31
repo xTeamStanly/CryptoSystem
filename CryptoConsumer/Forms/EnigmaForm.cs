@@ -113,5 +113,27 @@ namespace CryptoConsumer.Forms {
                 GUI.ShowError(ex.Message);
             }
         }
+
+        // ################################ drag & drop ################################
+        private void handler_DragEnter(object sender, DragEventArgs e) {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop) == true) {
+                e.Effect = DragDropEffects.Copy;
+            } else {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void input_textbox_DragDrop(object sender, DragEventArgs e) {
+            string filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+            if (filepath.ToLower().EndsWith(".txt") == false) { return; }
+
+            try {
+                string[] lines = IO.OpenTextFile(filepath);
+                input_textbox.Text = String.Join("", lines);
+            } catch(Exception ex) {
+                GUI.ShowError(ex.Message);
+            }
+
+        }
     }
 }
