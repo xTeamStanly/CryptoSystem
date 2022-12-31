@@ -205,7 +205,7 @@
             this.tabs.Name = "tabs";
             this.tabs.SelectedIndex = 0;
             this.tabs.Size = new System.Drawing.Size(1308, 874);
-            this.tabs.TabIndex = 2;
+            this.tabs.TabIndex = 0;
             this.tabs.SelectedIndexChanged += new System.EventHandler(this.tabs_SelectedIndexChanged);
             // 
             // file_tab
@@ -254,7 +254,7 @@
             this.file_buttons_layout.RowCount = 1;
             this.file_buttons_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.file_buttons_layout.Size = new System.Drawing.Size(1262, 149);
-            this.file_buttons_layout.TabIndex = 6;
+            this.file_buttons_layout.TabIndex = 3;
             // 
             // file_decrypt_button
             // 
@@ -263,7 +263,7 @@
             this.file_decrypt_button.Location = new System.Drawing.Point(381, 3);
             this.file_decrypt_button.Name = "file_decrypt_button";
             this.file_decrypt_button.Size = new System.Drawing.Size(372, 143);
-            this.file_decrypt_button.TabIndex = 7;
+            this.file_decrypt_button.TabIndex = 1;
             this.file_decrypt_button.Text = "Decrypt";
             this.file_decrypt_button.UseVisualStyleBackColor = true;
             this.file_decrypt_button.Click += new System.EventHandler(this.file_decrypt_button_Click);
@@ -275,7 +275,7 @@
             this.file_encrypt_button.Location = new System.Drawing.Point(3, 3);
             this.file_encrypt_button.Name = "file_encrypt_button";
             this.file_encrypt_button.Size = new System.Drawing.Size(372, 143);
-            this.file_encrypt_button.TabIndex = 6;
+            this.file_encrypt_button.TabIndex = 0;
             this.file_encrypt_button.Text = "Encrypt";
             this.file_encrypt_button.UseVisualStyleBackColor = true;
             this.file_encrypt_button.Click += new System.EventHandler(this.file_encrypt_button_Click);
@@ -289,7 +289,7 @@
             this.extra_groupbox.Name = "extra_groupbox";
             this.extra_groupbox.Padding = new System.Windows.Forms.Padding(4);
             this.extra_groupbox.Size = new System.Drawing.Size(374, 143);
-            this.extra_groupbox.TabIndex = 5;
+            this.extra_groupbox.TabIndex = 2;
             this.extra_groupbox.TabStop = false;
             this.extra_groupbox.Text = "Extra";
             // 
@@ -317,7 +317,7 @@
             this.file_offline_checkbox.Location = new System.Drawing.Point(186, 3);
             this.file_offline_checkbox.Name = "file_offline_checkbox";
             this.file_offline_checkbox.Size = new System.Drawing.Size(177, 101);
-            this.file_offline_checkbox.TabIndex = 6;
+            this.file_offline_checkbox.TabIndex = 1;
             this.file_offline_checkbox.Text = "Offline Mode";
             this.file_offline_checkbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.file_offline_checkbox.UseVisualStyleBackColor = true;
@@ -330,7 +330,7 @@
             this.file_swap_button.Location = new System.Drawing.Point(3, 3);
             this.file_swap_button.Name = "file_swap_button";
             this.file_swap_button.Size = new System.Drawing.Size(177, 101);
-            this.file_swap_button.TabIndex = 1;
+            this.file_swap_button.TabIndex = 0;
             this.file_swap_button.Text = "Swap Input/Output";
             this.file_swap_button.UseVisualStyleBackColor = true;
             this.file_swap_button.Click += new System.EventHandler(this.file_swap_button_Click);
@@ -373,7 +373,7 @@
             this.file_input_button.Location = new System.Drawing.Point(987, 3);
             this.file_input_button.Name = "file_input_button";
             this.file_input_button.Size = new System.Drawing.Size(240, 146);
-            this.file_input_button.TabIndex = 0;
+            this.file_input_button.TabIndex = 1;
             this.file_input_button.Text = "Browse";
             this.file_input_button.UseVisualStyleBackColor = true;
             this.file_input_button.Click += new System.EventHandler(this.file_input_button_Click);
@@ -385,7 +385,7 @@
             this.file_input_textbox.Multiline = true;
             this.file_input_textbox.Name = "file_input_textbox";
             this.file_input_textbox.Size = new System.Drawing.Size(978, 146);
-            this.file_input_textbox.TabIndex = 1;
+            this.file_input_textbox.TabIndex = 0;
             // 
             // file_output_groupbox
             // 
@@ -396,7 +396,7 @@
             this.file_output_groupbox.Name = "file_output_groupbox";
             this.file_output_groupbox.Padding = new System.Windows.Forms.Padding(16);
             this.file_output_groupbox.Size = new System.Drawing.Size(1262, 212);
-            this.file_output_groupbox.TabIndex = 2;
+            this.file_output_groupbox.TabIndex = 1;
             this.file_output_groupbox.TabStop = false;
             this.file_output_groupbox.Text = "Ouput File Path";
             // 
@@ -425,7 +425,7 @@
             this.file_output_button.Location = new System.Drawing.Point(987, 3);
             this.file_output_button.Name = "file_output_button";
             this.file_output_button.Size = new System.Drawing.Size(240, 146);
-            this.file_output_button.TabIndex = 0;
+            this.file_output_button.TabIndex = 1;
             this.file_output_button.Text = "Browse";
             this.file_output_button.UseVisualStyleBackColor = true;
             this.file_output_button.Click += new System.EventHandler(this.file_output_button_Click);
@@ -437,7 +437,7 @@
             this.file_output_textbox.Multiline = true;
             this.file_output_textbox.Name = "file_output_textbox";
             this.file_output_textbox.Size = new System.Drawing.Size(978, 146);
-            this.file_output_textbox.TabIndex = 1;
+            this.file_output_textbox.TabIndex = 0;
             // 
             // file_keyvector_layout
             // 
@@ -452,7 +452,7 @@
             this.file_keyvector_layout.RowCount = 1;
             this.file_keyvector_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.file_keyvector_layout.Size = new System.Drawing.Size(1262, 212);
-            this.file_keyvector_layout.TabIndex = 7;
+            this.file_keyvector_layout.TabIndex = 2;
             // 
             // file_vector_groupbox
             // 
@@ -463,7 +463,7 @@
             this.file_vector_groupbox.Name = "file_vector_groupbox";
             this.file_vector_groupbox.Padding = new System.Windows.Forms.Padding(16);
             this.file_vector_groupbox.Size = new System.Drawing.Size(625, 206);
-            this.file_vector_groupbox.TabIndex = 4;
+            this.file_vector_groupbox.TabIndex = 1;
             this.file_vector_groupbox.TabStop = false;
             this.file_vector_groupbox.Text = "Initialization Vector (64bit - 8 char)";
             // 
@@ -489,7 +489,7 @@
             this.file_vector_button.Location = new System.Drawing.Point(398, 3);
             this.file_vector_button.Name = "file_vector_button";
             this.file_vector_button.Size = new System.Drawing.Size(192, 140);
-            this.file_vector_button.TabIndex = 0;
+            this.file_vector_button.TabIndex = 1;
             this.file_vector_button.Text = "Random IV";
             this.file_vector_button.UseVisualStyleBackColor = true;
             this.file_vector_button.Click += new System.EventHandler(this.file_vector_button_Click);
@@ -502,7 +502,7 @@
             this.file_vector_textbox.Multiline = true;
             this.file_vector_textbox.Name = "file_vector_textbox";
             this.file_vector_textbox.Size = new System.Drawing.Size(389, 140);
-            this.file_vector_textbox.TabIndex = 1;
+            this.file_vector_textbox.TabIndex = 0;
             this.file_vector_textbox.Text = "CBC--TEA";
             // 
             // file_key_groupbox
@@ -514,7 +514,7 @@
             this.file_key_groupbox.Name = "file_key_groupbox";
             this.file_key_groupbox.Padding = new System.Windows.Forms.Padding(16);
             this.file_key_groupbox.Size = new System.Drawing.Size(625, 206);
-            this.file_key_groupbox.TabIndex = 3;
+            this.file_key_groupbox.TabIndex = 0;
             this.file_key_groupbox.TabStop = false;
             this.file_key_groupbox.Text = "Key (128bit - 16 char)";
             // 
@@ -540,7 +540,7 @@
             this.file_key_button.Location = new System.Drawing.Point(398, 3);
             this.file_key_button.Name = "file_key_button";
             this.file_key_button.Size = new System.Drawing.Size(192, 140);
-            this.file_key_button.TabIndex = 0;
+            this.file_key_button.TabIndex = 1;
             this.file_key_button.Text = "Random Key";
             this.file_key_button.UseVisualStyleBackColor = true;
             this.file_key_button.Click += new System.EventHandler(this.file_key_button_Click);
@@ -553,7 +553,7 @@
             this.file_key_textbox.Multiline = true;
             this.file_key_textbox.Name = "file_key_textbox";
             this.file_key_textbox.Size = new System.Drawing.Size(389, 140);
-            this.file_key_textbox.TabIndex = 1;
+            this.file_key_textbox.TabIndex = 0;
             this.file_key_textbox.Text = "vZQS2MEkE-Z%R$PK";
             // 
             // bitmap_tab
@@ -563,7 +563,7 @@
             this.bitmap_tab.Location = new System.Drawing.Point(4, 29);
             this.bitmap_tab.Name = "bitmap_tab";
             this.bitmap_tab.Padding = new System.Windows.Forms.Padding(16);
-            this.bitmap_tab.Size = new System.Drawing.Size(1283, 774);
+            this.bitmap_tab.Size = new System.Drawing.Size(1300, 841);
             this.bitmap_tab.TabIndex = 1;
             this.bitmap_tab.Text = "Bitmap";
             // 
@@ -586,7 +586,7 @@
             this.bitmap_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.bitmap_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.bitmap_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.bitmap_layout.Size = new System.Drawing.Size(1251, 742);
+            this.bitmap_layout.Size = new System.Drawing.Size(1268, 809);
             this.bitmap_layout.TabIndex = 4;
             // 
             // bitmap_buttons_layout
@@ -600,21 +600,21 @@
             this.bitmap_buttons_layout.Controls.Add(this.bitmap_encrypt_button, 0, 0);
             this.bitmap_buttons_layout.Controls.Add(this.bitmap_extra_layout, 3, 0);
             this.bitmap_buttons_layout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bitmap_buttons_layout.Location = new System.Drawing.Point(3, 632);
+            this.bitmap_buttons_layout.Location = new System.Drawing.Point(3, 689);
             this.bitmap_buttons_layout.Name = "bitmap_buttons_layout";
             this.bitmap_buttons_layout.RowCount = 1;
             this.bitmap_buttons_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.bitmap_buttons_layout.Size = new System.Drawing.Size(1245, 107);
-            this.bitmap_buttons_layout.TabIndex = 6;
+            this.bitmap_buttons_layout.Size = new System.Drawing.Size(1262, 117);
+            this.bitmap_buttons_layout.TabIndex = 4;
             // 
             // bitmap_decrypt_button
             // 
             this.bitmap_decrypt_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bitmap_decrypt_button.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.bitmap_decrypt_button.Location = new System.Drawing.Point(376, 3);
+            this.bitmap_decrypt_button.Location = new System.Drawing.Point(381, 3);
             this.bitmap_decrypt_button.Name = "bitmap_decrypt_button";
-            this.bitmap_decrypt_button.Size = new System.Drawing.Size(367, 101);
-            this.bitmap_decrypt_button.TabIndex = 7;
+            this.bitmap_decrypt_button.Size = new System.Drawing.Size(372, 111);
+            this.bitmap_decrypt_button.TabIndex = 1;
             this.bitmap_decrypt_button.Text = "Decrypt";
             this.bitmap_decrypt_button.UseVisualStyleBackColor = true;
             this.bitmap_decrypt_button.Click += new System.EventHandler(this.bitmap_decrypt_button_Click);
@@ -625,8 +625,8 @@
             this.bitmap_encrypt_button.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
             this.bitmap_encrypt_button.Location = new System.Drawing.Point(3, 3);
             this.bitmap_encrypt_button.Name = "bitmap_encrypt_button";
-            this.bitmap_encrypt_button.Size = new System.Drawing.Size(367, 101);
-            this.bitmap_encrypt_button.TabIndex = 6;
+            this.bitmap_encrypt_button.Size = new System.Drawing.Size(372, 111);
+            this.bitmap_encrypt_button.TabIndex = 0;
             this.bitmap_encrypt_button.Text = "Encrypt";
             this.bitmap_encrypt_button.UseVisualStyleBackColor = true;
             this.bitmap_encrypt_button.Click += new System.EventHandler(this.bitmap_encrypt_button_Click);
@@ -636,11 +636,11 @@
             this.bitmap_extra_layout.Controls.Add(this.bitmap_extra_buttons_layout);
             this.bitmap_extra_layout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bitmap_extra_layout.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.bitmap_extra_layout.Location = new System.Drawing.Point(873, 3);
+            this.bitmap_extra_layout.Location = new System.Drawing.Point(885, 3);
             this.bitmap_extra_layout.Name = "bitmap_extra_layout";
             this.bitmap_extra_layout.Padding = new System.Windows.Forms.Padding(4);
-            this.bitmap_extra_layout.Size = new System.Drawing.Size(369, 101);
-            this.bitmap_extra_layout.TabIndex = 5;
+            this.bitmap_extra_layout.Size = new System.Drawing.Size(374, 111);
+            this.bitmap_extra_layout.TabIndex = 2;
             this.bitmap_extra_layout.TabStop = false;
             this.bitmap_extra_layout.Text = "Extra";
             // 
@@ -656,7 +656,7 @@
             this.bitmap_extra_buttons_layout.Name = "bitmap_extra_buttons_layout";
             this.bitmap_extra_buttons_layout.RowCount = 1;
             this.bitmap_extra_buttons_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.bitmap_extra_buttons_layout.Size = new System.Drawing.Size(361, 65);
+            this.bitmap_extra_buttons_layout.Size = new System.Drawing.Size(366, 75);
             this.bitmap_extra_buttons_layout.TabIndex = 1;
             // 
             // bitmap_offline_checkbox
@@ -665,10 +665,10 @@
             this.bitmap_offline_checkbox.AutoSize = true;
             this.bitmap_offline_checkbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bitmap_offline_checkbox.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
-            this.bitmap_offline_checkbox.Location = new System.Drawing.Point(183, 3);
+            this.bitmap_offline_checkbox.Location = new System.Drawing.Point(186, 3);
             this.bitmap_offline_checkbox.Name = "bitmap_offline_checkbox";
-            this.bitmap_offline_checkbox.Size = new System.Drawing.Size(175, 59);
-            this.bitmap_offline_checkbox.TabIndex = 6;
+            this.bitmap_offline_checkbox.Size = new System.Drawing.Size(177, 69);
+            this.bitmap_offline_checkbox.TabIndex = 1;
             this.bitmap_offline_checkbox.Text = "Offline Mode";
             this.bitmap_offline_checkbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bitmap_offline_checkbox.UseVisualStyleBackColor = true;
@@ -680,8 +680,8 @@
             this.bitmap_swap_button.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
             this.bitmap_swap_button.Location = new System.Drawing.Point(3, 3);
             this.bitmap_swap_button.Name = "bitmap_swap_button";
-            this.bitmap_swap_button.Size = new System.Drawing.Size(174, 59);
-            this.bitmap_swap_button.TabIndex = 1;
+            this.bitmap_swap_button.Size = new System.Drawing.Size(177, 69);
+            this.bitmap_swap_button.TabIndex = 0;
             this.bitmap_swap_button.Text = "Swap Input/Output";
             this.bitmap_swap_button.UseVisualStyleBackColor = true;
             this.bitmap_swap_button.Click += new System.EventHandler(this.bitmap_swap_button_Click);
@@ -694,7 +694,7 @@
             this.bitmap_input_groupbox.Location = new System.Drawing.Point(3, 3);
             this.bitmap_input_groupbox.Name = "bitmap_input_groupbox";
             this.bitmap_input_groupbox.Padding = new System.Windows.Forms.Padding(16);
-            this.bitmap_input_groupbox.Size = new System.Drawing.Size(1245, 105);
+            this.bitmap_input_groupbox.Size = new System.Drawing.Size(1262, 115);
             this.bitmap_input_groupbox.TabIndex = 0;
             this.bitmap_input_groupbox.TabStop = false;
             this.bitmap_input_groupbox.Text = "Input Bitmap Path";
@@ -712,7 +712,7 @@
             this.bitmap_input_layout.Name = "bitmap_input_layout";
             this.bitmap_input_layout.RowCount = 1;
             this.bitmap_input_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.bitmap_input_layout.Size = new System.Drawing.Size(1213, 45);
+            this.bitmap_input_layout.Size = new System.Drawing.Size(1230, 55);
             this.bitmap_input_layout.TabIndex = 1;
             this.bitmap_input_layout.DragDrop += new System.Windows.Forms.DragEventHandler(this.bitmap_input_groupbox_DragDrop);
             this.bitmap_input_layout.DragEnter += new System.Windows.Forms.DragEventHandler(this.handler_DragEnter);
@@ -721,10 +721,10 @@
             // 
             this.bitmap_input_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bitmap_input_button.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold);
-            this.bitmap_input_button.Location = new System.Drawing.Point(973, 3);
+            this.bitmap_input_button.Location = new System.Drawing.Point(987, 3);
             this.bitmap_input_button.Name = "bitmap_input_button";
-            this.bitmap_input_button.Size = new System.Drawing.Size(237, 39);
-            this.bitmap_input_button.TabIndex = 0;
+            this.bitmap_input_button.Size = new System.Drawing.Size(240, 49);
+            this.bitmap_input_button.TabIndex = 1;
             this.bitmap_input_button.Text = "Browse";
             this.bitmap_input_button.UseVisualStyleBackColor = true;
             this.bitmap_input_button.Click += new System.EventHandler(this.bitmap_input_button_Click);
@@ -735,19 +735,19 @@
             this.bitmap_input_textbox.Location = new System.Drawing.Point(3, 3);
             this.bitmap_input_textbox.Multiline = true;
             this.bitmap_input_textbox.Name = "bitmap_input_textbox";
-            this.bitmap_input_textbox.Size = new System.Drawing.Size(964, 39);
-            this.bitmap_input_textbox.TabIndex = 1;
+            this.bitmap_input_textbox.Size = new System.Drawing.Size(978, 49);
+            this.bitmap_input_textbox.TabIndex = 0;
             // 
             // bitmap_output_groupbox
             // 
             this.bitmap_output_groupbox.Controls.Add(this.bitmap_output_layout);
             this.bitmap_output_groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bitmap_output_groupbox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.bitmap_output_groupbox.Location = new System.Drawing.Point(3, 114);
+            this.bitmap_output_groupbox.Location = new System.Drawing.Point(3, 124);
             this.bitmap_output_groupbox.Name = "bitmap_output_groupbox";
             this.bitmap_output_groupbox.Padding = new System.Windows.Forms.Padding(16);
-            this.bitmap_output_groupbox.Size = new System.Drawing.Size(1245, 105);
-            this.bitmap_output_groupbox.TabIndex = 2;
+            this.bitmap_output_groupbox.Size = new System.Drawing.Size(1262, 115);
+            this.bitmap_output_groupbox.TabIndex = 1;
             this.bitmap_output_groupbox.TabStop = false;
             this.bitmap_output_groupbox.Text = "Ouput Bitmap Path";
             // 
@@ -764,7 +764,7 @@
             this.bitmap_output_layout.Name = "bitmap_output_layout";
             this.bitmap_output_layout.RowCount = 1;
             this.bitmap_output_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.bitmap_output_layout.Size = new System.Drawing.Size(1213, 45);
+            this.bitmap_output_layout.Size = new System.Drawing.Size(1230, 55);
             this.bitmap_output_layout.TabIndex = 1;
             this.bitmap_output_layout.DragDrop += new System.Windows.Forms.DragEventHandler(this.bitmap_output_groupbox_DragDrop);
             this.bitmap_output_layout.DragEnter += new System.Windows.Forms.DragEventHandler(this.handler_DragEnter);
@@ -773,10 +773,10 @@
             // 
             this.bitmap_output_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bitmap_output_button.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold);
-            this.bitmap_output_button.Location = new System.Drawing.Point(973, 3);
+            this.bitmap_output_button.Location = new System.Drawing.Point(987, 3);
             this.bitmap_output_button.Name = "bitmap_output_button";
-            this.bitmap_output_button.Size = new System.Drawing.Size(237, 39);
-            this.bitmap_output_button.TabIndex = 0;
+            this.bitmap_output_button.Size = new System.Drawing.Size(240, 49);
+            this.bitmap_output_button.TabIndex = 1;
             this.bitmap_output_button.Text = "Browse";
             this.bitmap_output_button.UseVisualStyleBackColor = true;
             this.bitmap_output_button.Click += new System.EventHandler(this.bitmap_output_button_Click);
@@ -787,8 +787,8 @@
             this.bitmap_output_textbox.Location = new System.Drawing.Point(3, 3);
             this.bitmap_output_textbox.Multiline = true;
             this.bitmap_output_textbox.Name = "bitmap_output_textbox";
-            this.bitmap_output_textbox.Size = new System.Drawing.Size(964, 39);
-            this.bitmap_output_textbox.TabIndex = 1;
+            this.bitmap_output_textbox.Size = new System.Drawing.Size(978, 49);
+            this.bitmap_output_textbox.TabIndex = 0;
             // 
             // bitmap_preview_layout
             // 
@@ -798,12 +798,12 @@
             this.bitmap_preview_layout.Controls.Add(this.bitmap_preview_input_groupbox, 0, 0);
             this.bitmap_preview_layout.Controls.Add(this.bitmap_preview_output_groupbox, 1, 0);
             this.bitmap_preview_layout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bitmap_preview_layout.Location = new System.Drawing.Point(3, 336);
+            this.bitmap_preview_layout.Location = new System.Drawing.Point(3, 366);
             this.bitmap_preview_layout.Name = "bitmap_preview_layout";
             this.bitmap_preview_layout.RowCount = 1;
             this.bitmap_preview_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.bitmap_preview_layout.Size = new System.Drawing.Size(1245, 290);
-            this.bitmap_preview_layout.TabIndex = 7;
+            this.bitmap_preview_layout.Size = new System.Drawing.Size(1262, 317);
+            this.bitmap_preview_layout.TabIndex = 3;
             // 
             // bitmap_preview_input_groupbox
             // 
@@ -813,7 +813,7 @@
             this.bitmap_preview_input_groupbox.Location = new System.Drawing.Point(3, 3);
             this.bitmap_preview_input_groupbox.Name = "bitmap_preview_input_groupbox";
             this.bitmap_preview_input_groupbox.Padding = new System.Windows.Forms.Padding(8);
-            this.bitmap_preview_input_groupbox.Size = new System.Drawing.Size(616, 284);
+            this.bitmap_preview_input_groupbox.Size = new System.Drawing.Size(625, 311);
             this.bitmap_preview_input_groupbox.TabIndex = 0;
             this.bitmap_preview_input_groupbox.TabStop = false;
             this.bitmap_preview_input_groupbox.Text = "Input Image Preview";
@@ -824,7 +824,7 @@
             this.bitmap_preview_input_picturebox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bitmap_preview_input_picturebox.Location = new System.Drawing.Point(8, 36);
             this.bitmap_preview_input_picturebox.Name = "bitmap_preview_input_picturebox";
-            this.bitmap_preview_input_picturebox.Size = new System.Drawing.Size(600, 240);
+            this.bitmap_preview_input_picturebox.Size = new System.Drawing.Size(609, 267);
             this.bitmap_preview_input_picturebox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.bitmap_preview_input_picturebox.TabIndex = 0;
             this.bitmap_preview_input_picturebox.TabStop = false;
@@ -834,10 +834,10 @@
             this.bitmap_preview_output_groupbox.Controls.Add(this.bitmap_preview_output_picturebox);
             this.bitmap_preview_output_groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bitmap_preview_output_groupbox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.bitmap_preview_output_groupbox.Location = new System.Drawing.Point(625, 3);
+            this.bitmap_preview_output_groupbox.Location = new System.Drawing.Point(634, 3);
             this.bitmap_preview_output_groupbox.Name = "bitmap_preview_output_groupbox";
             this.bitmap_preview_output_groupbox.Padding = new System.Windows.Forms.Padding(8);
-            this.bitmap_preview_output_groupbox.Size = new System.Drawing.Size(617, 284);
+            this.bitmap_preview_output_groupbox.Size = new System.Drawing.Size(625, 311);
             this.bitmap_preview_output_groupbox.TabIndex = 1;
             this.bitmap_preview_output_groupbox.TabStop = false;
             this.bitmap_preview_output_groupbox.Text = "Output Image Preview";
@@ -848,7 +848,7 @@
             this.bitmap_preview_output_picturebox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bitmap_preview_output_picturebox.Location = new System.Drawing.Point(8, 36);
             this.bitmap_preview_output_picturebox.Name = "bitmap_preview_output_picturebox";
-            this.bitmap_preview_output_picturebox.Size = new System.Drawing.Size(601, 240);
+            this.bitmap_preview_output_picturebox.Size = new System.Drawing.Size(609, 267);
             this.bitmap_preview_output_picturebox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.bitmap_preview_output_picturebox.TabIndex = 1;
             this.bitmap_preview_output_picturebox.TabStop = false;
@@ -861,23 +861,23 @@
             this.bitmap_keyvector_layout.Controls.Add(this.bitmap_vector_groupbox, 0, 0);
             this.bitmap_keyvector_layout.Controls.Add(this.bitmap_key_layout, 0, 0);
             this.bitmap_keyvector_layout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bitmap_keyvector_layout.Location = new System.Drawing.Point(3, 225);
+            this.bitmap_keyvector_layout.Location = new System.Drawing.Point(3, 245);
             this.bitmap_keyvector_layout.Name = "bitmap_keyvector_layout";
             this.bitmap_keyvector_layout.RowCount = 1;
             this.bitmap_keyvector_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.bitmap_keyvector_layout.Size = new System.Drawing.Size(1245, 105);
-            this.bitmap_keyvector_layout.TabIndex = 8;
+            this.bitmap_keyvector_layout.Size = new System.Drawing.Size(1262, 115);
+            this.bitmap_keyvector_layout.TabIndex = 2;
             // 
             // bitmap_vector_groupbox
             // 
             this.bitmap_vector_groupbox.Controls.Add(this.bitmap_vector_layout);
             this.bitmap_vector_groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bitmap_vector_groupbox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.bitmap_vector_groupbox.Location = new System.Drawing.Point(625, 3);
+            this.bitmap_vector_groupbox.Location = new System.Drawing.Point(634, 3);
             this.bitmap_vector_groupbox.Name = "bitmap_vector_groupbox";
             this.bitmap_vector_groupbox.Padding = new System.Windows.Forms.Padding(16);
-            this.bitmap_vector_groupbox.Size = new System.Drawing.Size(617, 99);
-            this.bitmap_vector_groupbox.TabIndex = 5;
+            this.bitmap_vector_groupbox.Size = new System.Drawing.Size(625, 109);
+            this.bitmap_vector_groupbox.TabIndex = 1;
             this.bitmap_vector_groupbox.TabStop = false;
             this.bitmap_vector_groupbox.Text = "Initialization Vector (64bit - 8 char)";
             // 
@@ -893,17 +893,17 @@
             this.bitmap_vector_layout.Name = "bitmap_vector_layout";
             this.bitmap_vector_layout.RowCount = 1;
             this.bitmap_vector_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.bitmap_vector_layout.Size = new System.Drawing.Size(585, 39);
+            this.bitmap_vector_layout.Size = new System.Drawing.Size(593, 49);
             this.bitmap_vector_layout.TabIndex = 1;
             // 
             // bitmap_vector_button
             // 
             this.bitmap_vector_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bitmap_vector_button.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold);
-            this.bitmap_vector_button.Location = new System.Drawing.Point(392, 3);
+            this.bitmap_vector_button.Location = new System.Drawing.Point(398, 3);
             this.bitmap_vector_button.Name = "bitmap_vector_button";
-            this.bitmap_vector_button.Size = new System.Drawing.Size(190, 33);
-            this.bitmap_vector_button.TabIndex = 0;
+            this.bitmap_vector_button.Size = new System.Drawing.Size(192, 43);
+            this.bitmap_vector_button.TabIndex = 1;
             this.bitmap_vector_button.Text = "Random IV";
             this.bitmap_vector_button.UseVisualStyleBackColor = true;
             this.bitmap_vector_button.Click += new System.EventHandler(this.bitmap_vector_button_Click);
@@ -915,8 +915,8 @@
             this.bitmap_vector_textbox.MaxLength = 8;
             this.bitmap_vector_textbox.Multiline = true;
             this.bitmap_vector_textbox.Name = "bitmap_vector_textbox";
-            this.bitmap_vector_textbox.Size = new System.Drawing.Size(383, 33);
-            this.bitmap_vector_textbox.TabIndex = 1;
+            this.bitmap_vector_textbox.Size = new System.Drawing.Size(389, 43);
+            this.bitmap_vector_textbox.TabIndex = 0;
             this.bitmap_vector_textbox.Text = "CBC--TEA";
             // 
             // bitmap_key_layout
@@ -927,8 +927,8 @@
             this.bitmap_key_layout.Location = new System.Drawing.Point(3, 3);
             this.bitmap_key_layout.Name = "bitmap_key_layout";
             this.bitmap_key_layout.Padding = new System.Windows.Forms.Padding(16);
-            this.bitmap_key_layout.Size = new System.Drawing.Size(616, 99);
-            this.bitmap_key_layout.TabIndex = 4;
+            this.bitmap_key_layout.Size = new System.Drawing.Size(625, 109);
+            this.bitmap_key_layout.TabIndex = 0;
             this.bitmap_key_layout.TabStop = false;
             this.bitmap_key_layout.Text = "Key (128bit - 16 char)";
             // 
@@ -944,17 +944,17 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(584, 39);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(593, 49);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // bitmap_key_button
             // 
             this.bitmap_key_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bitmap_key_button.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold);
-            this.bitmap_key_button.Location = new System.Drawing.Point(392, 3);
+            this.bitmap_key_button.Location = new System.Drawing.Point(398, 3);
             this.bitmap_key_button.Name = "bitmap_key_button";
-            this.bitmap_key_button.Size = new System.Drawing.Size(189, 33);
-            this.bitmap_key_button.TabIndex = 0;
+            this.bitmap_key_button.Size = new System.Drawing.Size(192, 43);
+            this.bitmap_key_button.TabIndex = 1;
             this.bitmap_key_button.Text = "Random Key";
             this.bitmap_key_button.UseVisualStyleBackColor = true;
             this.bitmap_key_button.Click += new System.EventHandler(this.bitmap_key_button_Click);
@@ -966,8 +966,8 @@
             this.bitmap_key_textbox.MaxLength = 16;
             this.bitmap_key_textbox.Multiline = true;
             this.bitmap_key_textbox.Name = "bitmap_key_textbox";
-            this.bitmap_key_textbox.Size = new System.Drawing.Size(383, 33);
-            this.bitmap_key_textbox.TabIndex = 1;
+            this.bitmap_key_textbox.Size = new System.Drawing.Size(389, 43);
+            this.bitmap_key_textbox.TabIndex = 0;
             this.bitmap_key_textbox.Text = "vZQS2MEkE-Z%R$PK";
             // 
             // text_tab
@@ -977,7 +977,7 @@
             this.text_tab.Location = new System.Drawing.Point(4, 29);
             this.text_tab.Name = "text_tab";
             this.text_tab.Padding = new System.Windows.Forms.Padding(16);
-            this.text_tab.Size = new System.Drawing.Size(1283, 774);
+            this.text_tab.Size = new System.Drawing.Size(1300, 841);
             this.text_tab.TabIndex = 2;
             this.text_tab.Text = "Text";
             // 
@@ -998,7 +998,7 @@
             this.text_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27F));
             this.text_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19F));
             this.text_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.text_layout.Size = new System.Drawing.Size(1251, 742);
+            this.text_layout.Size = new System.Drawing.Size(1268, 809);
             this.text_layout.TabIndex = 4;
             // 
             // text_buttons_layout
@@ -1012,21 +1012,21 @@
             this.text_buttons_layout.Controls.Add(this.text_encrypt_button, 0, 0);
             this.text_buttons_layout.Controls.Add(this.text_extra_groupbox, 3, 0);
             this.text_buttons_layout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.text_buttons_layout.Location = new System.Drawing.Point(3, 603);
+            this.text_buttons_layout.Location = new System.Drawing.Point(3, 657);
             this.text_buttons_layout.Name = "text_buttons_layout";
             this.text_buttons_layout.RowCount = 1;
             this.text_buttons_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.text_buttons_layout.Size = new System.Drawing.Size(1245, 136);
-            this.text_buttons_layout.TabIndex = 6;
+            this.text_buttons_layout.Size = new System.Drawing.Size(1262, 149);
+            this.text_buttons_layout.TabIndex = 3;
             // 
             // text_decrypt_button
             // 
             this.text_decrypt_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.text_decrypt_button.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.text_decrypt_button.Location = new System.Drawing.Point(376, 3);
+            this.text_decrypt_button.Location = new System.Drawing.Point(381, 3);
             this.text_decrypt_button.Name = "text_decrypt_button";
-            this.text_decrypt_button.Size = new System.Drawing.Size(367, 130);
-            this.text_decrypt_button.TabIndex = 7;
+            this.text_decrypt_button.Size = new System.Drawing.Size(372, 143);
+            this.text_decrypt_button.TabIndex = 1;
             this.text_decrypt_button.Text = "Decrypt";
             this.text_decrypt_button.UseVisualStyleBackColor = true;
             this.text_decrypt_button.Click += new System.EventHandler(this.text_decrypt_button_Click);
@@ -1037,8 +1037,8 @@
             this.text_encrypt_button.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
             this.text_encrypt_button.Location = new System.Drawing.Point(3, 3);
             this.text_encrypt_button.Name = "text_encrypt_button";
-            this.text_encrypt_button.Size = new System.Drawing.Size(367, 130);
-            this.text_encrypt_button.TabIndex = 6;
+            this.text_encrypt_button.Size = new System.Drawing.Size(372, 143);
+            this.text_encrypt_button.TabIndex = 0;
             this.text_encrypt_button.Text = "Encrypt";
             this.text_encrypt_button.UseVisualStyleBackColor = true;
             this.text_encrypt_button.Click += new System.EventHandler(this.text_encrypt_button_Click);
@@ -1048,11 +1048,11 @@
             this.text_extra_groupbox.Controls.Add(this.text_extra_buttons_layout);
             this.text_extra_groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.text_extra_groupbox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.text_extra_groupbox.Location = new System.Drawing.Point(873, 3);
+            this.text_extra_groupbox.Location = new System.Drawing.Point(885, 3);
             this.text_extra_groupbox.Name = "text_extra_groupbox";
             this.text_extra_groupbox.Padding = new System.Windows.Forms.Padding(4);
-            this.text_extra_groupbox.Size = new System.Drawing.Size(369, 130);
-            this.text_extra_groupbox.TabIndex = 5;
+            this.text_extra_groupbox.Size = new System.Drawing.Size(374, 143);
+            this.text_extra_groupbox.TabIndex = 2;
             this.text_extra_groupbox.TabStop = false;
             this.text_extra_groupbox.Text = "Extra";
             // 
@@ -1068,7 +1068,7 @@
             this.text_extra_buttons_layout.Name = "text_extra_buttons_layout";
             this.text_extra_buttons_layout.RowCount = 1;
             this.text_extra_buttons_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.text_extra_buttons_layout.Size = new System.Drawing.Size(361, 94);
+            this.text_extra_buttons_layout.Size = new System.Drawing.Size(366, 107);
             this.text_extra_buttons_layout.TabIndex = 1;
             // 
             // text_offline_checkbox
@@ -1077,10 +1077,10 @@
             this.text_offline_checkbox.AutoSize = true;
             this.text_offline_checkbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.text_offline_checkbox.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
-            this.text_offline_checkbox.Location = new System.Drawing.Point(183, 3);
+            this.text_offline_checkbox.Location = new System.Drawing.Point(186, 3);
             this.text_offline_checkbox.Name = "text_offline_checkbox";
-            this.text_offline_checkbox.Size = new System.Drawing.Size(175, 88);
-            this.text_offline_checkbox.TabIndex = 6;
+            this.text_offline_checkbox.Size = new System.Drawing.Size(177, 101);
+            this.text_offline_checkbox.TabIndex = 1;
             this.text_offline_checkbox.Text = "Offline Mode";
             this.text_offline_checkbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.text_offline_checkbox.UseVisualStyleBackColor = true;
@@ -1092,8 +1092,8 @@
             this.text_swap_button.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
             this.text_swap_button.Location = new System.Drawing.Point(3, 3);
             this.text_swap_button.Name = "text_swap_button";
-            this.text_swap_button.Size = new System.Drawing.Size(174, 88);
-            this.text_swap_button.TabIndex = 1;
+            this.text_swap_button.Size = new System.Drawing.Size(177, 101);
+            this.text_swap_button.TabIndex = 0;
             this.text_swap_button.Text = "Swap Input/Output";
             this.text_swap_button.UseVisualStyleBackColor = true;
             this.text_swap_button.Click += new System.EventHandler(this.text_swap_button_Click);
@@ -1106,7 +1106,7 @@
             this.text_input_groupbox.Location = new System.Drawing.Point(3, 3);
             this.text_input_groupbox.Name = "text_input_groupbox";
             this.text_input_groupbox.Padding = new System.Windows.Forms.Padding(16);
-            this.text_input_groupbox.Size = new System.Drawing.Size(1245, 194);
+            this.text_input_groupbox.Size = new System.Drawing.Size(1262, 212);
             this.text_input_groupbox.TabIndex = 0;
             this.text_input_groupbox.TabStop = false;
             this.text_input_groupbox.Text = "Input Text File Path";
@@ -1124,7 +1124,7 @@
             this.text_input_layout.Name = "text_input_layout";
             this.text_input_layout.RowCount = 1;
             this.text_input_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.text_input_layout.Size = new System.Drawing.Size(1213, 134);
+            this.text_input_layout.Size = new System.Drawing.Size(1230, 152);
             this.text_input_layout.TabIndex = 1;
             this.text_input_layout.DragDrop += new System.Windows.Forms.DragEventHandler(this.text_input_groupbox_DragDrop);
             this.text_input_layout.DragEnter += new System.Windows.Forms.DragEventHandler(this.handler_DragEnter);
@@ -1133,10 +1133,10 @@
             // 
             this.text_input_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.text_input_button.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold);
-            this.text_input_button.Location = new System.Drawing.Point(973, 3);
+            this.text_input_button.Location = new System.Drawing.Point(987, 3);
             this.text_input_button.Name = "text_input_button";
-            this.text_input_button.Size = new System.Drawing.Size(237, 128);
-            this.text_input_button.TabIndex = 0;
+            this.text_input_button.Size = new System.Drawing.Size(240, 146);
+            this.text_input_button.TabIndex = 1;
             this.text_input_button.Text = "Browse";
             this.text_input_button.UseVisualStyleBackColor = true;
             this.text_input_button.Click += new System.EventHandler(this.text_input_button_Click);
@@ -1147,19 +1147,19 @@
             this.text_input_textbox.Location = new System.Drawing.Point(3, 3);
             this.text_input_textbox.Multiline = true;
             this.text_input_textbox.Name = "text_input_textbox";
-            this.text_input_textbox.Size = new System.Drawing.Size(964, 128);
-            this.text_input_textbox.TabIndex = 1;
+            this.text_input_textbox.Size = new System.Drawing.Size(978, 146);
+            this.text_input_textbox.TabIndex = 0;
             // 
             // text_output_groupbox
             // 
             this.text_output_groupbox.Controls.Add(this.text_output_layout);
             this.text_output_groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.text_output_groupbox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.text_output_groupbox.Location = new System.Drawing.Point(3, 203);
+            this.text_output_groupbox.Location = new System.Drawing.Point(3, 221);
             this.text_output_groupbox.Name = "text_output_groupbox";
             this.text_output_groupbox.Padding = new System.Windows.Forms.Padding(16);
-            this.text_output_groupbox.Size = new System.Drawing.Size(1245, 194);
-            this.text_output_groupbox.TabIndex = 2;
+            this.text_output_groupbox.Size = new System.Drawing.Size(1262, 212);
+            this.text_output_groupbox.TabIndex = 1;
             this.text_output_groupbox.TabStop = false;
             this.text_output_groupbox.Text = "Ouput Text File Path";
             // 
@@ -1177,7 +1177,7 @@
             this.text_output_layout.RowCount = 1;
             this.text_output_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.text_output_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 134F));
-            this.text_output_layout.Size = new System.Drawing.Size(1213, 134);
+            this.text_output_layout.Size = new System.Drawing.Size(1230, 152);
             this.text_output_layout.TabIndex = 1;
             this.text_output_layout.DragDrop += new System.Windows.Forms.DragEventHandler(this.text_output_groupbox_DragDrop);
             this.text_output_layout.DragEnter += new System.Windows.Forms.DragEventHandler(this.handler_DragEnter);
@@ -1186,10 +1186,10 @@
             // 
             this.text_output_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.text_output_button.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold);
-            this.text_output_button.Location = new System.Drawing.Point(973, 3);
+            this.text_output_button.Location = new System.Drawing.Point(987, 3);
             this.text_output_button.Name = "text_output_button";
-            this.text_output_button.Size = new System.Drawing.Size(237, 128);
-            this.text_output_button.TabIndex = 0;
+            this.text_output_button.Size = new System.Drawing.Size(240, 146);
+            this.text_output_button.TabIndex = 1;
             this.text_output_button.Text = "Browse";
             this.text_output_button.UseVisualStyleBackColor = true;
             this.text_output_button.Click += new System.EventHandler(this.text_output_button_Click);
@@ -1200,8 +1200,8 @@
             this.text_output_textbox.Location = new System.Drawing.Point(3, 3);
             this.text_output_textbox.Multiline = true;
             this.text_output_textbox.Name = "text_output_textbox";
-            this.text_output_textbox.Size = new System.Drawing.Size(964, 128);
-            this.text_output_textbox.TabIndex = 1;
+            this.text_output_textbox.Size = new System.Drawing.Size(978, 146);
+            this.text_output_textbox.TabIndex = 0;
             // 
             // text_keyvector_table
             // 
@@ -1212,23 +1212,23 @@
             this.text_keyvector_table.Controls.Add(this.text_vector_groupbox, 0, 0);
             this.text_keyvector_table.Controls.Add(this.text_key_groupbox, 0, 0);
             this.text_keyvector_table.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.text_keyvector_table.Location = new System.Drawing.Point(3, 403);
+            this.text_keyvector_table.Location = new System.Drawing.Point(3, 439);
             this.text_keyvector_table.Name = "text_keyvector_table";
             this.text_keyvector_table.RowCount = 1;
             this.text_keyvector_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.text_keyvector_table.Size = new System.Drawing.Size(1245, 194);
-            this.text_keyvector_table.TabIndex = 7;
+            this.text_keyvector_table.Size = new System.Drawing.Size(1262, 212);
+            this.text_keyvector_table.TabIndex = 2;
             // 
             // text_vector_groupbox
             // 
             this.text_vector_groupbox.Controls.Add(this.text_vector_layout);
             this.text_vector_groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.text_vector_groupbox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.text_vector_groupbox.Location = new System.Drawing.Point(625, 3);
+            this.text_vector_groupbox.Location = new System.Drawing.Point(634, 3);
             this.text_vector_groupbox.Name = "text_vector_groupbox";
             this.text_vector_groupbox.Padding = new System.Windows.Forms.Padding(16);
-            this.text_vector_groupbox.Size = new System.Drawing.Size(617, 188);
-            this.text_vector_groupbox.TabIndex = 6;
+            this.text_vector_groupbox.Size = new System.Drawing.Size(625, 206);
+            this.text_vector_groupbox.TabIndex = 1;
             this.text_vector_groupbox.TabStop = false;
             this.text_vector_groupbox.Text = "Initialization Vector (64bit - 8 char)";
             // 
@@ -1244,17 +1244,17 @@
             this.text_vector_layout.Name = "text_vector_layout";
             this.text_vector_layout.RowCount = 1;
             this.text_vector_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.text_vector_layout.Size = new System.Drawing.Size(585, 128);
+            this.text_vector_layout.Size = new System.Drawing.Size(593, 146);
             this.text_vector_layout.TabIndex = 1;
             // 
             // text_vector_button
             // 
             this.text_vector_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.text_vector_button.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold);
-            this.text_vector_button.Location = new System.Drawing.Point(392, 3);
+            this.text_vector_button.Location = new System.Drawing.Point(398, 3);
             this.text_vector_button.Name = "text_vector_button";
-            this.text_vector_button.Size = new System.Drawing.Size(190, 122);
-            this.text_vector_button.TabIndex = 0;
+            this.text_vector_button.Size = new System.Drawing.Size(192, 140);
+            this.text_vector_button.TabIndex = 1;
             this.text_vector_button.Text = "Random IV";
             this.text_vector_button.UseVisualStyleBackColor = true;
             this.text_vector_button.Click += new System.EventHandler(this.text_vector_button_Click);
@@ -1266,8 +1266,8 @@
             this.text_vector_textbox.MaxLength = 8;
             this.text_vector_textbox.Multiline = true;
             this.text_vector_textbox.Name = "text_vector_textbox";
-            this.text_vector_textbox.Size = new System.Drawing.Size(383, 122);
-            this.text_vector_textbox.TabIndex = 1;
+            this.text_vector_textbox.Size = new System.Drawing.Size(389, 140);
+            this.text_vector_textbox.TabIndex = 0;
             this.text_vector_textbox.Text = "CBC--TEA";
             // 
             // text_key_groupbox
@@ -1278,8 +1278,8 @@
             this.text_key_groupbox.Location = new System.Drawing.Point(3, 3);
             this.text_key_groupbox.Name = "text_key_groupbox";
             this.text_key_groupbox.Padding = new System.Windows.Forms.Padding(16);
-            this.text_key_groupbox.Size = new System.Drawing.Size(616, 188);
-            this.text_key_groupbox.TabIndex = 3;
+            this.text_key_groupbox.Size = new System.Drawing.Size(625, 206);
+            this.text_key_groupbox.TabIndex = 0;
             this.text_key_groupbox.TabStop = false;
             this.text_key_groupbox.Text = "Key (128bit - 16 char)";
             // 
@@ -1295,17 +1295,17 @@
             this.text_key_layout.Name = "text_key_layout";
             this.text_key_layout.RowCount = 1;
             this.text_key_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.text_key_layout.Size = new System.Drawing.Size(584, 128);
+            this.text_key_layout.Size = new System.Drawing.Size(593, 146);
             this.text_key_layout.TabIndex = 1;
             // 
             // text_key_button
             // 
             this.text_key_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.text_key_button.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold);
-            this.text_key_button.Location = new System.Drawing.Point(470, 3);
+            this.text_key_button.Location = new System.Drawing.Point(477, 3);
             this.text_key_button.Name = "text_key_button";
-            this.text_key_button.Size = new System.Drawing.Size(111, 122);
-            this.text_key_button.TabIndex = 0;
+            this.text_key_button.Size = new System.Drawing.Size(113, 140);
+            this.text_key_button.TabIndex = 1;
             this.text_key_button.Text = "Random Key";
             this.text_key_button.UseVisualStyleBackColor = true;
             this.text_key_button.Click += new System.EventHandler(this.text_key_button_Click);
@@ -1317,8 +1317,8 @@
             this.text_key_textbox.MaxLength = 16;
             this.text_key_textbox.Multiline = true;
             this.text_key_textbox.Name = "text_key_textbox";
-            this.text_key_textbox.Size = new System.Drawing.Size(461, 122);
-            this.text_key_textbox.TabIndex = 1;
+            this.text_key_textbox.Size = new System.Drawing.Size(468, 140);
+            this.text_key_textbox.TabIndex = 0;
             this.text_key_textbox.Text = "vZQS2MEkE-Z%R$PK";
             // 
             // plaintext_tab
@@ -1328,7 +1328,7 @@
             this.plaintext_tab.Location = new System.Drawing.Point(4, 29);
             this.plaintext_tab.Name = "plaintext_tab";
             this.plaintext_tab.Padding = new System.Windows.Forms.Padding(16);
-            this.plaintext_tab.Size = new System.Drawing.Size(1283, 774);
+            this.plaintext_tab.Size = new System.Drawing.Size(1300, 841);
             this.plaintext_tab.TabIndex = 3;
             this.plaintext_tab.Text = "Plaintext";
             // 
@@ -1349,19 +1349,19 @@
             this.plaintext_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27F));
             this.plaintext_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19F));
             this.plaintext_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.plaintext_layout.Size = new System.Drawing.Size(1251, 742);
-            this.plaintext_layout.TabIndex = 5;
+            this.plaintext_layout.Size = new System.Drawing.Size(1268, 809);
+            this.plaintext_layout.TabIndex = 0;
             // 
             // plaintext_output_groupbox
             // 
             this.plaintext_output_groupbox.Controls.Add(this.plaintext_output_textbox);
             this.plaintext_output_groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plaintext_output_groupbox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.plaintext_output_groupbox.Location = new System.Drawing.Point(3, 403);
+            this.plaintext_output_groupbox.Location = new System.Drawing.Point(3, 439);
             this.plaintext_output_groupbox.Name = "plaintext_output_groupbox";
             this.plaintext_output_groupbox.Padding = new System.Windows.Forms.Padding(16);
-            this.plaintext_output_groupbox.Size = new System.Drawing.Size(1245, 194);
-            this.plaintext_output_groupbox.TabIndex = 7;
+            this.plaintext_output_groupbox.Size = new System.Drawing.Size(1262, 212);
+            this.plaintext_output_groupbox.TabIndex = 2;
             this.plaintext_output_groupbox.TabStop = false;
             this.plaintext_output_groupbox.Text = "Output Plaintext";
             // 
@@ -1371,8 +1371,8 @@
             this.plaintext_output_textbox.Location = new System.Drawing.Point(16, 44);
             this.plaintext_output_textbox.Multiline = true;
             this.plaintext_output_textbox.Name = "plaintext_output_textbox";
-            this.plaintext_output_textbox.Size = new System.Drawing.Size(1213, 134);
-            this.plaintext_output_textbox.TabIndex = 2;
+            this.plaintext_output_textbox.Size = new System.Drawing.Size(1230, 152);
+            this.plaintext_output_textbox.TabIndex = 0;
             // 
             // plaintext_button_layout
             // 
@@ -1385,21 +1385,21 @@
             this.plaintext_button_layout.Controls.Add(this.plaintext_encrypt_button, 0, 0);
             this.plaintext_button_layout.Controls.Add(this.plaintext_extra_groupbox, 3, 0);
             this.plaintext_button_layout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.plaintext_button_layout.Location = new System.Drawing.Point(3, 603);
+            this.plaintext_button_layout.Location = new System.Drawing.Point(3, 657);
             this.plaintext_button_layout.Name = "plaintext_button_layout";
             this.plaintext_button_layout.RowCount = 1;
             this.plaintext_button_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.plaintext_button_layout.Size = new System.Drawing.Size(1245, 136);
-            this.plaintext_button_layout.TabIndex = 6;
+            this.plaintext_button_layout.Size = new System.Drawing.Size(1262, 149);
+            this.plaintext_button_layout.TabIndex = 3;
             // 
             // plaintext_decrypt_button
             // 
             this.plaintext_decrypt_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plaintext_decrypt_button.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.plaintext_decrypt_button.Location = new System.Drawing.Point(376, 3);
+            this.plaintext_decrypt_button.Location = new System.Drawing.Point(381, 3);
             this.plaintext_decrypt_button.Name = "plaintext_decrypt_button";
-            this.plaintext_decrypt_button.Size = new System.Drawing.Size(367, 130);
-            this.plaintext_decrypt_button.TabIndex = 7;
+            this.plaintext_decrypt_button.Size = new System.Drawing.Size(372, 143);
+            this.plaintext_decrypt_button.TabIndex = 1;
             this.plaintext_decrypt_button.Text = "Decrypt";
             this.plaintext_decrypt_button.UseVisualStyleBackColor = true;
             this.plaintext_decrypt_button.Click += new System.EventHandler(this.plaintext_decrypt_button_Click);
@@ -1410,8 +1410,8 @@
             this.plaintext_encrypt_button.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
             this.plaintext_encrypt_button.Location = new System.Drawing.Point(3, 3);
             this.plaintext_encrypt_button.Name = "plaintext_encrypt_button";
-            this.plaintext_encrypt_button.Size = new System.Drawing.Size(367, 130);
-            this.plaintext_encrypt_button.TabIndex = 6;
+            this.plaintext_encrypt_button.Size = new System.Drawing.Size(372, 143);
+            this.plaintext_encrypt_button.TabIndex = 0;
             this.plaintext_encrypt_button.Text = "Encrypt";
             this.plaintext_encrypt_button.UseVisualStyleBackColor = true;
             this.plaintext_encrypt_button.Click += new System.EventHandler(this.plaintext_encrypt_button_Click);
@@ -1421,11 +1421,11 @@
             this.plaintext_extra_groupbox.Controls.Add(this.plaintext_extra_buttons_layout);
             this.plaintext_extra_groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plaintext_extra_groupbox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.plaintext_extra_groupbox.Location = new System.Drawing.Point(873, 3);
+            this.plaintext_extra_groupbox.Location = new System.Drawing.Point(885, 3);
             this.plaintext_extra_groupbox.Name = "plaintext_extra_groupbox";
             this.plaintext_extra_groupbox.Padding = new System.Windows.Forms.Padding(4);
-            this.plaintext_extra_groupbox.Size = new System.Drawing.Size(369, 130);
-            this.plaintext_extra_groupbox.TabIndex = 5;
+            this.plaintext_extra_groupbox.Size = new System.Drawing.Size(374, 143);
+            this.plaintext_extra_groupbox.TabIndex = 2;
             this.plaintext_extra_groupbox.TabStop = false;
             this.plaintext_extra_groupbox.Text = "Extra";
             // 
@@ -1441,7 +1441,7 @@
             this.plaintext_extra_buttons_layout.Name = "plaintext_extra_buttons_layout";
             this.plaintext_extra_buttons_layout.RowCount = 1;
             this.plaintext_extra_buttons_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.plaintext_extra_buttons_layout.Size = new System.Drawing.Size(361, 94);
+            this.plaintext_extra_buttons_layout.Size = new System.Drawing.Size(366, 107);
             this.plaintext_extra_buttons_layout.TabIndex = 1;
             // 
             // plaintext_offline_checkbox
@@ -1450,10 +1450,10 @@
             this.plaintext_offline_checkbox.AutoSize = true;
             this.plaintext_offline_checkbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plaintext_offline_checkbox.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
-            this.plaintext_offline_checkbox.Location = new System.Drawing.Point(183, 3);
+            this.plaintext_offline_checkbox.Location = new System.Drawing.Point(186, 3);
             this.plaintext_offline_checkbox.Name = "plaintext_offline_checkbox";
-            this.plaintext_offline_checkbox.Size = new System.Drawing.Size(175, 88);
-            this.plaintext_offline_checkbox.TabIndex = 6;
+            this.plaintext_offline_checkbox.Size = new System.Drawing.Size(177, 101);
+            this.plaintext_offline_checkbox.TabIndex = 1;
             this.plaintext_offline_checkbox.Text = "Offline Mode";
             this.plaintext_offline_checkbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.plaintext_offline_checkbox.UseVisualStyleBackColor = true;
@@ -1465,8 +1465,8 @@
             this.plaintext_swap_button.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
             this.plaintext_swap_button.Location = new System.Drawing.Point(3, 3);
             this.plaintext_swap_button.Name = "plaintext_swap_button";
-            this.plaintext_swap_button.Size = new System.Drawing.Size(174, 88);
-            this.plaintext_swap_button.TabIndex = 1;
+            this.plaintext_swap_button.Size = new System.Drawing.Size(177, 101);
+            this.plaintext_swap_button.TabIndex = 0;
             this.plaintext_swap_button.Text = "Swap Input/Output";
             this.plaintext_swap_button.UseVisualStyleBackColor = true;
             this.plaintext_swap_button.Click += new System.EventHandler(this.plaintext_swap_button_Click);
@@ -1479,7 +1479,7 @@
             this.plaintext_input_groupbox.Location = new System.Drawing.Point(3, 3);
             this.plaintext_input_groupbox.Name = "plaintext_input_groupbox";
             this.plaintext_input_groupbox.Padding = new System.Windows.Forms.Padding(16);
-            this.plaintext_input_groupbox.Size = new System.Drawing.Size(1245, 194);
+            this.plaintext_input_groupbox.Size = new System.Drawing.Size(1262, 212);
             this.plaintext_input_groupbox.TabIndex = 0;
             this.plaintext_input_groupbox.TabStop = false;
             this.plaintext_input_groupbox.Text = "Input Plaintext";
@@ -1490,8 +1490,8 @@
             this.plaintext_input_textbox.Location = new System.Drawing.Point(16, 44);
             this.plaintext_input_textbox.Multiline = true;
             this.plaintext_input_textbox.Name = "plaintext_input_textbox";
-            this.plaintext_input_textbox.Size = new System.Drawing.Size(1213, 134);
-            this.plaintext_input_textbox.TabIndex = 2;
+            this.plaintext_input_textbox.Size = new System.Drawing.Size(1230, 152);
+            this.plaintext_input_textbox.TabIndex = 0;
             // 
             // plaintext_vectorkey_groupbox
             // 
@@ -1501,23 +1501,23 @@
             this.plaintext_vectorkey_groupbox.Controls.Add(this.plaintext_vector_groupbox, 0, 0);
             this.plaintext_vectorkey_groupbox.Controls.Add(this.plaintext_key_groupbox, 0, 0);
             this.plaintext_vectorkey_groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.plaintext_vectorkey_groupbox.Location = new System.Drawing.Point(3, 203);
+            this.plaintext_vectorkey_groupbox.Location = new System.Drawing.Point(3, 221);
             this.plaintext_vectorkey_groupbox.Name = "plaintext_vectorkey_groupbox";
             this.plaintext_vectorkey_groupbox.RowCount = 1;
             this.plaintext_vectorkey_groupbox.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.plaintext_vectorkey_groupbox.Size = new System.Drawing.Size(1245, 194);
-            this.plaintext_vectorkey_groupbox.TabIndex = 8;
+            this.plaintext_vectorkey_groupbox.Size = new System.Drawing.Size(1262, 212);
+            this.plaintext_vectorkey_groupbox.TabIndex = 1;
             // 
             // plaintext_vector_groupbox
             // 
             this.plaintext_vector_groupbox.Controls.Add(this.plaintext_vector_layout);
             this.plaintext_vector_groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plaintext_vector_groupbox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.plaintext_vector_groupbox.Location = new System.Drawing.Point(625, 3);
+            this.plaintext_vector_groupbox.Location = new System.Drawing.Point(634, 3);
             this.plaintext_vector_groupbox.Name = "plaintext_vector_groupbox";
             this.plaintext_vector_groupbox.Padding = new System.Windows.Forms.Padding(16);
-            this.plaintext_vector_groupbox.Size = new System.Drawing.Size(617, 188);
-            this.plaintext_vector_groupbox.TabIndex = 6;
+            this.plaintext_vector_groupbox.Size = new System.Drawing.Size(625, 206);
+            this.plaintext_vector_groupbox.TabIndex = 1;
             this.plaintext_vector_groupbox.TabStop = false;
             this.plaintext_vector_groupbox.Text = "Initialization Vector (64bit - 8 char)";
             // 
@@ -1533,17 +1533,17 @@
             this.plaintext_vector_layout.Name = "plaintext_vector_layout";
             this.plaintext_vector_layout.RowCount = 1;
             this.plaintext_vector_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.plaintext_vector_layout.Size = new System.Drawing.Size(585, 128);
+            this.plaintext_vector_layout.Size = new System.Drawing.Size(593, 146);
             this.plaintext_vector_layout.TabIndex = 1;
             // 
             // plaintext_vector_button
             // 
             this.plaintext_vector_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plaintext_vector_button.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold);
-            this.plaintext_vector_button.Location = new System.Drawing.Point(392, 3);
+            this.plaintext_vector_button.Location = new System.Drawing.Point(398, 3);
             this.plaintext_vector_button.Name = "plaintext_vector_button";
-            this.plaintext_vector_button.Size = new System.Drawing.Size(190, 122);
-            this.plaintext_vector_button.TabIndex = 0;
+            this.plaintext_vector_button.Size = new System.Drawing.Size(192, 140);
+            this.plaintext_vector_button.TabIndex = 1;
             this.plaintext_vector_button.Text = "Random IV";
             this.plaintext_vector_button.UseVisualStyleBackColor = true;
             this.plaintext_vector_button.Click += new System.EventHandler(this.plaintext_vector_button_Click);
@@ -1555,8 +1555,8 @@
             this.plaintext_vector_textbox.MaxLength = 8;
             this.plaintext_vector_textbox.Multiline = true;
             this.plaintext_vector_textbox.Name = "plaintext_vector_textbox";
-            this.plaintext_vector_textbox.Size = new System.Drawing.Size(383, 122);
-            this.plaintext_vector_textbox.TabIndex = 1;
+            this.plaintext_vector_textbox.Size = new System.Drawing.Size(389, 140);
+            this.plaintext_vector_textbox.TabIndex = 0;
             this.plaintext_vector_textbox.Text = "CBC--TEA";
             // 
             // plaintext_key_groupbox
@@ -1567,8 +1567,8 @@
             this.plaintext_key_groupbox.Location = new System.Drawing.Point(3, 3);
             this.plaintext_key_groupbox.Name = "plaintext_key_groupbox";
             this.plaintext_key_groupbox.Padding = new System.Windows.Forms.Padding(16);
-            this.plaintext_key_groupbox.Size = new System.Drawing.Size(616, 188);
-            this.plaintext_key_groupbox.TabIndex = 3;
+            this.plaintext_key_groupbox.Size = new System.Drawing.Size(625, 206);
+            this.plaintext_key_groupbox.TabIndex = 0;
             this.plaintext_key_groupbox.TabStop = false;
             this.plaintext_key_groupbox.Text = "Key (128bit - 16 char)";
             // 
@@ -1584,17 +1584,17 @@
             this.plaintext_key_layout.Name = "plaintext_key_layout";
             this.plaintext_key_layout.RowCount = 1;
             this.plaintext_key_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.plaintext_key_layout.Size = new System.Drawing.Size(584, 128);
+            this.plaintext_key_layout.Size = new System.Drawing.Size(593, 146);
             this.plaintext_key_layout.TabIndex = 1;
             // 
             // plaintext_key_button
             // 
             this.plaintext_key_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plaintext_key_button.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold);
-            this.plaintext_key_button.Location = new System.Drawing.Point(470, 3);
+            this.plaintext_key_button.Location = new System.Drawing.Point(477, 3);
             this.plaintext_key_button.Name = "plaintext_key_button";
-            this.plaintext_key_button.Size = new System.Drawing.Size(111, 122);
-            this.plaintext_key_button.TabIndex = 0;
+            this.plaintext_key_button.Size = new System.Drawing.Size(113, 140);
+            this.plaintext_key_button.TabIndex = 1;
             this.plaintext_key_button.Text = "Random Key";
             this.plaintext_key_button.UseVisualStyleBackColor = true;
             this.plaintext_key_button.Click += new System.EventHandler(this.plaintext_key_button_Click);
@@ -1606,8 +1606,8 @@
             this.plaintext_key_textbox.MaxLength = 16;
             this.plaintext_key_textbox.Multiline = true;
             this.plaintext_key_textbox.Name = "plaintext_key_textbox";
-            this.plaintext_key_textbox.Size = new System.Drawing.Size(461, 122);
-            this.plaintext_key_textbox.TabIndex = 1;
+            this.plaintext_key_textbox.Size = new System.Drawing.Size(468, 140);
+            this.plaintext_key_textbox.TabIndex = 0;
             this.plaintext_key_textbox.Text = "vZQS2MEkE-Z%R$PK";
             // 
             // CBCForm

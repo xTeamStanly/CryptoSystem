@@ -45,7 +45,7 @@
             this.control_panel_groupbox.Name = "control_panel_groupbox";
             this.control_panel_groupbox.Padding = new System.Windows.Forms.Padding(16);
             this.control_panel_groupbox.Size = new System.Drawing.Size(509, 510);
-            this.control_panel_groupbox.TabIndex = 2;
+            this.control_panel_groupbox.TabIndex = 0;
             this.control_panel_groupbox.TabStop = false;
             this.control_panel_groupbox.Text = "Control Panel";
             // 
@@ -83,7 +83,7 @@
             this.hide_all_buton.Location = new System.Drawing.Point(3, 387);
             this.hide_all_buton.Name = "hide_all_buton";
             this.hide_all_buton.Size = new System.Drawing.Size(471, 60);
-            this.hide_all_buton.TabIndex = 7;
+            this.hide_all_buton.TabIndex = 6;
             this.hide_all_buton.Text = "Hide All";
             this.hide_all_buton.UseVisualStyleBackColor = false;
             this.hide_all_buton.Click += new System.EventHandler(this.hide_all_buton_Click);
@@ -97,7 +97,7 @@
             this.crc_button.Location = new System.Drawing.Point(3, 259);
             this.crc_button.Name = "crc_button";
             this.crc_button.Size = new System.Drawing.Size(471, 58);
-            this.crc_button.TabIndex = 6;
+            this.crc_button.TabIndex = 5;
             this.crc_button.Text = "Cyclic Redundancy Check";
             this.crc_button.UseVisualStyleBackColor = true;
             this.crc_button.Click += new System.EventHandler(this.crc_button_Click);
@@ -111,7 +111,7 @@
             this.rc4_button.Location = new System.Drawing.Point(3, 3);
             this.rc4_button.Name = "rc4_button";
             this.rc4_button.Size = new System.Drawing.Size(471, 58);
-            this.rc4_button.TabIndex = 2;
+            this.rc4_button.TabIndex = 1;
             this.rc4_button.Text = "RC4";
             this.rc4_button.UseVisualStyleBackColor = true;
             this.rc4_button.Click += new System.EventHandler(this.control_panel_rc4_button_Click);
@@ -125,7 +125,7 @@
             this.cbc_button.Location = new System.Drawing.Point(3, 195);
             this.cbc_button.Name = "cbc_button";
             this.cbc_button.Size = new System.Drawing.Size(471, 58);
-            this.cbc_button.TabIndex = 5;
+            this.cbc_button.TabIndex = 4;
             this.cbc_button.Text = "Cipher Block Chaining (TEA)";
             this.cbc_button.UseVisualStyleBackColor = true;
             this.cbc_button.Click += new System.EventHandler(this.cbc_button_Click);
@@ -139,7 +139,7 @@
             this.enigma_button.Location = new System.Drawing.Point(3, 67);
             this.enigma_button.Name = "enigma_button";
             this.enigma_button.Size = new System.Drawing.Size(471, 58);
-            this.enigma_button.TabIndex = 3;
+            this.enigma_button.TabIndex = 2;
             this.enigma_button.Text = "Enigma";
             this.enigma_button.UseVisualStyleBackColor = true;
             this.enigma_button.Click += new System.EventHandler(this.control_panel_enigma_button_Click);
@@ -153,7 +153,7 @@
             this.tea_button.Location = new System.Drawing.Point(3, 131);
             this.tea_button.Name = "tea_button";
             this.tea_button.Size = new System.Drawing.Size(471, 58);
-            this.tea_button.TabIndex = 4;
+            this.tea_button.TabIndex = 3;
             this.tea_button.Text = "Tiny Encryption Algorithm (TEA)";
             this.tea_button.UseVisualStyleBackColor = true;
             this.tea_button.Click += new System.EventHandler(this.control_panel_tea_button_Click);

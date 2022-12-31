@@ -123,7 +123,7 @@
             this.tabs.Name = "tabs";
             this.tabs.SelectedIndex = 0;
             this.tabs.Size = new System.Drawing.Size(1308, 874);
-            this.tabs.TabIndex = 2;
+            this.tabs.TabIndex = 0;
             // 
             // file_tab
             // 
@@ -164,7 +164,7 @@
             this.file_history_groupbox.Name = "file_history_groupbox";
             this.file_history_groupbox.Padding = new System.Windows.Forms.Padding(16);
             this.file_history_groupbox.Size = new System.Drawing.Size(1262, 360);
-            this.file_history_groupbox.TabIndex = 8;
+            this.file_history_groupbox.TabIndex = 3;
             this.file_history_groupbox.TabStop = false;
             this.file_history_groupbox.Text = "File History";
             // 
@@ -209,7 +209,7 @@
             this.file_key_groupbox.Name = "file_key_groupbox";
             this.file_key_groupbox.Padding = new System.Windows.Forms.Padding(16);
             this.file_key_groupbox.Size = new System.Drawing.Size(1262, 155);
-            this.file_key_groupbox.TabIndex = 7;
+            this.file_key_groupbox.TabIndex = 1;
             this.file_key_groupbox.TabStop = false;
             this.file_key_groupbox.Text = "Polynomial";
             // 
@@ -249,7 +249,7 @@
             this.file_key_button.Location = new System.Drawing.Point(987, 3);
             this.file_key_button.Name = "file_key_button";
             this.file_key_button.Size = new System.Drawing.Size(240, 41);
-            this.file_key_button.TabIndex = 0;
+            this.file_key_button.TabIndex = 1;
             this.file_key_button.Text = "Random Polynomial";
             this.file_key_button.UseVisualStyleBackColor = true;
             this.file_key_button.Click += new System.EventHandler(this.file_key_button_Click);
@@ -263,7 +263,7 @@
             this.file_key_textbox.Name = "file_key_textbox";
             this.file_key_layout.SetRowSpan(this.file_key_textbox, 2);
             this.file_key_textbox.Size = new System.Drawing.Size(978, 89);
-            this.file_key_textbox.TabIndex = 1;
+            this.file_key_textbox.TabIndex = 0;
             this.file_key_textbox.Text = "100000100110000010001110110110111";
             // 
             // file_buttons_layout
@@ -281,7 +281,7 @@
             this.file_buttons_layout.RowCount = 1;
             this.file_buttons_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.file_buttons_layout.Size = new System.Drawing.Size(1262, 115);
-            this.file_buttons_layout.TabIndex = 6;
+            this.file_buttons_layout.TabIndex = 2;
             // 
             // file_encrypt_button
             // 
@@ -290,7 +290,7 @@
             this.file_encrypt_button.Location = new System.Drawing.Point(3, 3);
             this.file_encrypt_button.Name = "file_encrypt_button";
             this.file_encrypt_button.Size = new System.Drawing.Size(751, 109);
-            this.file_encrypt_button.TabIndex = 6;
+            this.file_encrypt_button.TabIndex = 0;
             this.file_encrypt_button.Text = "Calculate Checksum";
             this.file_encrypt_button.UseVisualStyleBackColor = true;
             this.file_encrypt_button.Click += new System.EventHandler(this.file_encrypt_button_Click);
@@ -304,7 +304,7 @@
             this.extra_groupbox.Name = "extra_groupbox";
             this.extra_groupbox.Padding = new System.Windows.Forms.Padding(4);
             this.extra_groupbox.Size = new System.Drawing.Size(373, 109);
-            this.extra_groupbox.TabIndex = 5;
+            this.extra_groupbox.TabIndex = 1;
             this.extra_groupbox.TabStop = false;
             this.extra_groupbox.Text = "Extra";
             // 
@@ -317,7 +317,7 @@
             this.file_offline_checkbox.Location = new System.Drawing.Point(4, 32);
             this.file_offline_checkbox.Name = "file_offline_checkbox";
             this.file_offline_checkbox.Size = new System.Drawing.Size(365, 73);
-            this.file_offline_checkbox.TabIndex = 7;
+            this.file_offline_checkbox.TabIndex = 0;
             this.file_offline_checkbox.Text = "Offline Mode";
             this.file_offline_checkbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.file_offline_checkbox.UseVisualStyleBackColor = true;
@@ -361,7 +361,7 @@
             this.file_input_button.Location = new System.Drawing.Point(987, 3);
             this.file_input_button.Name = "file_input_button";
             this.file_input_button.Size = new System.Drawing.Size(240, 89);
-            this.file_input_button.TabIndex = 0;
+            this.file_input_button.TabIndex = 1;
             this.file_input_button.Text = "Browse";
             this.file_input_button.UseVisualStyleBackColor = true;
             this.file_input_button.Click += new System.EventHandler(this.file_input_button_Click);
@@ -373,7 +373,7 @@
             this.file_input_textbox.Multiline = true;
             this.file_input_textbox.Name = "file_input_textbox";
             this.file_input_textbox.Size = new System.Drawing.Size(978, 89);
-            this.file_input_textbox.TabIndex = 1;
+            this.file_input_textbox.TabIndex = 0;
             // 
             // text_tab
             // 
@@ -414,7 +414,7 @@
             this.text_history_groupbox.Name = "text_history_groupbox";
             this.text_history_groupbox.Padding = new System.Windows.Forms.Padding(16);
             this.text_history_groupbox.Size = new System.Drawing.Size(1262, 360);
-            this.text_history_groupbox.TabIndex = 8;
+            this.text_history_groupbox.TabIndex = 3;
             this.text_history_groupbox.TabStop = false;
             this.text_history_groupbox.Text = "Text File History";
             // 
@@ -465,7 +465,7 @@
             this.text_buttons_layout.RowCount = 1;
             this.text_buttons_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.text_buttons_layout.Size = new System.Drawing.Size(1262, 115);
-            this.text_buttons_layout.TabIndex = 6;
+            this.text_buttons_layout.TabIndex = 2;
             // 
             // text_encrypt_button
             // 
@@ -475,7 +475,7 @@
             this.text_encrypt_button.Location = new System.Drawing.Point(3, 3);
             this.text_encrypt_button.Name = "text_encrypt_button";
             this.text_encrypt_button.Size = new System.Drawing.Size(750, 109);
-            this.text_encrypt_button.TabIndex = 6;
+            this.text_encrypt_button.TabIndex = 0;
             this.text_encrypt_button.Text = "Calculate Checksum";
             this.text_encrypt_button.UseVisualStyleBackColor = true;
             this.text_encrypt_button.Click += new System.EventHandler(this.text_encrypt_button_Click);
@@ -489,7 +489,7 @@
             this.text_extra_groupbox.Name = "text_extra_groupbox";
             this.text_extra_groupbox.Padding = new System.Windows.Forms.Padding(4);
             this.text_extra_groupbox.Size = new System.Drawing.Size(374, 109);
-            this.text_extra_groupbox.TabIndex = 5;
+            this.text_extra_groupbox.TabIndex = 1;
             this.text_extra_groupbox.TabStop = false;
             this.text_extra_groupbox.Text = "Extra";
             // 
@@ -502,7 +502,7 @@
             this.text_offline_checkbox.Location = new System.Drawing.Point(4, 32);
             this.text_offline_checkbox.Name = "text_offline_checkbox";
             this.text_offline_checkbox.Size = new System.Drawing.Size(366, 73);
-            this.text_offline_checkbox.TabIndex = 7;
+            this.text_offline_checkbox.TabIndex = 0;
             this.text_offline_checkbox.Text = "Offline Mode";
             this.text_offline_checkbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.text_offline_checkbox.UseVisualStyleBackColor = true;
@@ -546,7 +546,7 @@
             this.text_input_button.Location = new System.Drawing.Point(987, 3);
             this.text_input_button.Name = "text_input_button";
             this.text_input_button.Size = new System.Drawing.Size(240, 89);
-            this.text_input_button.TabIndex = 0;
+            this.text_input_button.TabIndex = 1;
             this.text_input_button.Text = "Browse";
             this.text_input_button.UseVisualStyleBackColor = true;
             this.text_input_button.Click += new System.EventHandler(this.text_input_button_Click);
@@ -558,7 +558,7 @@
             this.text_input_textbox.Multiline = true;
             this.text_input_textbox.Name = "text_input_textbox";
             this.text_input_textbox.Size = new System.Drawing.Size(978, 89);
-            this.text_input_textbox.TabIndex = 1;
+            this.text_input_textbox.TabIndex = 0;
             // 
             // text_key_groupbox
             // 
@@ -569,7 +569,7 @@
             this.text_key_groupbox.Name = "text_key_groupbox";
             this.text_key_groupbox.Padding = new System.Windows.Forms.Padding(16);
             this.text_key_groupbox.Size = new System.Drawing.Size(1262, 155);
-            this.text_key_groupbox.TabIndex = 2;
+            this.text_key_groupbox.TabIndex = 1;
             this.text_key_groupbox.TabStop = false;
             this.text_key_groupbox.Text = "Polynomial";
             // 
@@ -598,7 +598,7 @@
             this.text_key_selector.Location = new System.Drawing.Point(987, 55);
             this.text_key_selector.Name = "text_key_selector";
             this.text_key_selector.Size = new System.Drawing.Size(240, 31);
-            this.text_key_selector.TabIndex = 3;
+            this.text_key_selector.TabIndex = 2;
             this.text_key_selector.Text = "Presets";
             this.text_key_selector.SelectedIndexChanged += new System.EventHandler(this.text_key_selector_SelectedIndexChanged);
             // 
@@ -609,7 +609,7 @@
             this.text_key_button.Location = new System.Drawing.Point(987, 3);
             this.text_key_button.Name = "text_key_button";
             this.text_key_button.Size = new System.Drawing.Size(240, 41);
-            this.text_key_button.TabIndex = 0;
+            this.text_key_button.TabIndex = 1;
             this.text_key_button.Text = "Random Polynomial";
             this.text_key_button.UseVisualStyleBackColor = true;
             this.text_key_button.Click += new System.EventHandler(this.text_key_button_Click);
@@ -623,7 +623,7 @@
             this.text_key_textbox.Name = "text_key_textbox";
             this.text_key_layout.SetRowSpan(this.text_key_textbox, 2);
             this.text_key_textbox.Size = new System.Drawing.Size(978, 89);
-            this.text_key_textbox.TabIndex = 1;
+            this.text_key_textbox.TabIndex = 0;
             this.text_key_textbox.Text = "100000100110000010001110110110111";
             // 
             // plaintext_tab
@@ -671,7 +671,7 @@
             this.plaintext_button_layout.RowCount = 1;
             this.plaintext_button_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.plaintext_button_layout.Size = new System.Drawing.Size(1262, 115);
-            this.plaintext_button_layout.TabIndex = 6;
+            this.plaintext_button_layout.TabIndex = 2;
             // 
             // plaintext_encrypt_button
             // 
@@ -681,7 +681,7 @@
             this.plaintext_encrypt_button.Location = new System.Drawing.Point(3, 3);
             this.plaintext_encrypt_button.Name = "plaintext_encrypt_button";
             this.plaintext_encrypt_button.Size = new System.Drawing.Size(750, 109);
-            this.plaintext_encrypt_button.TabIndex = 6;
+            this.plaintext_encrypt_button.TabIndex = 0;
             this.plaintext_encrypt_button.Text = "Calculate Checksum";
             this.plaintext_encrypt_button.UseVisualStyleBackColor = true;
             this.plaintext_encrypt_button.Click += new System.EventHandler(this.plaintext_encrypt_button_Click);
@@ -695,7 +695,7 @@
             this.plaintext_extra_groupbox.Name = "plaintext_extra_groupbox";
             this.plaintext_extra_groupbox.Padding = new System.Windows.Forms.Padding(4);
             this.plaintext_extra_groupbox.Size = new System.Drawing.Size(374, 109);
-            this.plaintext_extra_groupbox.TabIndex = 5;
+            this.plaintext_extra_groupbox.TabIndex = 1;
             this.plaintext_extra_groupbox.TabStop = false;
             this.plaintext_extra_groupbox.Text = "Extra";
             // 
@@ -708,7 +708,7 @@
             this.plaintext_offline_checkbox.Location = new System.Drawing.Point(4, 32);
             this.plaintext_offline_checkbox.Name = "plaintext_offline_checkbox";
             this.plaintext_offline_checkbox.Size = new System.Drawing.Size(366, 73);
-            this.plaintext_offline_checkbox.TabIndex = 7;
+            this.plaintext_offline_checkbox.TabIndex = 0;
             this.plaintext_offline_checkbox.Text = "Offline Mode";
             this.plaintext_offline_checkbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.plaintext_offline_checkbox.UseVisualStyleBackColor = true;
@@ -734,7 +734,7 @@
             this.plaintext_input_textbox.Multiline = true;
             this.plaintext_input_textbox.Name = "plaintext_input_textbox";
             this.plaintext_input_textbox.Size = new System.Drawing.Size(1230, 95);
-            this.plaintext_input_textbox.TabIndex = 2;
+            this.plaintext_input_textbox.TabIndex = 0;
             // 
             // plaintext_key_groupbox
             // 
@@ -745,7 +745,7 @@
             this.plaintext_key_groupbox.Name = "plaintext_key_groupbox";
             this.plaintext_key_groupbox.Padding = new System.Windows.Forms.Padding(16);
             this.plaintext_key_groupbox.Size = new System.Drawing.Size(1262, 155);
-            this.plaintext_key_groupbox.TabIndex = 2;
+            this.plaintext_key_groupbox.TabIndex = 1;
             this.plaintext_key_groupbox.TabStop = false;
             this.plaintext_key_groupbox.Text = "Polynomial";
             // 
@@ -774,7 +774,7 @@
             this.plaintext_key_selector.Location = new System.Drawing.Point(987, 55);
             this.plaintext_key_selector.Name = "plaintext_key_selector";
             this.plaintext_key_selector.Size = new System.Drawing.Size(240, 31);
-            this.plaintext_key_selector.TabIndex = 4;
+            this.plaintext_key_selector.TabIndex = 2;
             this.plaintext_key_selector.Text = "Presets";
             this.plaintext_key_selector.SelectedIndexChanged += new System.EventHandler(this.plaintext_key_selector_SelectedIndexChanged);
             // 
@@ -785,7 +785,7 @@
             this.plaintext_key_button.Location = new System.Drawing.Point(987, 3);
             this.plaintext_key_button.Name = "plaintext_key_button";
             this.plaintext_key_button.Size = new System.Drawing.Size(240, 41);
-            this.plaintext_key_button.TabIndex = 0;
+            this.plaintext_key_button.TabIndex = 1;
             this.plaintext_key_button.Text = "Random Polynomial";
             this.plaintext_key_button.UseVisualStyleBackColor = true;
             this.plaintext_key_button.Click += new System.EventHandler(this.plaintext_key_button_Click);
@@ -799,7 +799,7 @@
             this.plaintext_key_textbox.Name = "plaintext_key_textbox";
             this.plaintext_key_layout.SetRowSpan(this.plaintext_key_textbox, 2);
             this.plaintext_key_textbox.Size = new System.Drawing.Size(978, 89);
-            this.plaintext_key_textbox.TabIndex = 1;
+            this.plaintext_key_textbox.TabIndex = 0;
             this.plaintext_key_textbox.Text = "100000100110000010001110110110111";
             // 
             // plaintext_history_groupbox
@@ -811,7 +811,7 @@
             this.plaintext_history_groupbox.Name = "plaintext_history_groupbox";
             this.plaintext_history_groupbox.Padding = new System.Windows.Forms.Padding(16);
             this.plaintext_history_groupbox.Size = new System.Drawing.Size(1262, 360);
-            this.plaintext_history_groupbox.TabIndex = 7;
+            this.plaintext_history_groupbox.TabIndex = 3;
             this.plaintext_history_groupbox.TabStop = false;
             this.plaintext_history_groupbox.Text = "Plaintext History";
             // 
