@@ -166,10 +166,10 @@ namespace CryptoConsumer.CryptoServiceReference {
         System.Threading.Tasks.Task<string> CBC_DecryptPlaintextAsync(string key, string input, string initialization_vector);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumFile", ReplyAction="http://tempuri.org/ICryptoProvider/CRC_ChecksumFileResponse")]
-        System.Nullable<ulong> CRC_ChecksumFile(string key, byte[] input);
+        System.Nullable<ulong> CRC_ChecksumFile(string key, byte[] input, int thread_count);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumFile", ReplyAction="http://tempuri.org/ICryptoProvider/CRC_ChecksumFileResponse")]
-        System.Threading.Tasks.Task<System.Nullable<ulong>> CRC_ChecksumFileAsync(string key, byte[] input);
+        System.Threading.Tasks.Task<System.Nullable<ulong>> CRC_ChecksumFileAsync(string key, byte[] input, int thread_count);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumTextFile", ReplyAction="http://tempuri.org/ICryptoProvider/CRC_ChecksumTextFileResponse")]
         System.Nullable<ulong> CRC_ChecksumTextFile(string key, string[] input);
@@ -411,12 +411,12 @@ namespace CryptoConsumer.CryptoServiceReference {
             return base.Channel.CBC_DecryptPlaintextAsync(key, input, initialization_vector);
         }
         
-        public System.Nullable<ulong> CRC_ChecksumFile(string key, byte[] input) {
-            return base.Channel.CRC_ChecksumFile(key, input);
+        public System.Nullable<ulong> CRC_ChecksumFile(string key, byte[] input, int thread_count) {
+            return base.Channel.CRC_ChecksumFile(key, input, thread_count);
         }
         
-        public System.Threading.Tasks.Task<System.Nullable<ulong>> CRC_ChecksumFileAsync(string key, byte[] input) {
-            return base.Channel.CRC_ChecksumFileAsync(key, input);
+        public System.Threading.Tasks.Task<System.Nullable<ulong>> CRC_ChecksumFileAsync(string key, byte[] input, int thread_count) {
+            return base.Channel.CRC_ChecksumFileAsync(key, input, thread_count);
         }
         
         public System.Nullable<ulong> CRC_ChecksumTextFile(string key, string[] input) {

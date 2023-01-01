@@ -1,15 +1,12 @@
-﻿using Library.Crypto;
+﻿using Library;
+using Library.Crypto;
 using Library.Crypto.Enigma;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Threading;
 using System.Windows.Forms;
+using static Library.IO;
 
 namespace CryptoConsumer {
     internal static class Program {

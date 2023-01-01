@@ -50,7 +50,7 @@ namespace CryptoProvider {
         [OperationContract] string CBC_DecryptPlaintext(string key, string input, string initialization_vector);
 
         // ###################################### CRC ######################################
-        [OperationContract] ulong? CRC_ChecksumFile(string key, byte[] input);
+        [OperationContract] ulong? CRC_ChecksumFile(string key, byte[] input, int thread_count);
         [OperationContract] ulong? CRC_ChecksumTextFile(string key, string[] input);
         [OperationContract] ulong? CRC_ChecksumPlaintext(string key, string input);
     }

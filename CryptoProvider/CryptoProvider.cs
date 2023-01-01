@@ -1,6 +1,7 @@
 ﻿using Library.Crypto;
 using Library.Crypto.Enigma;
 using System;
+using System.Diagnostics;
 using System.ServiceModel;
 
 namespace CryptoProvider {
@@ -231,11 +232,12 @@ namespace CryptoProvider {
         }
 
         // ###################################### CRC ######################################
-        public ulong? CRC_ChecksumFile(string key, byte[] input) {
+        public ulong? CRC_ChecksumFile(string key, byte[] input, int thread_count) {
             try {
-                CRC cipher = new CRC(key);
+                CRC cipher = new CRC(key, thread_count);
                 return cipher.ChecksumFile(input);
             } catch (Exception ex) {
+                Debug.WriteLine(ex.Message);
                 Console.WriteLine(ex.Message);
                 return null;
             }

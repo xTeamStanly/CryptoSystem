@@ -70,22 +70,42 @@ namespace CryptoConsumer.Forms {
             try {
                 file_input_filepath = file_input_textbox.Text;
 
-                FileInfo fileinfo = new FileInfo(file_input_filepath);
-                byte[] bytes = IO.OpenFile(file_input_filepath);
+                int thread_count = (int)file_threads_numeric.Value;
 
+                FileInfo fileinfo = new FileInfo(file_input_filepath);
                 ulong? checksum = null;
 
                 Stopwatch timer = new Stopwatch();
                 if (file_offline_mode == true) {
-                    CRC cipher = new CRC(file_key_textbox.Text);
+                    CRC cipher = new CRC(file_key_textbox.Text, thread_count);
                     timer.Start();
-                    checksum = cipher.ChecksumFile(bytes);
+                    checksum = cipher.ChecksumFile(file_input_filepath);
                     timer.Stop();
                 } else {
+                    checksum = 0;
+                    
                     timer.Start();
-                    checksum = await cryptoProvider.CRC_ChecksumFileAsync(file_key_textbox.Text, bytes);
+
+                    using (FileStream filestream = new FileStream(file_input_filepath, FileMode.Open, FileAccess.Read)) {
+
+                        byte[] buffer = new byte[128 * 1024 * 1024]; // 128MB BUFFER
+                        int bytes_read = filestream.Read(buffer, 0, buffer.Length);
+
+                        while (bytes_read > 0) {
+                            ulong? partial_checksum = await cryptoProvider.CRC_ChecksumFileAsync(file_key_textbox.Text, buffer, thread_count);
+                            if (partial_checksum == null) { throw new Exception("Server error!"); }
+                            checksum = checksum ^ (ulong)partial_checksum;
+
+                            bytes_read = filestream.Read(buffer, 0, buffer.Length);
+                            long remanining_bytes = buffer.LongLength - bytes_read;
+                            if (remanining_bytes > 0) {
+                                Array.Clear(buffer, bytes_read, (int)remanining_bytes);
+                            }
+                            
+                        }
+                    }
+
                     timer.Stop();
-                    if (checksum == null) { throw new Exception("Server error!"); }
                 }
 
                 GUI.ShowInformation("Success", "Checksum calculation successful!");
@@ -95,8 +115,9 @@ namespace CryptoConsumer.Forms {
                     CheckSum = (ulong)checksum,
                     CheckSumHex = CRC.unsigned_to_hexstring((ulong)checksum),
                     CalculationDuration = String.Format("{0} ms", timer.ElapsedMilliseconds),
-                    DateCalculated = DateTime.Now,
-                    FileSize = IO.calculate_filesize((decimal)fileinfo.Length)
+                    ThreadCount = thread_count,
+                    FileSize = IO.calculate_filesize((decimal)fileinfo.Length),
+                    Offline = file_offline_mode
                 };
                 CRC.FileHistory.Add(fileitem);
                 BindingSource binding_source = new BindingSource();
@@ -175,7 +196,7 @@ namespace CryptoConsumer.Forms {
                     CheckSum = (ulong)checksum,
                     CheckSumHex = CRC.unsigned_to_hexstring((ulong)checksum),
                     CalculationDuration = String.Format("{0} ms", timer.ElapsedMilliseconds),
-                    DateCalculated = DateTime.Now,
+                    Offline = text_offline_mode,
                     FileSize = IO.calculate_filesize((decimal)fileinfo.Length),
                     Lines = lines.Length
                 };
@@ -229,7 +250,7 @@ namespace CryptoConsumer.Forms {
                     Content = plaintext_input_textbox.Text,
                     CheckSum = (ulong)checksum,
                     CheckSumHex = CRC.unsigned_to_hexstring((ulong)checksum),
-                    DateCalculated = DateTime.Now,
+                    Offline = plaintext_offline_mode,
                     Length = plaintext_input_textbox.Text.Length,
                     CalculationDuration = String.Format("{0} ms", timer.ElapsedMilliseconds)
                 };

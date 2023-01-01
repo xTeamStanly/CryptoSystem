@@ -42,6 +42,7 @@
             this.file_key_button = new System.Windows.Forms.Button();
             this.file_key_textbox = new System.Windows.Forms.TextBox();
             this.file_buttons_layout = new System.Windows.Forms.TableLayoutPanel();
+            this.file_thread_groupbox = new System.Windows.Forms.GroupBox();
             this.file_encrypt_button = new System.Windows.Forms.Button();
             this.extra_groupbox = new System.Windows.Forms.GroupBox();
             this.file_offline_checkbox = new System.Windows.Forms.CheckBox();
@@ -81,6 +82,7 @@
             this.plaintext_key_textbox = new System.Windows.Forms.TextBox();
             this.plaintext_history_groupbox = new System.Windows.Forms.GroupBox();
             this.plaintext_datagrid = new System.Windows.Forms.DataGridView();
+            this.file_threads_numeric = new System.Windows.Forms.NumericUpDown();
             this.tabs.SuspendLayout();
             this.file_tab.SuspendLayout();
             this.file_layout.SuspendLayout();
@@ -89,6 +91,7 @@
             this.file_key_groupbox.SuspendLayout();
             this.file_key_layout.SuspendLayout();
             this.file_buttons_layout.SuspendLayout();
+            this.file_thread_groupbox.SuspendLayout();
             this.extra_groupbox.SuspendLayout();
             this.file_input_groupbox.SuspendLayout();
             this.file_input_layout.SuspendLayout();
@@ -111,6 +114,7 @@
             this.plaintext_key_layout.SuspendLayout();
             this.plaintext_history_groupbox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plaintext_datagrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.file_threads_numeric)).BeginInit();
             this.SuspendLayout();
             // 
             // tabs
@@ -270,9 +274,9 @@
             // 
             this.file_buttons_layout.ColumnCount = 3;
             this.file_buttons_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.file_buttons_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.file_buttons_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.file_buttons_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.file_buttons_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.file_buttons_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.file_buttons_layout.Controls.Add(this.file_thread_groupbox, 1, 0);
             this.file_buttons_layout.Controls.Add(this.file_encrypt_button, 0, 0);
             this.file_buttons_layout.Controls.Add(this.extra_groupbox, 2, 0);
             this.file_buttons_layout.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -282,6 +286,19 @@
             this.file_buttons_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.file_buttons_layout.Size = new System.Drawing.Size(1262, 115);
             this.file_buttons_layout.TabIndex = 2;
+            // 
+            // file_thread_groupbox
+            // 
+            this.file_thread_groupbox.Controls.Add(this.file_threads_numeric);
+            this.file_thread_groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.file_thread_groupbox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
+            this.file_thread_groupbox.Location = new System.Drawing.Point(760, 3);
+            this.file_thread_groupbox.Name = "file_thread_groupbox";
+            this.file_thread_groupbox.Padding = new System.Windows.Forms.Padding(4);
+            this.file_thread_groupbox.Size = new System.Drawing.Size(183, 109);
+            this.file_thread_groupbox.TabIndex = 2;
+            this.file_thread_groupbox.TabStop = false;
+            this.file_thread_groupbox.Text = "Threads";
             // 
             // file_encrypt_button
             // 
@@ -300,10 +317,10 @@
             this.extra_groupbox.Controls.Add(this.file_offline_checkbox);
             this.extra_groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.extra_groupbox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.extra_groupbox.Location = new System.Drawing.Point(886, 3);
+            this.extra_groupbox.Location = new System.Drawing.Point(949, 3);
             this.extra_groupbox.Name = "extra_groupbox";
             this.extra_groupbox.Padding = new System.Windows.Forms.Padding(4);
-            this.extra_groupbox.Size = new System.Drawing.Size(373, 109);
+            this.extra_groupbox.Size = new System.Drawing.Size(310, 109);
             this.extra_groupbox.TabIndex = 1;
             this.extra_groupbox.TabStop = false;
             this.extra_groupbox.Text = "Extra";
@@ -316,7 +333,7 @@
             this.file_offline_checkbox.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
             this.file_offline_checkbox.Location = new System.Drawing.Point(4, 32);
             this.file_offline_checkbox.Name = "file_offline_checkbox";
-            this.file_offline_checkbox.Size = new System.Drawing.Size(365, 73);
+            this.file_offline_checkbox.Size = new System.Drawing.Size(302, 73);
             this.file_offline_checkbox.TabIndex = 0;
             this.file_offline_checkbox.Text = "Offline Mode";
             this.file_offline_checkbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -452,13 +469,13 @@
             // 
             // text_buttons_layout
             // 
-            this.text_buttons_layout.ColumnCount = 4;
-            this.text_buttons_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.text_buttons_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.text_buttons_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.text_buttons_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.text_buttons_layout.ColumnCount = 3;
+            this.text_buttons_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.text_buttons_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.text_buttons_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.text_buttons_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.text_buttons_layout.Controls.Add(this.text_encrypt_button, 0, 0);
-            this.text_buttons_layout.Controls.Add(this.text_extra_groupbox, 3, 0);
+            this.text_buttons_layout.Controls.Add(this.text_extra_groupbox, 2, 0);
             this.text_buttons_layout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.text_buttons_layout.Location = new System.Drawing.Point(3, 325);
             this.text_buttons_layout.Name = "text_buttons_layout";
@@ -469,12 +486,11 @@
             // 
             // text_encrypt_button
             // 
-            this.text_buttons_layout.SetColumnSpan(this.text_encrypt_button, 2);
             this.text_encrypt_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.text_encrypt_button.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
             this.text_encrypt_button.Location = new System.Drawing.Point(3, 3);
             this.text_encrypt_button.Name = "text_encrypt_button";
-            this.text_encrypt_button.Size = new System.Drawing.Size(750, 109);
+            this.text_encrypt_button.Size = new System.Drawing.Size(751, 109);
             this.text_encrypt_button.TabIndex = 0;
             this.text_encrypt_button.Text = "Calculate Checksum";
             this.text_encrypt_button.UseVisualStyleBackColor = true;
@@ -485,10 +501,10 @@
             this.text_extra_groupbox.Controls.Add(this.text_offline_checkbox);
             this.text_extra_groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.text_extra_groupbox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.text_extra_groupbox.Location = new System.Drawing.Point(885, 3);
+            this.text_extra_groupbox.Location = new System.Drawing.Point(949, 3);
             this.text_extra_groupbox.Name = "text_extra_groupbox";
             this.text_extra_groupbox.Padding = new System.Windows.Forms.Padding(4);
-            this.text_extra_groupbox.Size = new System.Drawing.Size(374, 109);
+            this.text_extra_groupbox.Size = new System.Drawing.Size(310, 109);
             this.text_extra_groupbox.TabIndex = 1;
             this.text_extra_groupbox.TabStop = false;
             this.text_extra_groupbox.Text = "Extra";
@@ -501,7 +517,7 @@
             this.text_offline_checkbox.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
             this.text_offline_checkbox.Location = new System.Drawing.Point(4, 32);
             this.text_offline_checkbox.Name = "text_offline_checkbox";
-            this.text_offline_checkbox.Size = new System.Drawing.Size(366, 73);
+            this.text_offline_checkbox.Size = new System.Drawing.Size(302, 73);
             this.text_offline_checkbox.TabIndex = 0;
             this.text_offline_checkbox.Text = "Offline Mode";
             this.text_offline_checkbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -658,13 +674,13 @@
             // 
             // plaintext_button_layout
             // 
-            this.plaintext_button_layout.ColumnCount = 4;
-            this.plaintext_button_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.plaintext_button_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.plaintext_button_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.plaintext_button_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.plaintext_button_layout.ColumnCount = 3;
+            this.plaintext_button_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.plaintext_button_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.plaintext_button_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.plaintext_button_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.plaintext_button_layout.Controls.Add(this.plaintext_encrypt_button, 0, 0);
-            this.plaintext_button_layout.Controls.Add(this.plaintext_extra_groupbox, 3, 0);
+            this.plaintext_button_layout.Controls.Add(this.plaintext_extra_groupbox, 2, 0);
             this.plaintext_button_layout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plaintext_button_layout.Location = new System.Drawing.Point(3, 325);
             this.plaintext_button_layout.Name = "plaintext_button_layout";
@@ -675,12 +691,11 @@
             // 
             // plaintext_encrypt_button
             // 
-            this.plaintext_button_layout.SetColumnSpan(this.plaintext_encrypt_button, 2);
             this.plaintext_encrypt_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plaintext_encrypt_button.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
             this.plaintext_encrypt_button.Location = new System.Drawing.Point(3, 3);
             this.plaintext_encrypt_button.Name = "plaintext_encrypt_button";
-            this.plaintext_encrypt_button.Size = new System.Drawing.Size(750, 109);
+            this.plaintext_encrypt_button.Size = new System.Drawing.Size(751, 109);
             this.plaintext_encrypt_button.TabIndex = 0;
             this.plaintext_encrypt_button.Text = "Calculate Checksum";
             this.plaintext_encrypt_button.UseVisualStyleBackColor = true;
@@ -691,10 +706,10 @@
             this.plaintext_extra_groupbox.Controls.Add(this.plaintext_offline_checkbox);
             this.plaintext_extra_groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plaintext_extra_groupbox.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
-            this.plaintext_extra_groupbox.Location = new System.Drawing.Point(885, 3);
+            this.plaintext_extra_groupbox.Location = new System.Drawing.Point(949, 3);
             this.plaintext_extra_groupbox.Name = "plaintext_extra_groupbox";
             this.plaintext_extra_groupbox.Padding = new System.Windows.Forms.Padding(4);
-            this.plaintext_extra_groupbox.Size = new System.Drawing.Size(374, 109);
+            this.plaintext_extra_groupbox.Size = new System.Drawing.Size(310, 109);
             this.plaintext_extra_groupbox.TabIndex = 1;
             this.plaintext_extra_groupbox.TabStop = false;
             this.plaintext_extra_groupbox.Text = "Extra";
@@ -707,7 +722,7 @@
             this.plaintext_offline_checkbox.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
             this.plaintext_offline_checkbox.Location = new System.Drawing.Point(4, 32);
             this.plaintext_offline_checkbox.Name = "plaintext_offline_checkbox";
-            this.plaintext_offline_checkbox.Size = new System.Drawing.Size(366, 73);
+            this.plaintext_offline_checkbox.Size = new System.Drawing.Size(302, 73);
             this.plaintext_offline_checkbox.TabIndex = 0;
             this.plaintext_offline_checkbox.Text = "Offline Mode";
             this.plaintext_offline_checkbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -847,6 +862,30 @@
             this.plaintext_datagrid.TabIndex = 0;
             this.plaintext_datagrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.plaintext_datagrid_DataBindingComplete);
             // 
+            // file_threads_numeric
+            // 
+            this.file_threads_numeric.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.file_threads_numeric.Location = new System.Drawing.Point(7, 50);
+            this.file_threads_numeric.Maximum = new decimal(new int[] {
+            256,
+            0,
+            0,
+            0});
+            this.file_threads_numeric.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.file_threads_numeric.Name = "file_threads_numeric";
+            this.file_threads_numeric.Size = new System.Drawing.Size(169, 35);
+            this.file_threads_numeric.TabIndex = 0;
+            this.file_threads_numeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.file_threads_numeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // CRCForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -870,6 +909,7 @@
             this.file_key_layout.ResumeLayout(false);
             this.file_key_layout.PerformLayout();
             this.file_buttons_layout.ResumeLayout(false);
+            this.file_thread_groupbox.ResumeLayout(false);
             this.extra_groupbox.ResumeLayout(false);
             this.extra_groupbox.PerformLayout();
             this.file_input_groupbox.ResumeLayout(false);
@@ -900,6 +940,7 @@
             this.plaintext_key_layout.PerformLayout();
             this.plaintext_history_groupbox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.plaintext_datagrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.file_threads_numeric)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -956,5 +997,7 @@
         private System.Windows.Forms.GroupBox plaintext_history_groupbox;
         private System.Windows.Forms.DataGridView plaintext_datagrid;
         private System.Windows.Forms.ComboBox plaintext_key_selector;
+        private System.Windows.Forms.GroupBox file_thread_groupbox;
+        private System.Windows.Forms.NumericUpDown file_threads_numeric;
     }
 }

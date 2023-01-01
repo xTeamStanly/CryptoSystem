@@ -1,13 +1,10 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing.Text;
+using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Threading;
 
 namespace Library.Crypto {
     
@@ -22,6 +19,10 @@ namespace Library.Crypto {
         public BitArray Polynomial { get { return polynomial; } }
         private int polynomial_length = 0;
         private int padding_lenght = 0;
+
+        // crc lookup tabela
+        private ulong[] lookup_table = new ulong[256];
+        private int thread_count = 1;
 
         private bool possible_overflow = false;
         public bool PossibleOverflow { get { return possible_overflow; } }
@@ -71,6 +72,64 @@ namespace Library.Crypto {
             polynomial = unicode_poynomial_to_bitarray(unicode_polynomial);
             polynomial_length = polynomial.Length;
             padding_lenght = polynomial_length - 1;
+
+           calculate_lookup_table();
+        }
+
+        public CRC(string unicode_polynomial, int thread_count) {
+            thread_count = Math.Abs(thread_count);
+            if (thread_count == 0) {
+                this.thread_count = 1;
+            } else {
+                this.thread_count = thread_count;
+            }
+
+            if (unicode_polynomial.Length > 57) { possible_overflow = true; }
+
+            polynomial = unicode_poynomial_to_bitarray(unicode_polynomial);
+            polynomial_length = polynomial.Length;
+            padding_lenght = polynomial_length - 1;
+
+            calculate_lookup_table();
+        }
+
+        private byte[] generate_all_bytes() {
+            byte[] bytes = new byte[256];
+            byte b = 0;
+            while(true) {
+                bytes[b] = b;
+                if (b == 255) {
+                    break;
+                }
+
+                b++;
+            }
+            return bytes;
+        }
+
+        private void calculate_lookup_table() {
+            IO.ThreadInfo[] thread_infos = IO.calculate_thread_info(256, thread_count);
+            Thread[] threads = new Thread[thread_infos.Length];
+
+            byte[] bytes = generate_all_bytes();
+
+            for (int i = 0 ; i < thread_infos.Length ; i++) {
+                IO.ThreadInfo info = thread_infos[i];
+                info.id = i;
+                threads[i] = new Thread(() => {
+                    long end_pos = info.lenght + info.offset;
+
+                    for (long pos = info.offset ; pos < end_pos ; pos++) {
+                        lookup_table[pos] = polynomial_divide(bytes[pos]);
+                    }
+                });
+
+                threads[i].Start();
+            }
+
+            foreach (Thread thread in threads) {
+                thread.Join();
+            }
         }
 
         public ulong polynomial_divide(byte data) {
@@ -109,21 +168,95 @@ namespace Library.Crypto {
 
             ulong result = 0;
             for (int i = 0 ; i < input.Length ; i++) {
-                ulong remainder = polynomial_divide(input[i]);
-                result = result ^ remainder;
+                result = result ^ lookup_table[input[i]];
             }
 
             return result;
         }
 
+        // visenitno racunanje checksum-a iz niza byte-ova
         public ulong ChecksumFile(byte[] input) {
             if (input.Length == 0) { throw new Exception("No data"); }
-            return Checksum(input);
+
+            IO.ThreadInfo[] thread_infos = IO.calculate_thread_info(input.LongLength, thread_count);
+            Thread[] threads = new Thread[thread_infos.Length];
+            ulong[] thread_checksums = new ulong[thread_infos.Length];
+
+            for (int i = 0 ; i < thread_infos.Length ; i++) {
+                IO.ThreadInfo info = thread_infos[i];
+                info.id = i;
+                threads[i] = new Thread(() => {
+                    ulong thread_checksum = 0;
+                    long end_pos = info.lenght + info.offset;
+
+                    for (long pos = info.offset ; pos < end_pos ; pos++) {
+                        thread_checksum = thread_checksum ^ lookup_table[input[pos]];
+                    }
+
+                    thread_checksums[info.id] = thread_checksum;
+                });
+                threads[i].Start();
+            }
+
+            ulong checksum = 0;
+            foreach (Thread thread in threads) { thread.Join(); }
+            foreach (ulong thread_checksum in thread_checksums) {
+                checksum = checksum ^ thread_checksum;
+            }
+
+            return checksum;
         }
+
+        // visenitno racunanje checksum-a iz filepath-a
         public ulong ChecksumFile(string inputpath) {
-            byte[] input_bytes = IO.OpenFile(inputpath);
-            if (input_bytes.Length == 0) { throw new Exception("No data"); }
-            return Checksum(input_bytes);
+            IO.valid_filepath(inputpath);
+
+            ulong checksum = 0;
+            using(FileStream filestream = new FileStream(inputpath, FileMode.Open, FileAccess.Read)) {
+                
+                byte[] buffer = new byte[128 * 1024 * 1024]; // 128 MB BUFFER
+                int bytes_read = filestream.Read(buffer, 0, buffer.Length);
+                while (bytes_read > 0) {
+                    
+                    // obrada
+                    IO.ThreadInfo[] thread_infos = IO.calculate_thread_info(bytes_read, thread_count);
+                    Thread[] threads = new Thread[thread_infos.Length];
+                    ulong[] thread_checksums = new ulong[thread_infos.Length];
+
+                    for (int i = 0 ; i < thread_infos.Length ; i++) {
+                        IO.ThreadInfo info = thread_infos[i];
+                        info.id = i;
+                        threads[i] = new Thread(() => {
+                            ulong thread_checksum = 0;
+                            long end_pos = info.lenght + info.offset;
+
+                            for (long pos = info.offset ; pos < end_pos ; pos++) {
+                                thread_checksum = thread_checksum ^ lookup_table[buffer[pos]];
+                            }
+
+                            thread_checksums[info.id] = thread_checksum;
+                        });
+                        threads[i].Start();
+                    }
+
+                    foreach (Thread thread in threads) { thread.Join(); }
+                    foreach (ulong thread_checksum in thread_checksums) {
+                        checksum = checksum ^ thread_checksum;
+                    }
+                    
+                    bytes_read = filestream.Read(buffer, 0, buffer.Length);
+                    // kada read funckija cita poslednji blok podataka koji je manji od buffer-a
+                    // ona ne stavlja ostatak buffer-a na nulu
+                    long remanining_bytes = buffer.LongLength - bytes_read;
+                    if (remanining_bytes > 0) {
+                        Array.Clear(buffer, bytes_read, (int)remanining_bytes);
+                    }
+
+                }
+
+            }
+
+            return checksum;
         }
 
         public ulong ChecksumTextFile(string[] input) {
