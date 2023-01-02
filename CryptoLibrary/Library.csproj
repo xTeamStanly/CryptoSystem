@@ -54,6 +54,7 @@
     <Compile Include="Crypto\CRC\CRCFileItem.cs" />
     <Compile Include="Crypto\CRC\CRCPlaintextItem.cs" />
     <Compile Include="Crypto\CRC\CRCTextItem.cs" />
+    <Compile Include="Crypto\TEAThreaded.cs" />
     <Compile Include="Crypto\Enigma\Enigma.cs" />
     <Compile Include="Crypto\Enigma\PlugBoard.cs" />
     <Compile Include="Crypto\Enigma\Reflector.cs" />

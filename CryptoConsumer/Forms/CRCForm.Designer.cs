@@ -43,6 +43,7 @@
             this.file_key_textbox = new System.Windows.Forms.TextBox();
             this.file_buttons_layout = new System.Windows.Forms.TableLayoutPanel();
             this.file_thread_groupbox = new System.Windows.Forms.GroupBox();
+            this.file_threads_numeric = new System.Windows.Forms.NumericUpDown();
             this.file_encrypt_button = new System.Windows.Forms.Button();
             this.extra_groupbox = new System.Windows.Forms.GroupBox();
             this.file_offline_checkbox = new System.Windows.Forms.CheckBox();
@@ -82,7 +83,6 @@
             this.plaintext_key_textbox = new System.Windows.Forms.TextBox();
             this.plaintext_history_groupbox = new System.Windows.Forms.GroupBox();
             this.plaintext_datagrid = new System.Windows.Forms.DataGridView();
-            this.file_threads_numeric = new System.Windows.Forms.NumericUpDown();
             this.tabs.SuspendLayout();
             this.file_tab.SuspendLayout();
             this.file_layout.SuspendLayout();
@@ -92,6 +92,7 @@
             this.file_key_layout.SuspendLayout();
             this.file_buttons_layout.SuspendLayout();
             this.file_thread_groupbox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.file_threads_numeric)).BeginInit();
             this.extra_groupbox.SuspendLayout();
             this.file_input_groupbox.SuspendLayout();
             this.file_input_layout.SuspendLayout();
@@ -114,7 +115,6 @@
             this.plaintext_key_layout.SuspendLayout();
             this.plaintext_history_groupbox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plaintext_datagrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.file_threads_numeric)).BeginInit();
             this.SuspendLayout();
             // 
             // tabs
@@ -296,9 +296,33 @@
             this.file_thread_groupbox.Name = "file_thread_groupbox";
             this.file_thread_groupbox.Padding = new System.Windows.Forms.Padding(4);
             this.file_thread_groupbox.Size = new System.Drawing.Size(183, 109);
-            this.file_thread_groupbox.TabIndex = 2;
+            this.file_thread_groupbox.TabIndex = 1;
             this.file_thread_groupbox.TabStop = false;
             this.file_thread_groupbox.Text = "Threads";
+            // 
+            // file_threads_numeric
+            // 
+            this.file_threads_numeric.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.file_threads_numeric.Location = new System.Drawing.Point(7, 50);
+            this.file_threads_numeric.Maximum = new decimal(new int[] {
+            256,
+            0,
+            0,
+            0});
+            this.file_threads_numeric.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.file_threads_numeric.Name = "file_threads_numeric";
+            this.file_threads_numeric.Size = new System.Drawing.Size(169, 35);
+            this.file_threads_numeric.TabIndex = 0;
+            this.file_threads_numeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.file_threads_numeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // file_encrypt_button
             // 
@@ -321,7 +345,7 @@
             this.extra_groupbox.Name = "extra_groupbox";
             this.extra_groupbox.Padding = new System.Windows.Forms.Padding(4);
             this.extra_groupbox.Size = new System.Drawing.Size(310, 109);
-            this.extra_groupbox.TabIndex = 1;
+            this.extra_groupbox.TabIndex = 2;
             this.extra_groupbox.TabStop = false;
             this.extra_groupbox.Text = "Extra";
             // 
@@ -862,30 +886,6 @@
             this.plaintext_datagrid.TabIndex = 0;
             this.plaintext_datagrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.plaintext_datagrid_DataBindingComplete);
             // 
-            // file_threads_numeric
-            // 
-            this.file_threads_numeric.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.file_threads_numeric.Location = new System.Drawing.Point(7, 50);
-            this.file_threads_numeric.Maximum = new decimal(new int[] {
-            256,
-            0,
-            0,
-            0});
-            this.file_threads_numeric.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.file_threads_numeric.Name = "file_threads_numeric";
-            this.file_threads_numeric.Size = new System.Drawing.Size(169, 35);
-            this.file_threads_numeric.TabIndex = 0;
-            this.file_threads_numeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.file_threads_numeric.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // CRCForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -910,6 +910,7 @@
             this.file_key_layout.PerformLayout();
             this.file_buttons_layout.ResumeLayout(false);
             this.file_thread_groupbox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.file_threads_numeric)).EndInit();
             this.extra_groupbox.ResumeLayout(false);
             this.extra_groupbox.PerformLayout();
             this.file_input_groupbox.ResumeLayout(false);
@@ -940,7 +941,6 @@
             this.plaintext_key_layout.PerformLayout();
             this.plaintext_history_groupbox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.plaintext_datagrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.file_threads_numeric)).EndInit();
             this.ResumeLayout(false);
 
         }

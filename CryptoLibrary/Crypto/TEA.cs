@@ -12,6 +12,8 @@ namespace Library.Crypto {
         private uint[] key;
         public uint[] Key { get { return key; } }
 
+        private int thread_count = 1;
+
         private static uint[] unicode_key_to_unsigned_key(string unicode_key) {
             uint[] key = new uint[4];
             
@@ -36,6 +38,22 @@ namespace Library.Crypto {
 
             // 128b = char (8b) * 16
             if (unicode_key.Length != 16) { throw new ArgumentException("Key lenght is not valid");}
+
+            key = unicode_key_to_unsigned_key(unicode_key);
+        }
+
+        public TEA(string unicode_key, int thread_count) {
+            thread_count = Math.Abs(thread_count);
+            if (thread_count == 0) {
+                this.thread_count = 1;
+            } else {
+                this.thread_count = thread_count;
+            }
+
+            if (unicode_key == null) { throw new ArgumentNullException("Key is null"); }
+
+            // 128b = char (8b) * 16
+            if (unicode_key.Length != 16) { throw new ArgumentException("Key lenght is not valid"); }
 
             key = unicode_key_to_unsigned_key(unicode_key);
         }

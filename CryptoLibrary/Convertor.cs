@@ -16,7 +16,7 @@ namespace Library {
             return String.Join("", input_bytes.Select(i => (char)i));
         }
 
-        private static uint padding_calculation(int lenght, int padding) {
+        public static uint padding_calculation(int lenght, int padding) {
             padding = Math.Abs(padding);
 
             int number_of_missing_elements = (padding - lenght % padding) % padding;
@@ -30,7 +30,7 @@ namespace Library {
 
             // byte -> uint padding (fali byte: 0x12 0x13 0x14 -> UINT)
             uint byte_padding = padding_calculation(bytes_lenght, 4);
-            if (byte_padding  != 0) {
+            if (byte_padding != 0) {
                 byte[] new_bytes = new byte[bytes_lenght + byte_padding];
                 Array.Copy(bytes, new_bytes, bytes_lenght);
                 bytes = new_bytes;
@@ -54,6 +54,30 @@ namespace Library {
 
             return result.ToArray();
         }
+        public static uint[] byte_array_to_unsigned_array_no_padding(byte[] bytes) {
+            if (bytes == null) { throw new ArgumentNullException("Input byte array is null"); }
+
+            int bytes_lenght = bytes.Length;
+            if (bytes_lenght == 0) { return new uint[0]; }
+
+            List<uint> result = new List<uint>();
+            for (int i = 0 ; i < bytes_lenght ; i += 4) {
+                uint value = BitConverter.ToUInt32(new byte[] { bytes[i], bytes[i + 1], bytes[i + 2], bytes[i + 3] }, 0);
+                result.Add(value);
+            }
+
+            return result.ToArray();
+        }
+
+        public static uint byte_array_to_unsigned(byte[] bytes) {
+            if (bytes == null) { throw new ArgumentNullException("Input byte array is null"); }
+            
+            if (bytes.Length == 0) { return 0; }
+            Array.Resize(ref bytes, 4);
+
+            return BitConverter.ToUInt32(new byte[] { bytes[0], bytes[1], bytes[2], bytes[3] }, 0);
+        }
+
         public static uint[] byte_array_to_unsigned_array(byte[] bytes, int padding_size) {
             if (bytes == null) { throw new ArgumentNullException("Input byte array is null"); }
 
@@ -86,7 +110,7 @@ namespace Library {
             uint max_padding_size = 3 + (pad_size - 1 + pad_size) * 4;
 
             uint last_uint = input[input.Length - 1];
-            if (last_uint > max_padding_size) { throw new Exception("Invalid padding size"); }
+            if (last_uint > max_padding_size) { throw new Exception("Invalid padding size, probably wrong key"); }
 
 
             byte[] input_bytes = unsigned_array_to_byte_array(input);
