@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Library.Crypto {
-    public class CBCTEA : ICipher, ICipherReference {
+    public class CBCTEA {
         private TEA tea = null;
         private uint[] initialization_vector = null;
         private uint[] IV_key = null;

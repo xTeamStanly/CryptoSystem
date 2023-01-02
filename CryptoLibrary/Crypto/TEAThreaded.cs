@@ -137,7 +137,7 @@ namespace Library.Crypto {
             long full_block_count = input.LongLength / 8;
             long partial_block_size = input.LongLength % 8;
 
-            byte[] output_bytes = new byte[full_block_count * 8 + 8 + 4]; // 8 (parcijalni blok) + 4 (padding vrednost)
+            byte[] output_bytes = new byte[full_block_count * 8 + ((partial_block_size == 0) ? 0 : 8) + 4]; // 8 (parcijalni blok ako postoji) + 4 (padding vrednost)
 
             if (full_block_count != 0) {
                 // postoje celi blokovi, normalna racunica
@@ -201,7 +201,7 @@ namespace Library.Crypto {
             }
             byte[] padding_lenght_bytes = Convertor.unsigned_to_bytes(padding_lenght);
 
-            Array.Copy(padding_lenght_bytes, 0, output_bytes, full_block_count * 8 + 8, 4);
+            Array.Copy(padding_lenght_bytes, 0, output_bytes, full_block_count * 8 + ((partial_block_size == 0) ? 0 : 8), 4);
             return output_bytes;
         }
         public byte[] DecryptFile(byte[] input) {
@@ -564,6 +564,5 @@ namespace Library.Crypto {
             byte[] output_bytes = DecryptBitmap(input_bytes);
             IO.SaveFile(outputpath, output_bytes);
         }
-
     }
 }

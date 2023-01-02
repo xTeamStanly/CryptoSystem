@@ -12,8 +12,6 @@ namespace Library.Crypto {
 
         // istorija checksum racunice, treba nam za interfejs
         public static List<CRCFileItem> FileHistory = new List<CRCFileItem>();
-        public static List<CRCTextItem> TextFileHistory = new List<CRCTextItem>();
-        public static List<CRCPlaintextItem> PlaintextHistory = new List<CRCPlaintextItem>();
 
         private BitArray polynomial;
         public BitArray Polynomial { get { return polynomial; } }
@@ -257,28 +255,6 @@ namespace Library.Crypto {
             }
 
             return checksum;
-        }
-
-        public ulong ChecksumTextFile(string[] input) {
-            if (input == null) { throw new Exception("Input string array is null"); }
-            if (input.Length == 0) { throw new Exception("No data"); }
-
-            ulong[] results = input.Select(i => ChecksumPlaintext(i)).ToArray();
-            ulong result = 0;
-            foreach (ulong r in results) {
-                result = result ^ r;
-            }
-            return result;
-        }
-        public ulong ChecksumTextFile(string inputpath) {
-            string[] input_strings = IO.OpenTextFile(inputpath);
-            if (input_strings.Length == 0) { throw new Exception("No data"); }
-            return ChecksumTextFile(input_strings);
-        }
-
-        public ulong ChecksumPlaintext(string plaintext) {
-            byte[] plaintext_bytes = Convertor.string_to_bytes(plaintext);
-            return Checksum(plaintext_bytes);
         }
     }
 }

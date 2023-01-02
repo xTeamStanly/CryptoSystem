@@ -5,14 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Library.Crypto {
-    public class TEA : ICipher, ICipherReference {
+    // fajlovi nisu kompatibilni sa TEAThreaded, vec se koristi samo za CBC(TEA)
+    internal class TEA {
         private readonly static uint delta_const = 0x9E3779B9;
         private readonly static uint sum_const = 0xC6EF3720; // (delta_const << 5) & 0xFFFFFFFF
 
         private uint[] key;
         public uint[] Key { get { return key; } }
-
-        private int thread_count = 1;
 
         private static uint[] unicode_key_to_unsigned_key(string unicode_key) {
             uint[] key = new uint[4];
@@ -38,22 +37,6 @@ namespace Library.Crypto {
 
             // 128b = char (8b) * 16
             if (unicode_key.Length != 16) { throw new ArgumentException("Key lenght is not valid");}
-
-            key = unicode_key_to_unsigned_key(unicode_key);
-        }
-
-        public TEA(string unicode_key, int thread_count) {
-            thread_count = Math.Abs(thread_count);
-            if (thread_count == 0) {
-                this.thread_count = 1;
-            } else {
-                this.thread_count = thread_count;
-            }
-
-            if (unicode_key == null) { throw new ArgumentNullException("Key is null"); }
-
-            // 128b = char (8b) * 16
-            if (unicode_key.Length != 16) { throw new ArgumentException("Key lenght is not valid"); }
 
             key = unicode_key_to_unsigned_key(unicode_key);
         }
@@ -208,45 +191,6 @@ namespace Library.Crypto {
             
             byte[] output_bytes = DecryptBitmap(input_bytes);
             IO.SaveFile(outputpath, output_bytes);
-        }
-
-        public string[] EncryptText(string[] input) {
-            if (input == null) { throw new Exception("Input string array is null"); }
-            if (input.Length == 0) { throw new Exception("No data"); }
-
-            return input.Select(i => EncryptPlaintext(i)).ToArray();
-        }
-        public string[] DecryptText(string[] input) {
-            if (input == null) { throw new Exception("Input string array is null"); }
-            if (input.Length == 0) { throw new Exception("No data"); }
-
-            return input.Select(i => DecryptPlaintext(i)).ToArray();
-        }
-        public void EncryptText(string inputpath, string outputpath) {
-            string[] input_strings = IO.OpenTextFile(inputpath);
-            if (input_strings.Length == 0) { throw new Exception("No data"); }
-
-            string[] output_strings = EncryptText(input_strings);
-            IO.SaveTextFile(outputpath, output_strings);
-        }
-        public void DecryptText(string inputpath, string outputpath) {
-            string[] input_strings = IO.OpenTextFile(inputpath);
-            if (input_strings.Length == 0) { throw new Exception("No data"); }
-
-            string[] output_strings = DecryptText(input_strings);
-            IO.SaveTextFile(outputpath, output_strings);
-        }
-        
-
-        public string EncryptPlaintext(string input) {
-            byte[] input_bytes = Convertor.string_to_bytes(input);
-            byte[] output_bytes = EncryptFile(input_bytes);
-            return Convertor.bytes_to_string(output_bytes);
-        }
-        public string DecryptPlaintext(string input) {
-            byte[] input_bytes = Convertor.string_to_bytes(input);
-            byte[] output_bytes = DecryptFile(input_bytes);
-            return Convertor.bytes_to_string(output_bytes);
         }
     }
 }

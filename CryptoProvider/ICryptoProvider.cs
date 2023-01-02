@@ -24,17 +24,11 @@ namespace CryptoProvider {
         [OperationContract] string Enigma_Encode(EnigmaState enigma_state, string message);
 
         // ###################################### TEA ######################################
-        [OperationContract] byte[] TEA_EncryptFile(string key, byte[] input);
-        [OperationContract] byte[] TEA_DecryptFile(string key, byte[] input);
+        [OperationContract] byte[] TEA_EncryptFile(string key, byte[] input, int thread_count);
+        [OperationContract] byte[] TEA_DecryptFile(string key, byte[] input, int thread_count);
 
-        [OperationContract] byte[] TEA_EncryptBitmap(string key, byte[] input);
-        [OperationContract] byte[] TEA_DecryptBitmap(string key, byte[] input);
-
-        [OperationContract] string[] TEA_EncryptText(string key, string[] input);
-        [OperationContract] string[] TEA_DecryptText(string key, string[] input);
-
-        [OperationContract] string TEA_EncryptPlaintext(string key, string input);
-        [OperationContract] string TEA_DecryptPlaintext(string key, string input);
+        [OperationContract] byte[] TEA_EncryptBitmap(string key, byte[] input, int thread_count);
+        [OperationContract] byte[] TEA_DecryptBitmap(string key, byte[] input, int thread_count);
 
         // ###################################### CBC-TEA ######################################
         [OperationContract] byte[] CBC_EncryptFile(string key, byte[] input, string initialization_vector);
@@ -43,16 +37,8 @@ namespace CryptoProvider {
         [OperationContract] byte[] CBC_EncryptBitmap(string key, byte[] input, string initialization_vector);
         [OperationContract] byte[] CBC_DecryptBitmap(string key, byte[] input, string initialization_vector);
 
-        [OperationContract] string[] CBC_EncryptText(string key, string[] input, string initialization_vector);
-        [OperationContract] string[] CBC_DecryptText(string key, string[] input, string initialization_vector);
-
-        [OperationContract] string CBC_EncryptPlaintext(string key, string input, string initialization_vector);
-        [OperationContract] string CBC_DecryptPlaintext(string key, string input, string initialization_vector);
-
         // ###################################### CRC ######################################
         [OperationContract] ulong? CRC_ChecksumFile(string key, byte[] input, int thread_count);
-        [OperationContract] ulong? CRC_ChecksumTextFile(string key, string[] input);
-        [OperationContract] ulong? CRC_ChecksumPlaintext(string key, string input);
     }
 
     [DataContract]

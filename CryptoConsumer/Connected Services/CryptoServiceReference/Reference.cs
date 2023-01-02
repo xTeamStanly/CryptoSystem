@@ -70,52 +70,28 @@ namespace CryptoConsumer.CryptoServiceReference {
         System.Threading.Tasks.Task<string> Enigma_EncodeAsync(CryptoProvider.EnigmaState enigma_state, string message);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEA_EncryptFile", ReplyAction="http://tempuri.org/ICryptoProvider/TEA_EncryptFileResponse")]
-        byte[] TEA_EncryptFile(string key, byte[] input);
+        byte[] TEA_EncryptFile(string key, byte[] input, int thread_count);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEA_EncryptFile", ReplyAction="http://tempuri.org/ICryptoProvider/TEA_EncryptFileResponse")]
-        System.Threading.Tasks.Task<byte[]> TEA_EncryptFileAsync(string key, byte[] input);
+        System.Threading.Tasks.Task<byte[]> TEA_EncryptFileAsync(string key, byte[] input, int thread_count);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEA_DecryptFile", ReplyAction="http://tempuri.org/ICryptoProvider/TEA_DecryptFileResponse")]
-        byte[] TEA_DecryptFile(string key, byte[] input);
+        byte[] TEA_DecryptFile(string key, byte[] input, int thread_count);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEA_DecryptFile", ReplyAction="http://tempuri.org/ICryptoProvider/TEA_DecryptFileResponse")]
-        System.Threading.Tasks.Task<byte[]> TEA_DecryptFileAsync(string key, byte[] input);
+        System.Threading.Tasks.Task<byte[]> TEA_DecryptFileAsync(string key, byte[] input, int thread_count);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEA_EncryptBitmap", ReplyAction="http://tempuri.org/ICryptoProvider/TEA_EncryptBitmapResponse")]
-        byte[] TEA_EncryptBitmap(string key, byte[] input);
+        byte[] TEA_EncryptBitmap(string key, byte[] input, int thread_count);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEA_EncryptBitmap", ReplyAction="http://tempuri.org/ICryptoProvider/TEA_EncryptBitmapResponse")]
-        System.Threading.Tasks.Task<byte[]> TEA_EncryptBitmapAsync(string key, byte[] input);
+        System.Threading.Tasks.Task<byte[]> TEA_EncryptBitmapAsync(string key, byte[] input, int thread_count);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEA_DecryptBitmap", ReplyAction="http://tempuri.org/ICryptoProvider/TEA_DecryptBitmapResponse")]
-        byte[] TEA_DecryptBitmap(string key, byte[] input);
+        byte[] TEA_DecryptBitmap(string key, byte[] input, int thread_count);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEA_DecryptBitmap", ReplyAction="http://tempuri.org/ICryptoProvider/TEA_DecryptBitmapResponse")]
-        System.Threading.Tasks.Task<byte[]> TEA_DecryptBitmapAsync(string key, byte[] input);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEA_EncryptText", ReplyAction="http://tempuri.org/ICryptoProvider/TEA_EncryptTextResponse")]
-        string[] TEA_EncryptText(string key, string[] input);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEA_EncryptText", ReplyAction="http://tempuri.org/ICryptoProvider/TEA_EncryptTextResponse")]
-        System.Threading.Tasks.Task<string[]> TEA_EncryptTextAsync(string key, string[] input);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEA_DecryptText", ReplyAction="http://tempuri.org/ICryptoProvider/TEA_DecryptTextResponse")]
-        string[] TEA_DecryptText(string key, string[] input);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEA_DecryptText", ReplyAction="http://tempuri.org/ICryptoProvider/TEA_DecryptTextResponse")]
-        System.Threading.Tasks.Task<string[]> TEA_DecryptTextAsync(string key, string[] input);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEA_EncryptPlaintext", ReplyAction="http://tempuri.org/ICryptoProvider/TEA_EncryptPlaintextResponse")]
-        string TEA_EncryptPlaintext(string key, string input);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEA_EncryptPlaintext", ReplyAction="http://tempuri.org/ICryptoProvider/TEA_EncryptPlaintextResponse")]
-        System.Threading.Tasks.Task<string> TEA_EncryptPlaintextAsync(string key, string input);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEA_DecryptPlaintext", ReplyAction="http://tempuri.org/ICryptoProvider/TEA_DecryptPlaintextResponse")]
-        string TEA_DecryptPlaintext(string key, string input);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/TEA_DecryptPlaintext", ReplyAction="http://tempuri.org/ICryptoProvider/TEA_DecryptPlaintextResponse")]
-        System.Threading.Tasks.Task<string> TEA_DecryptPlaintextAsync(string key, string input);
+        System.Threading.Tasks.Task<byte[]> TEA_DecryptBitmapAsync(string key, byte[] input, int thread_count);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_EncryptFile", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_EncryptFileResponse")]
         byte[] CBC_EncryptFile(string key, byte[] input, string initialization_vector);
@@ -141,47 +117,11 @@ namespace CryptoConsumer.CryptoServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_DecryptBitmap", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_DecryptBitmapResponse")]
         System.Threading.Tasks.Task<byte[]> CBC_DecryptBitmapAsync(string key, byte[] input, string initialization_vector);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_EncryptText", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_EncryptTextResponse")]
-        string[] CBC_EncryptText(string key, string[] input, string initialization_vector);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_EncryptText", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_EncryptTextResponse")]
-        System.Threading.Tasks.Task<string[]> CBC_EncryptTextAsync(string key, string[] input, string initialization_vector);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_DecryptText", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_DecryptTextResponse")]
-        string[] CBC_DecryptText(string key, string[] input, string initialization_vector);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_DecryptText", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_DecryptTextResponse")]
-        System.Threading.Tasks.Task<string[]> CBC_DecryptTextAsync(string key, string[] input, string initialization_vector);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_EncryptPlaintext", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_EncryptPlaintextResponse")]
-        string CBC_EncryptPlaintext(string key, string input, string initialization_vector);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_EncryptPlaintext", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_EncryptPlaintextResponse")]
-        System.Threading.Tasks.Task<string> CBC_EncryptPlaintextAsync(string key, string input, string initialization_vector);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_DecryptPlaintext", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_DecryptPlaintextResponse")]
-        string CBC_DecryptPlaintext(string key, string input, string initialization_vector);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CBC_DecryptPlaintext", ReplyAction="http://tempuri.org/ICryptoProvider/CBC_DecryptPlaintextResponse")]
-        System.Threading.Tasks.Task<string> CBC_DecryptPlaintextAsync(string key, string input, string initialization_vector);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumFile", ReplyAction="http://tempuri.org/ICryptoProvider/CRC_ChecksumFileResponse")]
         System.Nullable<ulong> CRC_ChecksumFile(string key, byte[] input, int thread_count);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumFile", ReplyAction="http://tempuri.org/ICryptoProvider/CRC_ChecksumFileResponse")]
         System.Threading.Tasks.Task<System.Nullable<ulong>> CRC_ChecksumFileAsync(string key, byte[] input, int thread_count);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumTextFile", ReplyAction="http://tempuri.org/ICryptoProvider/CRC_ChecksumTextFileResponse")]
-        System.Nullable<ulong> CRC_ChecksumTextFile(string key, string[] input);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumTextFile", ReplyAction="http://tempuri.org/ICryptoProvider/CRC_ChecksumTextFileResponse")]
-        System.Threading.Tasks.Task<System.Nullable<ulong>> CRC_ChecksumTextFileAsync(string key, string[] input);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumPlaintext", ReplyAction="http://tempuri.org/ICryptoProvider/CRC_ChecksumPlaintextResponse")]
-        System.Nullable<ulong> CRC_ChecksumPlaintext(string key, string input);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICryptoProvider/CRC_ChecksumPlaintext", ReplyAction="http://tempuri.org/ICryptoProvider/CRC_ChecksumPlaintextResponse")]
-        System.Threading.Tasks.Task<System.Nullable<ulong>> CRC_ChecksumPlaintextAsync(string key, string input);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -283,68 +223,36 @@ namespace CryptoConsumer.CryptoServiceReference {
             return base.Channel.Enigma_EncodeAsync(enigma_state, message);
         }
         
-        public byte[] TEA_EncryptFile(string key, byte[] input) {
-            return base.Channel.TEA_EncryptFile(key, input);
+        public byte[] TEA_EncryptFile(string key, byte[] input, int thread_count) {
+            return base.Channel.TEA_EncryptFile(key, input, thread_count);
         }
         
-        public System.Threading.Tasks.Task<byte[]> TEA_EncryptFileAsync(string key, byte[] input) {
-            return base.Channel.TEA_EncryptFileAsync(key, input);
+        public System.Threading.Tasks.Task<byte[]> TEA_EncryptFileAsync(string key, byte[] input, int thread_count) {
+            return base.Channel.TEA_EncryptFileAsync(key, input, thread_count);
         }
         
-        public byte[] TEA_DecryptFile(string key, byte[] input) {
-            return base.Channel.TEA_DecryptFile(key, input);
+        public byte[] TEA_DecryptFile(string key, byte[] input, int thread_count) {
+            return base.Channel.TEA_DecryptFile(key, input, thread_count);
         }
         
-        public System.Threading.Tasks.Task<byte[]> TEA_DecryptFileAsync(string key, byte[] input) {
-            return base.Channel.TEA_DecryptFileAsync(key, input);
+        public System.Threading.Tasks.Task<byte[]> TEA_DecryptFileAsync(string key, byte[] input, int thread_count) {
+            return base.Channel.TEA_DecryptFileAsync(key, input, thread_count);
         }
         
-        public byte[] TEA_EncryptBitmap(string key, byte[] input) {
-            return base.Channel.TEA_EncryptBitmap(key, input);
+        public byte[] TEA_EncryptBitmap(string key, byte[] input, int thread_count) {
+            return base.Channel.TEA_EncryptBitmap(key, input, thread_count);
         }
         
-        public System.Threading.Tasks.Task<byte[]> TEA_EncryptBitmapAsync(string key, byte[] input) {
-            return base.Channel.TEA_EncryptBitmapAsync(key, input);
+        public System.Threading.Tasks.Task<byte[]> TEA_EncryptBitmapAsync(string key, byte[] input, int thread_count) {
+            return base.Channel.TEA_EncryptBitmapAsync(key, input, thread_count);
         }
         
-        public byte[] TEA_DecryptBitmap(string key, byte[] input) {
-            return base.Channel.TEA_DecryptBitmap(key, input);
+        public byte[] TEA_DecryptBitmap(string key, byte[] input, int thread_count) {
+            return base.Channel.TEA_DecryptBitmap(key, input, thread_count);
         }
         
-        public System.Threading.Tasks.Task<byte[]> TEA_DecryptBitmapAsync(string key, byte[] input) {
-            return base.Channel.TEA_DecryptBitmapAsync(key, input);
-        }
-        
-        public string[] TEA_EncryptText(string key, string[] input) {
-            return base.Channel.TEA_EncryptText(key, input);
-        }
-        
-        public System.Threading.Tasks.Task<string[]> TEA_EncryptTextAsync(string key, string[] input) {
-            return base.Channel.TEA_EncryptTextAsync(key, input);
-        }
-        
-        public string[] TEA_DecryptText(string key, string[] input) {
-            return base.Channel.TEA_DecryptText(key, input);
-        }
-        
-        public System.Threading.Tasks.Task<string[]> TEA_DecryptTextAsync(string key, string[] input) {
-            return base.Channel.TEA_DecryptTextAsync(key, input);
-        }
-        
-        public string TEA_EncryptPlaintext(string key, string input) {
-            return base.Channel.TEA_EncryptPlaintext(key, input);
-        }
-        
-        public System.Threading.Tasks.Task<string> TEA_EncryptPlaintextAsync(string key, string input) {
-            return base.Channel.TEA_EncryptPlaintextAsync(key, input);
-        }
-        
-        public string TEA_DecryptPlaintext(string key, string input) {
-            return base.Channel.TEA_DecryptPlaintext(key, input);
-        }
-        
-        public System.Threading.Tasks.Task<string> TEA_DecryptPlaintextAsync(string key, string input) {
-            return base.Channel.TEA_DecryptPlaintextAsync(key, input);
+        public System.Threading.Tasks.Task<byte[]> TEA_DecryptBitmapAsync(string key, byte[] input, int thread_count) {
+            return base.Channel.TEA_DecryptBitmapAsync(key, input, thread_count);
         }
         
         public byte[] CBC_EncryptFile(string key, byte[] input, string initialization_vector) {
@@ -379,60 +287,12 @@ namespace CryptoConsumer.CryptoServiceReference {
             return base.Channel.CBC_DecryptBitmapAsync(key, input, initialization_vector);
         }
         
-        public string[] CBC_EncryptText(string key, string[] input, string initialization_vector) {
-            return base.Channel.CBC_EncryptText(key, input, initialization_vector);
-        }
-        
-        public System.Threading.Tasks.Task<string[]> CBC_EncryptTextAsync(string key, string[] input, string initialization_vector) {
-            return base.Channel.CBC_EncryptTextAsync(key, input, initialization_vector);
-        }
-        
-        public string[] CBC_DecryptText(string key, string[] input, string initialization_vector) {
-            return base.Channel.CBC_DecryptText(key, input, initialization_vector);
-        }
-        
-        public System.Threading.Tasks.Task<string[]> CBC_DecryptTextAsync(string key, string[] input, string initialization_vector) {
-            return base.Channel.CBC_DecryptTextAsync(key, input, initialization_vector);
-        }
-        
-        public string CBC_EncryptPlaintext(string key, string input, string initialization_vector) {
-            return base.Channel.CBC_EncryptPlaintext(key, input, initialization_vector);
-        }
-        
-        public System.Threading.Tasks.Task<string> CBC_EncryptPlaintextAsync(string key, string input, string initialization_vector) {
-            return base.Channel.CBC_EncryptPlaintextAsync(key, input, initialization_vector);
-        }
-        
-        public string CBC_DecryptPlaintext(string key, string input, string initialization_vector) {
-            return base.Channel.CBC_DecryptPlaintext(key, input, initialization_vector);
-        }
-        
-        public System.Threading.Tasks.Task<string> CBC_DecryptPlaintextAsync(string key, string input, string initialization_vector) {
-            return base.Channel.CBC_DecryptPlaintextAsync(key, input, initialization_vector);
-        }
-        
         public System.Nullable<ulong> CRC_ChecksumFile(string key, byte[] input, int thread_count) {
             return base.Channel.CRC_ChecksumFile(key, input, thread_count);
         }
         
         public System.Threading.Tasks.Task<System.Nullable<ulong>> CRC_ChecksumFileAsync(string key, byte[] input, int thread_count) {
             return base.Channel.CRC_ChecksumFileAsync(key, input, thread_count);
-        }
-        
-        public System.Nullable<ulong> CRC_ChecksumTextFile(string key, string[] input) {
-            return base.Channel.CRC_ChecksumTextFile(key, input);
-        }
-        
-        public System.Threading.Tasks.Task<System.Nullable<ulong>> CRC_ChecksumTextFileAsync(string key, string[] input) {
-            return base.Channel.CRC_ChecksumTextFileAsync(key, input);
-        }
-        
-        public System.Nullable<ulong> CRC_ChecksumPlaintext(string key, string input) {
-            return base.Channel.CRC_ChecksumPlaintext(key, input);
-        }
-        
-        public System.Threading.Tasks.Task<System.Nullable<ulong>> CRC_ChecksumPlaintextAsync(string key, string input) {
-            return base.Channel.CRC_ChecksumPlaintextAsync(key, input);
         }
     }
 }

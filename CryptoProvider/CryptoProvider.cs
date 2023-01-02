@@ -84,73 +84,37 @@ namespace CryptoProvider {
         }
 
         // ###################################### TEA ######################################
-        public byte[] TEA_EncryptFile(string key, byte[] input) {
+        public byte[] TEA_EncryptFile(string key, byte[] input, int thread_count) {
             try {
-                TEA cipher = new TEA(key);
+                TEAThreaded cipher = new TEAThreaded(key, thread_count);
                 return cipher.EncryptFile(input);
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
                 return null;
             }
         }
-        public byte[] TEA_DecryptFile(string key, byte[] input) {
+        public byte[] TEA_DecryptFile(string key, byte[] input, int thread_count) {
             try {
-                TEA cipher = new TEA(key);
+                TEAThreaded cipher = new TEAThreaded(key, thread_count);
                 return cipher.DecryptFile(input);
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
                 return null;
             }
         }
-        public byte[] TEA_EncryptBitmap(string key, byte[] input) {
+        public byte[] TEA_EncryptBitmap(string key, byte[] input, int thread_count) {
             try {
-                TEA cipher = new TEA(key);
+                TEAThreaded cipher = new TEAThreaded(key, thread_count);
                 return cipher.EncryptBitmap(input);
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
                 return null;
             }
         }
-        public byte[] TEA_DecryptBitmap(string key, byte[] input) {
+        public byte[] TEA_DecryptBitmap(string key, byte[] input, int thread_count) {
             try {
-                TEA cipher = new TEA(key);
+                TEAThreaded cipher = new TEAThreaded(key, thread_count);
                 return cipher.DecryptBitmap(input);
-            } catch (Exception ex) {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-        }
-        public string[] TEA_EncryptText(string key, string[] input) {
-            try {
-                TEA cipher = new TEA(key);
-                return cipher.EncryptText(input);
-            } catch (Exception ex) {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-        }
-        public string[] TEA_DecryptText(string key, string[] input) {
-            try {
-                TEA cipher = new TEA(key);
-                return cipher.DecryptText(input);
-            } catch (Exception ex) {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-        }
-        public string TEA_EncryptPlaintext(string key, string input) {
-            try {
-                TEA cipher = new TEA(key);
-                return cipher.EncryptPlaintext(input);
-            } catch (Exception ex) {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-        }
-        public string TEA_DecryptPlaintext(string key, string input) {
-            try {
-                TEA cipher = new TEA(key);
-                return cipher.DecryptPlaintext(input);
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
                 return null;
@@ -194,43 +158,7 @@ namespace CryptoProvider {
                 return null;
             }
         }
-        public string[] CBC_EncryptText(string key, string[] input, string initialization_vector) {
-            try {
-                CBCTEA cipher = new CBCTEA(key, initialization_vector);
-                return cipher.EncryptText(input);
-            } catch (Exception ex) {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-        }
-        public string[] CBC_DecryptText(string key, string[] input, string initialization_vector) {
-            try {
-                CBCTEA cipher = new CBCTEA(key, initialization_vector);
-                return cipher.DecryptText(input);
-            } catch (Exception ex) {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-        }
-        public string CBC_EncryptPlaintext(string key, string input, string initialization_vector) {
-            try {
-                CBCTEA cipher = new CBCTEA(key, initialization_vector);
-                return cipher.EncryptPlaintext(input);
-            } catch (Exception ex) {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-        }
-        public string CBC_DecryptPlaintext(string key, string input, string initialization_vector) {
-            try {
-                CBCTEA cipher = new CBCTEA(key, initialization_vector);
-                return cipher.DecryptPlaintext(input);
-            } catch (Exception ex) {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-        }
-
+        
         // ###################################### CRC ######################################
         public ulong? CRC_ChecksumFile(string key, byte[] input, int thread_count) {
             try {
@@ -241,25 +169,7 @@ namespace CryptoProvider {
                 Console.WriteLine(ex.Message);
                 return null;
             }
-        }
-        public ulong? CRC_ChecksumTextFile(string key, string[] input) {
-            try {
-                CRC cipher = new CRC(key);
-                return cipher.ChecksumTextFile(input);
-            } catch (Exception ex) {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-        }
-        public ulong? CRC_ChecksumPlaintext(string key, string input) {
-            try {
-                CRC cipher = new CRC(key);
-                return cipher.ChecksumPlaintext(input);
-            } catch (Exception ex) {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-        }
+        } 
 
         // ###################################### ENIGMA ######################################
         public string Enigma_Encode(EnigmaState enigma_state, string message) {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Library.Crypto {
-    public class RC4 : ICipher, ICipherValue {
+    public class RC4 {
 
         private static void valid_unicode(string input) {
             if (input == null) { throw new ArgumentException("Input string is null"); }
@@ -174,26 +174,26 @@ namespace Library.Crypto {
 
         public string[] EncryptText(string[] input) {
             if (input == null) { throw new Exception("Input string array is null"); }
-            if (input.Length == 0) { throw new Exception("No data"); }
+            // if (input.Length == 0) { throw new Exception("No data"); }
 
             return input.Select(i => EncryptPlaintext(i)).ToArray();
         }
         public string[] DecryptText(string[] input) {
             if (input == null) { throw new Exception("Input string array is null"); }
-            if (input.Length == 0) { throw new Exception("No data"); }
+            // if (input.Length == 0) { throw new Exception("No data"); }
 
             return input.Select(i => DecryptPlaintext(i)).ToArray();
         }
         public void EncryptText(string inputpath, string outputpath) {
             string[] input_strings = IO.OpenTextFile(inputpath);
-            if (input_strings.Length == 0) { throw new Exception("No data"); }
+            // if (input_strings.Length == 0) { throw new Exception("No data"); }
 
             string[] output_strings = EncryptText(input_strings);
             IO.SaveTextFile(outputpath, output_strings);
         }
         public void DecryptText(string inputpath, string outputpath) {
             string[] input_strings = IO.OpenTextFile(inputpath);
-            if (input_strings.Length == 0) { throw new Exception("No data"); }
+            // if (input_strings.Length == 0) { throw new Exception("No data"); }
 
             string[] output_strings = DecryptText(input_strings);
             IO.SaveTextFile(outputpath, output_strings);
@@ -202,7 +202,7 @@ namespace Library.Crypto {
         public string EncryptPlaintext(string input) {
             if (input == null) { throw new Exception("Input string is null"); }
             byte[] bytes = Convertor.string_to_bytes(input);
-            if (bytes.Length == 0) { throw new Exception("No data"); }
+            // if (bytes.Length == 0) { throw new Exception("No data"); }
 
             bytes = Encrypt(bytes);
             return Convertor.bytes_to_string(bytes);
@@ -210,7 +210,7 @@ namespace Library.Crypto {
         public string DecryptPlaintext(string input) {
             if (input == null) { throw new Exception("Input string is null"); }
             byte[] bytes = Convertor.string_to_bytes(input);
-            if (bytes.Length == 0) { throw new Exception("No data"); }
+            // if (bytes.Length == 0) { throw new Exception("No data"); }
 
             bytes = Decrypt(bytes);
             return Convertor.bytes_to_string(bytes);

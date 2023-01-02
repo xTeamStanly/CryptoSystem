@@ -52,8 +52,6 @@
     <Compile Include="Crypto\CRC\CRC.cs" />
     <Compile Include="Crypto\CRC\CRCChecksum.cs" />
     <Compile Include="Crypto\CRC\CRCFileItem.cs" />
-    <Compile Include="Crypto\CRC\CRCPlaintextItem.cs" />
-    <Compile Include="Crypto\CRC\CRCTextItem.cs" />
     <Compile Include="Crypto\TEAThreaded.cs" />
     <Compile Include="Crypto\Enigma\Enigma.cs" />
     <Compile Include="Crypto\Enigma\PlugBoard.cs" />
@@ -61,9 +59,6 @@
     <Compile Include="Crypto\Enigma\Reflectors.cs" />
     <Compile Include="Crypto\Enigma\Rotor.cs" />
     <Compile Include="Crypto\Enigma\Rotors.cs" />
-    <Compile Include="Crypto\ICipher.cs" />
-    <Compile Include="Crypto\ICipherReference.cs" />
-    <Compile Include="Crypto\ICipherValue.cs" />
     <Compile Include="Crypto\RC4.cs" />
     <Compile Include="Crypto\TEA.cs" />
     <Compile Include="GUI.cs" />
