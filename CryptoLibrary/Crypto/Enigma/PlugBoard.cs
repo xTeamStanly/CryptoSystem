@@ -16,7 +16,7 @@ namespace Library.Crypto.Enigma {
 
             int configuration_string_lenght = configuration_string.Length;
             if (configuration_string_lenght % 2 == 1) {
-                configuration_string.Remove(configuration_string_lenght - 1, 1);
+                configuration_string = configuration_string.Remove(configuration_string_lenght - 1, 1);
             }
 
             bool all_letters = configuration_string.All(i => (i >= 'A' && i <= 'Z'));
@@ -43,6 +43,7 @@ namespace Library.Crypto.Enigma {
         private string configuration;
 
         public PlugBoard(string configuration) {
+
             this.configuration = plugboard_configuration_string_to_string(configuration);
         }
 

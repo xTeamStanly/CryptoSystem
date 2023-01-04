@@ -21,7 +21,6 @@ namespace CryptoConsumer {
         private void RC4Form_Load(object sender, EventArgs e) {
             GUI.SetColor(file_offline_checkbox, file_offline_mode);
             GUI.SetColor(bitmap_offline_checkbox, bitmap_offline_mode);
-            GUI.SetColor(text_offline_checkbox, text_offline_mode);
             GUI.SetColor(plaintext_offline_checkbox, plaintext_offline_mode);
         }
 
@@ -30,7 +29,7 @@ namespace CryptoConsumer {
         }
 
         private void tabs_SelectedIndexChanged(object sender, EventArgs e) {
-            if (tabs.SelectedIndex == 3 && plaintext_show_warning == true) {
+            if (tabs.SelectedIndex == 2 && plaintext_show_warning == true) {
                 plaintext_show_warning = false;
                 GUI.ShowInformation("RC4 (Plaintext) - Napomena", "Ovaj režim ne funkcioniše najbolje sa tekstom, a na to utiče postojanje \\0 (0x00) karaktera. Moguće je da se neki karakter šifruje/dešifruje u 0x00 i pri prikazivanju rastumači kao kraj string-a, što dovodi do preranog odsecanja ostalih karaktera sledbenika u nizu.");
             }
@@ -210,80 +209,6 @@ namespace CryptoConsumer {
             bitmap_key_textbox.Text = Tools.RandomString(48);
         }
 
-        // ################################ text tab ################################
-        private string text_input_filepath = "";
-        private string text_output_filepath = "";
-        private bool text_offline_mode = false;
-        
-        private void text_input_button_Click(object sender, EventArgs e) {
-            open_file_dialog.Filter = "Text files (*.txt)|*.txt";
-            DialogResult result = open_file_dialog.ShowDialog();
-            if (result == DialogResult.OK) {
-                text_input_filepath = open_file_dialog.FileName;
-                text_input_textbox.Text = text_input_filepath;
-            }
-        }
-        private void text_output_button_Click(object sender, EventArgs e) {
-            save_file_dialog.Filter = "Text files (*.txt)|*.txt";
-            DialogResult result = save_file_dialog.ShowDialog();
-            if (result == DialogResult.OK) {
-                text_output_filepath = open_file_dialog.FileName;
-                text_output_textbox.Text = text_output_filepath;
-            }
-        }
-        private void text_key_button_Click(object sender, EventArgs e) {
-            text_key_textbox.Text = Tools.RandomString(48);
-        }
-        private async void text_encrypt_button_Click(object sender, EventArgs e) {
-            try {
-                text_input_filepath = text_input_textbox.Text;
-                text_output_filepath = text_output_textbox.Text;
-
-                if (text_offline_mode == true) {
-                    RC4 cipher = new RC4(text_key_textbox.Text);
-                    cipher.EncryptText(text_input_filepath, text_output_filepath);
-                } else {
-                    string[] lines = IO.OpenTextFile(text_input_filepath);
-                    lines = await cryptoProvider.RC4_EncryptTextAsync(text_key_textbox.Text, lines);
-                    if (lines == null) { throw new Exception("Server error!"); }
-                    IO.SaveTextFile(text_output_filepath, lines);
-                }
-
-                GUI.ShowInformation("Success", "Encryption successfull!");
-
-            } catch (Exception ex) {
-                GUI.ShowError(ex.Message);
-            }
-        }
-        private async void text_decrypt_button_Click(object sender, EventArgs e) {
-            try {
-                text_input_filepath = text_input_textbox.Text;
-                text_output_filepath = text_output_textbox.Text;
-
-                if (text_offline_mode == true) {
-                    RC4 cipher = new RC4(text_key_textbox.Text);
-                    cipher.DecryptText(text_input_filepath, text_output_filepath);
-                } else {
-                    string[] lines = IO.OpenTextFile(text_input_filepath);
-                    lines = await cryptoProvider.RC4_DecryptTextAsync(text_key_textbox.Text, lines);
-                    if (lines == null) { throw new Exception("Server error!"); }
-                    IO.SaveTextFile(text_output_filepath, lines);
-                }
-
-                GUI.ShowInformation("Success", "Decryption successful!");
-
-            } catch (Exception ex) {
-                GUI.ShowError(ex.Message);
-            }
-        }
-        private void text_swap_button_Click(object sender, EventArgs e) {
-            GUI.SwapText(text_input_textbox, text_output_textbox);
-        }
-        private void text_offline_checkbox_CheckedChanged(object sender, EventArgs e) {
-            text_offline_mode = !text_offline_mode;
-            GUI.SetColor(text_offline_checkbox, text_offline_mode);
-        }
-
         // ################################ plaintext tab ################################
         private bool plaintext_offline_mode = false;
         private static bool plaintext_show_warning = true;
@@ -350,16 +275,6 @@ namespace CryptoConsumer {
         private void bitmap_output_groupbox_DragDrop(object sender, DragEventArgs e) {
             bitmap_output_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
             bitmap_output_textbox.Text = bitmap_output_filepath;
-        }
-
-        private void text_input_groupbox_DragDrop(object sender, DragEventArgs e) {
-            text_input_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
-            text_input_textbox.Text = text_input_filepath;
-        }
-
-        private void text_output_groupbox_DragDrop(object sender, DragEventArgs e) {
-            text_output_filepath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
-            text_output_textbox.Text = text_output_filepath;
         }
     }
 }
