@@ -1,5 +1,5 @@
 # CryptoSystem
-Projekat za potrebe pretmeta "Zaštita Informacija"
+Projekat za potrebe predmeta "Zaštita Informacija"
 
 ## Algoritmi
 * RC4
